@@ -1,0 +1,328 @@
+default_view:
+  name: Wakanda
+  view: yes
+  icon: mdi:home-modern
+  entities:
+    - group.people
+    - group.today
+    - group.floorplan
+    - group.kitchen
+    - group.bathroom
+    - group.studio
+    - group.bedroom
+    - group.patio
+    - group.garden
+people:
+  name: People
+  entities:
+    - device_tracker.ozone
+    - device_tracker.nico
+today:
+  name: Today's Info
+  entities:
+    - weather.current
+    - group.travel
+    - group.events
+    - group.tasks
+    - group.news
+travel:
+  name: Travel Info
+events:
+  name: Today's Events
+  entities:
+    - binary_sensor.workday
+tasks:
+  name: Today's Tasks
+news:
+  name: Today's News
+  entities:
+    - sun.sun
+floorplan:
+  name: The Kingdom of Wankanda
+kitchen:
+  name: Kitchen
+  entities:
+    - light.kitchen
+    - binary_sensor.motion_kitchen
+bathroom:
+  name: Bathroom
+  entities:
+    - light.bathroom
+    - binary_sensor.motion_bathroom
+    - media_player.vixen
+studio:
+  name: Studio
+  entities:
+    - light.studio
+    - binary_sensor.motion_studio
+    - sensor.switch
+    - remote.nakia_ip
+    - switch.tplink_switch_2
+bedroom:
+  name: Bedroom
+  entities:
+    - light.bedroom
+    - switch.tplink_switch
+patio:
+  name: Patio
+  entities:
+    - switch.patio
+garden:
+  name: Garden
+
+### Users ###
+users:
+  name: Users
+  view: yes
+  entities:
+    - group.ozone
+    - group.nicodemus
+ozone:
+  name: Ozone
+  entities:
+    - sensor.steps
+    - sensor.calories
+    - sensor.activity_calories
+    - sensor.weight
+    - sensor.body_fat
+    - sensor.bmi
+    - sensor.distance
+    - sensor.elevation
+    - sensor.floors
+    - sensor.minutes_very_active
+    - sensor.minutes_fairly_active
+    - sensor.mintues_lightly_active
+    - sensor.minutes_sendentary
+    - sensor.resting_heart_rate
+    - sensor.sleep_time_in_bed
+    - sensor.sleep_efficiency
+    - sensor.sleep_minutes_asleep
+    - sensor.sleep_mintues_awake
+    - sensor.sleep_start_time
+    - sensor.sleep_mintutes_to_fall_asleep
+    - sensor.sleep_minutes_after_wakeup
+    - sensor.awakenings_count
+    - sensor.habitica_ozone_class
+    - sensor.habitca_ozone_lvl
+    - sensor.habitica_ozone_exp
+    - sensor.habitica_ozone_hp
+    - sensor.habitica_ozone_mp
+    - sensor.habitica_ozone_maxhealth
+    - sensor.habitica_ozone_maxmp
+    - sensor.habitica_ozone_gp
+    - sensor.habitica_ozone_tonextlevel
+    - sensor.lastfm_ozonethegreat
+    - sensor.breaches_taurencesaltergmailcom
+
+nicodemus:
+  name: Nico
+  entities:
+
+### Information ###
+info:
+  name: Info
+  view: yes
+  entities:
+    - group.weather
+    - group.enviroment
+    - group.commute
+    - group.finance
+weather:
+  name: Weather
+  entities:
+    - group.almanac
+    - group.forecast
+    - group.air_health
+almanac:
+  name: Almanac
+  entities:
+    - camera.seattletacoma_live_radar
+    - sensor.dark_sky_weather_summary
+    - sensor.dark_sky_temperature
+    - sensor.dark_sky_temperature_max
+    - sensor.dark_sky_temperature_min
+    - sensor.dark_sky_humidity
+    - sensor.dark_sky_pressure
+    - sensor.dark_sky_dew_point
+    - sensor.dark_sky_cloud_cover
+    - sensor.dark_sky_visibility
+    - sensor.dark_sky_precip_type
+    - sensor.dark_sky_precip_intensity
+    - sensor.dark_sky_precip_probability
+    - sensor.dark_sky_dew_point
+    - sensor.dark_sky_ozone
+    - sun.sun
+    - sensor.solar_angle
+    - sensor.moon
+forecast:
+  name: Forecast
+air_health:
+  name: Air Health & Quality
+  entities:
+    - group.allergies
+    - group.flu
+    - group.air
+allergies:
+  name: Allegy & Pollen Forecast
+  entities:
+    - sensor.allergy_index_yesterdady
+    - sensor.allergy_index_today
+    - sensor.allergy_index_tomorrow
+    - sensor.allergy_average_forecasted
+    - sensor.allergy_average_historical
+flu:
+  name: Airborne Diseases Watch
+  entities:
+    - sensor.cdc_level
+    - sensor.cdc_level2
+    - sensor.no_symptoms
+    - sensor.total_symptoms
+    - sensor.flu_symptoms
+    - sensor.flulike_symptoms
+    - sensor.cold__flu_forecasted_average
+    - sensor.avian_flu_symptoms
+    - sensor.dengue_fever_symptoms
+    - sensor.leptospirosis_symptoms
+air:
+  name: Air Quality
+  entities:
+    - sensor.us_air_quality_index
+    - sensor.us_air_pollution_level
+    - sensor.us_main_polluntant
+enviroment:
+  name: Enviroment
+  entities:
+    - group.smoke
+    - group.climate
+    - group.humidity
+    - group.air_quality
+smoke:
+  name: Smoke & Carbon Monoxide status
+  entities:
+    - sensor.studio_nest_protect_co_status
+    - sensor.studio_nest_protect_smoke_status
+    - sensor.studio_nest_protect_color_status
+climate:
+  name: Climate
+  entities:
+    - sensor.home_studio_temperature
+    - sensor.max_sensor
+    - sensor.sonoff_10003840d5_current
+    - sensor.sonoff_10003840d5_power
+    - sensor.sonoff_10003840d5_voltage
+humidity:
+  name: Humidity
+  entities:
+    - sensor.home_studio_humidity
+    - sensor.mold_indicator
+air_quality:
+  name: Air Quality
+  entities:
+    - sensor.home_studio_air_quality
+commute:
+  name: Travel & Commute Times
+  entities:
+    - group.travel
+    - group.wsdot
+    - group.rideshare
+travel_commute:
+  name: Google Maps Travel Times
+wsdot:
+  name: Washington State Department Of Tranportation Commute Times
+  entities:
+    - sensor.seattleredmond_morning_eastbound
+    - sensor.hov_seattleredmond_morning_eastbound
+    - sensor.redmondseattle_evening_westbound
+    - sensor.hov_redmondseattle_evening_westbound
+rideshare:
+  name: Ridesharing
+  entities:
+    - group.uber
+    - group.lyft
+uber:
+  name: Uber
+  entities:
+    - sensor.uberwav_price
+    - sensor.uberwav_time
+    - sensor.uberx_price
+    - sensor.uberx_time
+    - sensor.uberxl_price
+    - sensor.uberxl_time
+    - sensor.ubertaxi_price
+    - sensor.ubertaxi_time
+    - sensor.uberselect_price
+    - sensor.uberselect_time
+    - sensor.uberpool_price
+    - sensor.uberpool_time
+    - sensor.uberblack_price
+    - sensor.uberblack_time
+    - sensor.uberblack_suv_price
+    - sensor.uberblack_suv_time
+lyft:
+  name: Lyft
+finance:
+  name: Finance & Banking
+  entities:
+### Media ###
+media:
+  name: Media
+  view: yes
+  entities:
+    - group.players
+    - group.services
+    - group.information
+players:
+  name: Media Players
+  entities:
+    - media_player.cyborg
+    - media_player.falcon
+    - media_player.redwing
+    - media_player.whole_home_music
+services:
+  name: Media Services
+information:
+  name: Media Info
+
+### Security ###
+security:
+  name: Security
+  view: yes
+  entities:
+    - group.alarm
+    - group.locks
+    - group.cameras
+alarm:
+  name: Alarm Panel
+locks:
+  name: Locks
+  entities:
+    - lock.home
+cameras:
+  name: Cameras
+### System ###
+system:
+  name: System
+  view: yes
+  entities:
+    - group.stats
+    - group.automations
+    - group.functions
+    - group.devices
+stats:
+  name: Ogoun's Stats
+  entities:
+
+#  zigbee2mqtt:
+#    view: yes
+#    control: hidden
+#    name: Zigbee2mqtt
+#    entities:
+#      - input_boolean.zigbee_permit_join
+#      - timer.zigbee_permit_join
+#      - sensor.zigbee2mqtt_bridge_state
+#      - switch.zigbee2mqtt_main_join
+#      - automation.enable_zigbee_joining
+#      - automation.disable_zigbee_joining
+#      - automation.disable_zigbee_joining_by_timer
+#      - input_select.zigbee2mqtt_log_level
+#      - automation.zigbee2mqtt_log_level

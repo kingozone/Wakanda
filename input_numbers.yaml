@@ -1,0 +1,7 @@
+input_number:
+  heating_temperature:
+    name: Temperature
+    min: 5
+    max: 85
+    step: 0.5
+    icon: mdi:thermometer

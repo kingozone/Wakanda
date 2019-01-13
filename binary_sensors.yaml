@@ -1,0 +1,79 @@
+### Uptime Robot ###
+  - platform: uptimerobot
+    api_key: uptime_key
+
+### NOAA Aurora Forecast ###
+  - platform: aurora
+    name: Aurora Visibility
+    forecast_threshold: 50
+
+### Flic Smart Button ###
+  - platform: flic
+
+### Workday ###
+  - platform: workday
+    name: workday
+    country: US
+    workdays:
+      - wed
+      - thu
+      - fri
+      - sat
+      - sun
+
+### Hue motion sensors ###
+  - platform: hue
+
+### Sensors ###
+  - platform: template
+    sensors:
+      studio_light_level:
+        friendly_name: 'Studio light level'
+        value_template: '{{state_attr("binary_sensor.motion_studio", "lx")}}'
+
+        - platform: template
+          sensors:
+            studio_temperature_temp:
+            entity_id:
+            - sensor.studio_temperature
+            unit_of_measurement: '°F'
+            value_template: >
+              {{ ((float(states('sensor.sensor1')) * 9 / 5 )  +  32) | round(1) }}
+
+              
+        - platform: template
+          period_of_day:
+            friendly_name: 'Period of the Day'
+            value_template: >-
+              {% if (as_timestamp(states.sun.sun.attributes.next_dusk)) - (as_timestamp(states.sun.sun.attributes.next_setting)) < 0 %}
+                dusk
+              {% elif (as_timestamp(states.sun.sun.attributes.next_rising)) - (as_timestamp(states.sun.sun.attributes.next_dawn)) < 0 %}
+                dawn
+              {% elif (states.sun.sun.attributes.elevation) < -4 %}
+                night
+              {% else %}
+                day
+              {% endif %}
+            icon_template: >-
+              {% if (as_timestamp(states.sun.sun.attributes.next_dusk)) - (as_timestamp(states.sun.sun.attributes.next_setting)) < 0 %}
+                mdi:weather-sunset-down
+              {% elif (as_timestamp(states.sun.sun.attributes.next_rising)) - (as_timestamp(states.sun.sun.attributes.next_dawn)) < 0 %}
+                mdi:weather-sunset-up
+              {% elif (states.sun.sun.attributes.elevation) < -4 %}
+                mdi:weather-night
+              {% else %}
+                mdi:weather-sunny
+              {% endif %}
+        # Workday
+        - platform: workday
+          name: workday
+          country: US
+          workdays: [fri, sat, sun]
+          excludes: [mon, tue, wed, thu, holiday]
+        # Worknight
+        - platform: workday
+          name: worknight
+          country: US
+          days_offset: 1
+          workdays: [fri, sat, sun]
+          excludes: [mon, tue, wed, thu, holiday]

@@ -1,0 +1,31 @@
+### Facebook Messenger ###
+  - name: Ogun
+    platform: facebook
+    page_access_token: !secret facebook_token
+
+### Twitter ###
+  - name: Ogun
+    platform: twitter
+    consumer_key: !secret twitter_key
+    consumer_secret: !secret twitter_secret
+    access_token: !secret twitter_token
+    access_token_secret: !secret twitter_token_secret
+    username: !secret twitter_user
+    
+### Pushover ###
+  - name: Ogun
+    platform: pushover
+    api_key: !secret pushover_api
+    user_key: !secret pushover_key
+    
+### Kodi ###    
+  - platform: kodi
+    name: Ogun
+    host: !secret cyborg_ip
+    port: 8080
+    username: !secret username
+    password: !secret password
+    
+### Ariela Push Notifications ###
+  - name: android
+    platform: fcm-android

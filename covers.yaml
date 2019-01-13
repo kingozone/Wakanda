@@ -1,0 +1,11 @@
+### MySmartBlinds ###
+- platform: mysmartblinds_bridge
+  username: !secret email
+  password: !secret smartblinds_pass
+
+- platform: mysmartblinds
+    blinds:
+      first_blind:
+        friendly_name: Sunroom NxNE
+        mac: 'AA:BB:CC:DD:EE:FF'
+        access_token: 'd0'

@@ -1,0 +1,53 @@
+  ozone_status:
+    name: Ozone's' Status
+    options:
+     - traveling
+     - standby
+     - working
+     - busy
+     - sleeping
+    initial:
+
+  radio_station:
+    name: 'Select Radio Station:'
+    options:
+      - Radio 538
+      - Q-Music
+      - 3FM
+      - 100% NL
+      - Veronica
+      - Sky Radio
+      - Arrow Classic Rock
+      - Classic FM
+      - BNR Nieuwsradio
+      - SLAM! Hardstyle
+      - Sleep Radio
+      - Ambient Sleeping Pill
+      - Radio Art - Sleep
+      - Ambi Nature Radio
+      - Calm Radio - Sleep
+      - Dinamo.FM Sleep
+
+  chromecast_radio:
+    name: 'Select Speakers:'
+    options:
+      - Livingroom
+      - Bedroom
+      - Bathroom
+      - Hall
+      - Everywhere
+    initial: Everywhere
+    icon: mdi:speaker-wireless
+
+
+### Zigbee2MQTT Input select for Zigbee2mqtt debug level ###
+    input_select:
+      zigbee2mqtt_log_level:
+        name: Zigbee2mqtt Log Level
+        options:
+         - debug
+         - info
+         - warn
+         - error
+        initial: info
+        icon: mdi:format-list-bulleted

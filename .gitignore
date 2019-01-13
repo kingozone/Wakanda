@@ -1,0 +1,9 @@
+*.db
+*.log
+secrets.yaml
+misc-info
+.august.conf
+.wink.conf
+.fitbit.conf
+.cloud\.google.token
+.storage\auth_provider.homeassistant

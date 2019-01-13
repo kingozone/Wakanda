@@ -1,0 +1,133 @@
+
+- cal_id: 6eu7jois477ee8j02ka3smjpss@group.calendar.google.com
+  entities:
+  - device_id: hard_appointments
+    ignore_availability: true
+    name: Hard Appointments
+    track: true
+
+- cal_id: apur6unc7s21i1b3s2n83088tjf149sl@import.calendar.google.com
+  entities:
+  - device_id: taurence_salter_s_facebook_events
+    ignore_availability: true
+    name: Facebook Events
+    track: true
+
+- cal_id: paynearme.com_kbhk05iti8e3amgcnnsfl6hkv8@group.calendar.google.com
+  entities:
+  - device_id: paycom_timesheet_reminder
+    ignore_availability: true
+    name: Paycom Timesheet Reminder
+    track: false
+
+- cal_id: 4sugap0utb41kvee19u54ln364@group.calendar.google.com
+  entities:
+  - device_id: new_contacts
+    ignore_availability: true
+    name: New Contacts
+    track: false
+
+- cal_id: guekdd0p4kr29klg856lk1j0bg@group.calendar.google.com
+  entities:
+  - device_id: deadlines
+    ignore_availability: true
+    name: Deadlines
+    track: true
+
+- cal_id: e27760ljugubggeetcqis9r5lo@group.calendar.google.com
+  entities:
+  - device_id: blank_time
+    ignore_availability: true
+    name: Blank Time
+    track: true
+
+- cal_id: 1fiok9bbvha88r4kh7pdp16rdg@group.calendar.google.com
+  entities:
+  - device_id: sleep
+    ignore_availability: true
+    name: Sleep
+    track: false
+
+- cal_id: s6nkusdfobmbqfpvkbrdua5ivc@group.calendar.google.com
+  entities:
+  - device_id: events
+    ignore_availability: true
+    name: Events
+    track: true
+
+- cal_id: cfo2lqi678rcnhf3v4lboheh40@group.calendar.google.com
+  entities:
+  - device_id: the_mack_chronicles
+    ignore_availability: true
+    name: The Mack Chronicles
+    track: true
+
+- cal_id: pj8h5co6nbfqfm1fmiht3qjvn8@group.calendar.google.com
+  entities:
+  - device_id: activities
+    ignore_availability: true
+    name: Activities
+    track: true
+
+- cal_id: taurence.salter@gmail.com
+  entities:
+  - device_id: main
+    ignore_availability: true
+    name: Main
+    track: true
+
+- cal_id: 25qtdhjpc9cg1hv48kjt6sli3c@group.calendar.google.com
+  entities:
+  - device_id: call_logs
+    ignore_availability: true
+    name: Call Logs
+    track: false
+
+- cal_id: da3orqaib09scqveb8pttetft0@group.calendar.google.com
+  entities:
+  - device_id: bills_subscriptions
+    ignore_availability: true
+    name: Bills & Subscriptions
+    track: false
+
+- cal_id: en.usa#holiday@group.v.calendar.google.com
+  entities:
+  - device_id: holidays_in_united_states
+    ignore_availability: true
+    name: Holidays in United States
+    track: true
+
+- cal_id: ht3jlfaac5lfd6263ulfh4tql8@group.calendar.google.com
+  entities:
+  - device_id: phases_of_the_moon
+    ignore_availability: true
+    name: Phases of the Moon
+    track: false
+
+- cal_id: fifa%7e_wcup_7585_%55nited+%53tates#sports@group.v.calendar.google.com
+  entities:
+  - device_id: united_states
+    ignore_availability: true
+    name: United States
+    track: false
+
+- cal_id: mls_10531_%53eattle+%53ounders+%46%43#sports@group.v.calendar.google.com
+  entities:
+  - device_id: seattle_sounders_fc
+    ignore_availability: true
+    name: Seattle Sounders FC
+    track: false
+
+- cal_id: nfl_26_%53eattle+%53eahawks#sports@group.v.calendar.google.com
+  entities:
+  - device_id: seattle_seahawks
+    ignore_availability: true
+    name: Seattle Seahawks
+    track: false
+
+- cal_id: p#weather@group.v.calendar.google.com
+  entities:
+  - device_id: weather
+    ignore_availability: true
+    name: Weather
+    track: false

@@ -1,0 +1,102 @@
+########CUSTOMIZE DEVICES########
+     #device_tracker.cailin6p_cailin6p:
+      #  entity_picture: /local/ozone.jpg
+      #  friendly_name: Ozone
+
+##aftership
+  sensor.aftership_sensor:
+    custom_ui_state_card: state-card-aftership
+
+########CUSTOMIZE SENSORS########
+####WEATHER####
+   sensor.weather_cloud_coverage:
+      friendly_name: Cloud Coverage
+      icon: mdi:cloud
+   sensor.weather_humidity:
+      friendly_name: Outdoor
+      icon: mdi:water
+   sensor.weather_pressure:
+      friendly_name: Barometric Pressure
+      icon: mdi:nature
+   sensor.weather_temperature:
+      icon: mdi:thermometer
+      friendly_name: Outdoor
+   sensor.weather_wind_speed:
+      icon: mdi:weather-windy
+      friendly_name: Wind Speed
+   sensor.weather_summary:
+      friendly_name: Condition
+   sensor.weather_ozone:
+      friendly_name: Ozone
+   sensor.weather_precip_probability:
+      friendly_name: Precipitation Probability
+   sensor.weather_precip:
+      friendly_name: Precipitation Type
+   sensor.weather_precip_intensity:
+      friendly_name: Precipitation Intensity
+   sensor.weather_visibility:
+      friendly_name: Visibility
+   sensor.weather_nearest_storm:
+      friendly_name: Nearest Storm
+   sensor.weather_wind_bearing:
+      friendly_name: Wind Bearing
+      icon: mdi:compass
+   sensor.weather_apparent_temperature:
+      friendly_name: Real Feel
+
+  ####MISC####
+   sensor.date__time:
+      icon: mdi:calendar-clock
+   sensor.cpu_use:
+      icon: mdi:speedometer
+   sensor.ram_free:
+      icon: mdi:poll
+   sensor.disk_free_home:
+      icon: mdi:folder
+      friendly_name: "SD Free"
+   sensor.last_boot:
+      icon: mdi:clock-start
+   sensor.speedtest_ping:
+      icon: mdi:clock
+      friendly_name: "Ping"
+   sensor.speedtest_download:
+      icon: mdi:arrow-down
+      friendly_name: "Download"
+   sensor.speedtest_upload:
+      icon: mdi:arrow-up
+      friendly_name: "Upload"
+
+  script.radio538:
+   friendly_name: Start Playing
+   icon: mdi:play
+
+
+   sensor.hline_1:
+ custom_ui_state_card: state-card-hline
+ config:
+   width: 90 --> in percents
+   height: 0 --> in pixels, adds to bordertop
+   backgroundcolor: white
+   bordertop: '1px solid black'
+sensor.hline_2:
+ custom_ui_state_card: state-card-hline
+ config:
+   width: 90 --> in percents
+   height: 0 --> in pixels, adds to bordertop
+   backgroundcolor: white
+   bordertop: '1px dashed red'
+sensor.hline_3:
+ custom_ui_state_card: state-card-hline
+ config:
+   width: 65 --> in percents
+   height: 0 --> in pixels, adds to bordertop
+   backgroundcolor: white
+   bordertop: '2px double green'
+sensor.hline_4:
+ custom_ui_state_card: state-card-hline
+ config:
+   width: 85 --> in percents
+   height: 1 --> in pixels, adds to bordertop
+   backgroundcolor: white
+   bordertop: none
+   backgroundimage: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0))

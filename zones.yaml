@@ -1,0 +1,502 @@
+#####################
+###     Zones     ###
+#####################
+
+### Home ###
+  - name: Home
+    latitude: !secret latitude
+    longitude: !secret longitude
+    radius: 50
+    icon: mdi:home-modern
+
+### Work ###
+  - name: Prism
+    latitude: !secret prism_lat
+    longitude: !secret prism_long
+    radius: 50
+    icon: mdi:office-building
+
+### Redmond Transit Center ###
+  - name: Redmond Transit Center
+    latitude: !secret red_lat
+    longitude: !secret red_long
+    radius: 100
+    icon: mdi:bus-clock
+
+### Stewart & Yale ###
+  - name: Stewart & Yale
+    latitude: !secret yale_lat
+    longitude: !secret yale_long
+    radius: 50
+    icon: mdi:bus
+
+### Westlake Station ###
+  - name: Westlake Station
+    latitude: !secret westlake_lat
+    longitude: !secret westlake_long
+    radius: 100
+    icon: mdi:train-variant
+
+### Captiol Hill Station - John ###
+  - name: Captiol Hill Station - John
+    latitude: !secret cap_john_lat
+    longitude: !secret cap_john_long
+    radius: 100
+    icon: mdi:train-variant
+
+### Captiol Hill Station - Denny ###
+  - name: Captiol Hill Station - Denny
+    latitude: !secret cap_denny_lat
+    longitude: !secret cap_denny_long
+    radius: 25
+    icon: mdi:train-variant
+
+### Captiol Hill Station - Cal Anderson ###
+  - name: Captiol Hill Station - Cal Anderson
+    latitude: !secret cap_cal_lat
+    longitude: !secret cap_cal_long
+    radius: 10
+    icon: mdi:train-variant
+
+### Chinatown Station ###
+
+### Stadium Station ###
+
+### Sodo Station ###
+
+### Beacon Hill Station ###
+
+### Mount Baker Station ###
+
+### Columbia City Station ###
+
+### Rainier Beach Station ###
+
+### Tukwila Station ###
+
+### Sea-Tac Station ###
+
+### University of Washington Station ###
+
+### Northgate Station ###
+
+### Kent Station ###
+
+### DSHS Cherry ###
+  - name: DSHS - Cherry Hill
+    latitude: !secret dshs_lat
+    longitude: !secret dshs_long
+    radius: 35
+    icon: mdi:clipboard-text
+
+### DSHS Belltown ###
+  - name: DSHS - Belltown
+    latitude: !secret dshs_bell_lat
+    longitude: !secret dshs_bell_long
+    radius: 35
+    icon: mdi:clipboard-text
+
+### Sound Health ###
+  - name: Sound Health
+    latitude: !secret sound_lat
+    longitude: !secret sound_long
+    radius: 50
+    icon: mdi:prescription
+
+### UW Belltown ###
+  - name: UW Medicine - Belltown Clinic
+    latitude: !secret bell_lat
+    longitude: !secret bell_long
+    radius: 20
+    icon: mdi:doctor
+
+### UW Medicine ###
+  - name: UW Medicine - Main Hospital
+    latitude: !secret uw_lat
+    longitude: !secret uw_long
+    radius: 200
+    icon: mdi:hospital-building
+
+### UW Dermatology ###
+  - name: UW Medicine - Dermatology
+    latitude: !secret derm_lat
+    longitude: !secret derm_long
+    radius: 50
+    icon: mdi:needle
+
+### UW Harborview - Norm Maleng ###
+  - name: UW Medicine - Harborview-Norm Maleng Building
+    latitude: !secret norm_lat
+    longitude: !secret norm_long
+    radius: 25
+    icon: mdi:heart-pulse
+
+### UW Harborview - Main ###
+  - name: UW Medicine - Harborview-Main Building
+    latitude: !secret main_lat
+    longitude: !secret main_long
+    radius: 75
+    icon: mdi:hospital-building
+
+### UW Harborview - 9th & Jefferson ###
+  - name: UW Medicine - Harborview-9th & Jefferson Building
+    latitude: !secret 9th_lat
+    longitude: !secret 9th_long
+    radius: 50
+    icon: mdi:stethoscope
+
+### Swedish Hospital ###
+  - name: Swedish Hospital
+    latitude: !secret swedish_lat
+    longitude: !secret swedish_long
+    radius: 100
+    icon: mdi:hospital-building
+
+### Virginia Mason Hospital ###
+  - name: Virginia Mason Hospital
+    latitude: !secret vmason_lat
+    longitude: !secret vmason_long
+    radius: 100
+    icon: mdi:hospital-building
+
+### Northwest Outpatient Medical Center ###
+  - name: Northwest Outpatient Medical Center
+    latitude: !secret northwest_lat
+    longitude: !secret northwest_long
+    radius: 50
+    icon: mdi:medical-bag
+
+### Northgate Mall ###
+  - name: Northgate Mall
+    latitude: !secret northgate_lat
+    longitude: !secret northgate_long
+    radius: 200
+    icon: mdi:shopping
+
+### Northgate North ###
+  - name: Northgate North
+    latitude: !secret northg_lat
+    longitude: !secret northg_long
+    radius: 75
+    icon: mdi:shopping
+
+### Downtown Target ###
+  - name: Downtown Target
+    latitude: !secret target_lat
+    longitude: !secret target_long
+    radius: 50
+    icon: mdi:pharmacy
+
+### Pike Place Market North ###
+
+### Pike Place Market Central ###
+  - name: Pike Place Market
+    latitude: !secret pike_lat
+    longitude: !secret pike_long
+    radius: 50
+    icon: mdi:shopping
+
+### Pike Place Market South ###
+
+### 15th Safeway ###
+  - name: Safeway - 15th & John
+    latitude: !secret safe_lat
+    longitude: !secret safe_long
+    radius: 50
+    icon: mdi:food-apple
+
+### Madison Safeway ##
+  - name: Safeway - Madison St.
+    latitude: !secret madsafe_lat
+    longitude: !secret madsafe_long
+    radius: 50
+    icon: mdi:food-apple
+
+### Harvard Market ###
+  - name: Harvard Market
+    latitude: !secret harv_lat
+    longitude: !secret harv_long
+    radius: 50
+    icon: mdi:food-apple
+
+### Broadway Walgreens ###
+  - name: Walgreens - Broadway
+    latitude: !secret broad_wal_lat
+    longitude: !secret brod_wal_long
+    radius: 10
+    icon: mdi:pharmacy
+
+### Broadway Rite-Aid ###
+  - name: Rite-Aid - Broadway
+    latitude: !secret rite_lat
+    longitude: !secret rite_long
+    radius: 25
+    icon: mdi:pharmacy
+
+### Broadway Market ###
+  - name: Broadway Market
+    latitude: !secret bmarket_lat
+    longitude: !secret bmarket_long
+    radius: 50
+    icon: mdi:food-apple
+
+### Whole Foods Denny ###
+  - name: Whole Foods - Denny
+    latitude: !secret whole_lat
+    longitude: !secret whole_long
+    radius: 50
+    icon: mdi:food-apple
+
+### Whole Foods Madison ###
+  - name: Whole Foods - Madison
+    latitude: !secret whole_mad_lat
+    longitude: !secret whole_mad_long
+    radius: 50
+    icon: mdi:food-apple
+
+### Trader Joe's ###
+  - name: Trader Joes
+    latitude: !secret trade_lat
+    longitude: !secret trade_long
+    radius: 50
+    icon: mdi:food-apple
+
+### Central Co-op ###
+  - name: Central Co-Op
+    latitude: !secret coop_lat
+    longitude: !secret coop_long
+    radius: 50
+    icon: mdi:food-apple
+
+### Uwajimaya ###
+  - name: Uwajimaya
+    latitude: !secret uwa_lat
+    longitude: !secret uwa_long
+    radius: 65
+    icon: mdi:cart
+
+### Chinatown Daiso ###
+  - name: Daiso - International District
+    latitude: !secret daiso_lat
+    longitude: !secret daiso_long
+    radius: 20
+    icon: mdi:cart
+
+### Dad's    ###
+  - name: Dads
+    latitude: !secret dad_lat
+    longitude: !secret dad_long
+    radius: 25
+    icon: mdi:account-circle
+
+### Christian ###
+
+### Aaron Smith ###
+
+### Leon Eaton ###
+
+### Raphael Brown ###
+
+### Kisha-Marie & Andrew ###
+
+### Grandparents ###
+  - name: Grandparents
+    latitude: !secret grand_lat
+    longitude: !secret grand_long
+    radius: 15
+    icon: mdi:account-supervisor-circle
+
+### Richarad & Lila ###
+  - name: Auntie & Uncle
+    latitude: !secret rich_lat
+    longitude: !secret rich_long
+    radius: 15
+    icon: mdi:account-supervisor-circle
+
+### Ruckus ###
+  - name: Ruckus Recreational
+    latitude: !secret ruck_lat
+    longitude: !secret ruck_long
+    radius: 10
+    icon: mdi:cannabis
+
+### Uncle Ikes 23rd ###
+  - name: Uncle Ikes - 23rd & Union
+    latitude: !secret ike_lat
+    longitude: !secret ike_long
+    radius: 10
+    icon: mdi:cannabis
+
+### Uncle Ikes 15th ###
+  - name: Uncle Ikes - 15th
+    latitude: !secret ike_15_lat
+    longitude: !secret ike_15_long
+    radius: 10
+    icon: mdi:cannabis
+
+### The Reef ###
+  - name: The Reef
+    latitude: !secret reef_lat
+    longitude: !secret reef_long
+    radius: 10
+    icon: mdi:cannabis
+
+### Capitol Hill Goodwill ###
+  - name: Goodwill - Capitol Hill
+    latitude: !secret cap_good_lat
+    longitude: !secret cap_good_long
+    radius: 15
+    icon: mdi:cart
+
+### Central Library ###
+  - name: Seattle Public Library - Central
+    latitude: !secret main_lib_lat
+    longitude: !secret main_lib_long
+    radius: 50
+    icon: mdi:library
+
+### Capitol Hill Library ###
+  - name: Seattle Public Library - Capitol Hill
+    latitude: !secret cap_lib_lat
+    longitude: !secret cap_lib_long
+    radius: 15
+    icon: mdi:library
+
+### Lowe's ###
+  - name: Lowes
+    latitude: !secret lowes_lat
+    longitude: !secret lowes_long
+    radius: 100
+    icon: mdi:wrench
+
+### Home Depot ###
+  - name: Home Depot
+    latitude: !secret home_dep_lat
+    longitude: !secret home_dep_long
+    radius: 100
+    icon: mdi:wrench
+
+### Seattle Art Museum ###
+  - name: Seattle Art Museum
+    latitude: !secret art_lat
+    longitude: !secret art_long
+    radius: 50
+    icon: mdi:camera-burst
+
+### Seattle Aquarium ###
+  - name: Seattle Aquarium
+    latitude: !secret aqua_lat
+    longitude: !secret aqua_long
+    radius: 50
+    icon: mdi:fish
+
+### King County Court ###
+  - name: King County District Court
+    latitude: !secret court_lat
+    longitude: !secret court_long
+    radius: 50
+    icon: mdi:gavel
+
+### King County Jail ###
+  - name: King County District Jail
+    latitude: !secret jail_lat
+    longitude: !secret jail_long
+    radius: 50
+    icon: mdi:shield-key
+
+### City Hall ###
+  - name: City Hall
+    latitude: !secret cityhall_lat
+    longitude: !secret cityhall_long
+    radius: 50
+    icon: mdi:city
+
+### Seattle Municipal Court ###
+  - name: Seattle Municipal Court
+    latitude: !secret mcourt_lat
+    longitude: !secret mcourt_long
+    radius: 50
+    icon: mdi:gavel
+
+### US Appeals Court ###
+  - name: United States Appeals Court
+    latitude: !secret appeal_lat
+    longitude: !secret appeal_long
+    radius: 50
+    icon: mdi:gavel
+
+### US District Court ###
+  - name: United States District Court
+    latitude: !secret dcourt_lat
+    longitude: !secret dcourt_long
+    radius: 50
+    icon: mdi:gavel
+
+### Cal Anderson North ###
+  - name: Cal Anderson Park
+    latitude: !secret cal_and_lat
+    longitude: !secret cal_and_long
+    radius: 100
+    icon: mdi:nature
+
+### Cal Anderson Central ###
+
+### Cal Anderson South
+
+### Discovery Park ###
+
+### Gas Works Park ###
+
+### Greenlake ###
+
+### Seward Park ###
+
+### Magnuson Park ###
+
+### Golden Gardens ###
+
+### Alki Beach ###
+
+### Bellevue Square Mall ###
+
+### Southcenter Mall ###
+
+### Pacific Place Mall ###
+
+### Century Link Field ###
+
+### Safeco Field ###
+
+### Key Arena ###
+
+### Hillside Bar ###
+
+### Revolver Bar ###
+
+### Montana Bar ###
+
+### Cha-Cha Bar ###
+
+### Unicorn Bar ###
+
+### The Comet ###
+
+### Neumos ###
+
+### The Runway ###
+
+### Vermillion ###
+
+### Bill's Off Broadway ###
+
+### Linda's Bar ###
+
+### Sam's Tavern - Cap Hill ###
+
+### Sam's Tavern - South Lake Union ###
+
+### Nectar Lounge ###
+
+### The High Dive Lounge ###
+
+### Seattle Center ###

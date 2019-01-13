@@ -1,0 +1,393 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Wakanda
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret latitude
+  longitude: !secret longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: !secret elevation
+  # metric for Metric, imperial for Imperial
+  unit_system: imperial
+  # Temperature unit: C for Celsius, F for Fahrenheit
+  temperature_unit: F
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: America/Los_Angeles
+  # Customization file
+  customize: !include customize.yaml
+
+#########################
+### Frontend          ###
+#########################
+
+# Enables the frontend
+frontend:
+  themes: !include themes.yaml
+  extra_html_url:
+    - /local/custom_ui/state-card-aftership.html
+    - /local/custom_ui/custom-weather-animated.html
+    - /local/custom_ui/state-card-hline.html
+  extra_html_url_es5:
+    - /local/custom_ui/custom-weather-animated.html
+    - /local/custom_ui/state-card-hline_es5.html
+
+
+### Component Panels ###
+panel_iframe:
+  mqtt:
+    title: MQTT
+    icon: mdi:code-brackets
+    url: https://localhost:5713
+  ide:
+    title: IDE
+    icon: mdi:code-braces
+    url: https://localhost:8321
+  nodered:
+    title: Node-RED
+    icon: mdi:sitemap
+    url: https://localhost:1880
+  pihole:
+    title: Pi-hole
+    icon: mdi:block-helper
+    url: http://localhost:4865
+#  influxdb:
+#    title: InfluxDB
+#    icon: mdi:chart-areaspline
+#    url: http://localhost:8888
+#  grafana:
+#    title: Grafana
+#    icon: mdi:chart-timeline
+#    url: http://localhost:3000
+  sqlite:
+    title: SQLite Web
+    icon: mdi:database
+    url: http://localhost:4444
+  router:
+    title: Router
+    icon: mdi:router-wireless-settings
+    url: http://192.168.1.1
+  esphomeyaml:
+    title: ESPhomeyaml
+    icon: mdi:raspberrypi
+    url: https://localhost:6052
+  adguard:
+    title: AdGuard Home
+    icon: mdi:block-helper
+    url: http://localhost:3210
+### Weblinks ###
+weblink:
+  entities:
+    - name: Home Assistant
+      url: https://www.home-assistant.io
+    - name: Forums
+      url: https://community.home-assistant.io/
+    - name: /r Home Assistant
+      url: https://www.reddit.com/r/homeassistant/
+    - name: GitHub
+      url: https://github.com
+    - name: Facebook
+      url: https://www.facebook.com/groups/HomeAssistant/
+      icon: mdi:facebook
+    - name: BRUH Automation
+      url:  https://www.youtube.com/channel/UCLecVrux63S6aYiErxdiy4w
+      icon: mdi:youtube
+    - name: BurnsHA
+      url: https://www.youtube.com/channel/UCSKQutOXuNLvFetrKuwudpg
+      icon: mdi:youtube
+    - name: DrZzs
+      url: https://www.youtube.com/channel/UC7G4tLa4Kt6A9e3hJ-HO8ng
+      icon: mdi:youtube
+    - name: The Hookhup
+      url: https://www.youtube.com/channel/UC2gyzKcHbYfqoXA5xbyGXtQ
+      icon: mdi:youtube
+    - name: DIY Futurism
+      url: https://diyfuturism.com/
+      icon: mdi:web
+    - name: Smarthome Hobby
+      url: https://smarthomehobby.com/
+      icon: mdi:web
+
+#########################
+###     Web Access    ###
+#########################
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+http:
+  api_password: !secret password
+  base_url: !secret base_url
+#  ssl_certificate: !secret ssl_certificate
+#  ssl_key: !secret ssl_key
+  cors_allowed_origins:
+    - https://google.com
+    - https://www.home-assistant.io
+    - https://reformedreality.com
+    - http://reformedreality.com
+
+### MQTT ###
+mqtt:
+  broker: a0d7b954-mqtt
+  username: !secret username
+  password: !secret password
+  client_id: wakanda
+  discovery: true
+  discovery_prefix: wakanda
+  certificate: !secret ssl_certificate
+
+
+##################################
+# Checks for available updates   #
+##################################
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  include_used_components: true
+
+### Custom updater ###
+#custom_updater:
+#component_urls:
+#  - https://raw.githubusercontent.com/robmarkcole/Hue-sensors-HASS/master/custom_updater.json
+
+#########################
+### Native Components ###
+#########################
+
+# Enables configuration UI
+config:
+
+# Discover some devices automatically
+discovery:
+
+# Show links to resources in log and frontend
+#introduction:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Provides a service to open URLs in the default browser on the host machine.
+browser:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Log Viewer
+logger:
+  default: info
+  logs:
+    homeassistant.components.mqtt: debug
+
+# Recorder
+recorder:
+  purge_keep_days: 14
+  purge_interval: 7
+  db_url: !secret mariadb
+
+### InfluxDB ###
+#influxdb:
+#  host: a0d7b954-influxdb
+#  port: 8086
+#  database: wakanda
+#  username: !secret host
+#  password: <!secret password>
+#  max_retries: 3
+#  default_measurement: state
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+# Weather prediction
+weather:
+  - platform: darksky
+    api_key: !secret dark_api
+    mode: hourly
+    units: us
+    name: Current
+
+# Text to speech
+tts:
+  - platform: google
+  # Set the default voice language.
+    language: 'en'
+# Cache voice files to a local storage.
+    cache: true
+# Path to a location for caching the tts files.
+    cache_dir: /tmp/tts
+# Time to hold (in seconds) the voice data inside memory for fast play
+# on a media player. (min 60, max 57600)
+    time_memory: 300
+
+# Zeroconf/Avahi/Bonjour
+zeroconf:
+
+# UPNP
+upnp:
+
+# FFmpeg
+ffmpeg:
+
+# API
+api:
+
+# Python Scripts
+#python_script:
+
+# Home Assistant Cloud
+cloud:
+### Google Assistant Actions ###
+  google_actions:
+    filter:
+      include_domains:
+        - light
+        - group
+        - input_boolean
+        - scene
+        - script
+        - switch
+        - fan
+        - cover
+        - media_player
+        - climate
+      exclude_entities:
+        - group.all_lights
+        - media_player.falcon
+        - media_player.redwing
+        - media_player.storm
+        - media_player.vixen
+        - media_player.whole_home_music
+        - remote.harmony_hub
+        - media_player.pn58c8000_samsung_dtv_rcr
+### Amazon Alexa Skills ###
+
+
+############################
+### 3rd Party Components ###
+############################
+
+# IFTTT
+ifttt:
+  key: !secret ifttt_web
+
+# Wink Hub
+wink:
+
+### OwnTracks ###
+owntracks:
+
+# Enable DialogFlow
+dialogflow:
+
+### Canary ###
+canary:
+  username: !secret email
+  password: !secret alt_pass_2
+
+### August Smart Lock ###
+august:
+  login_method: phone
+  username: "!secret email"
+  password: "!secret phone"
+
+### Nest ###
+nest:
+  client_id: !secret nest_id
+  client_secret: !secret nest_secret
+
+### Sonoff/eWelink Native ###
+sonoff:
+  username: !secret email
+  password: !secret password
+  scan_interval: 15
+  grace_period: 600
+  api_region: 'us'
+
+### Habitca ###
+habitica:
+  - api_user: !secret habit_id
+    api_key: !secret habit_key
+    name: Ozone
+
+### Customizer ###
+#customizer:
+#  custom_ui: local
+#  hide_attributes:
+#    - node_id
+#    - value_index
+#  columns: [350, 700, 1050, 1400, 1850, 2100]
+
+#elastic:
+# URL should point to your Elasticsearch cluster
+#  url: http://localhost:9200
+
+### Dominos Pizza ###
+#dominos:
+#  country_code: !secret country_code
+#  first_name: !secret firstname
+#  last_name: !secret lastname
+#  email: !secret email
+#  phone: !secret phone
+#  address: !secret address
+
+### Generic Thermostat ###
+climate:
+#  - platform: generic_thermostat
+#    name: Studio
+#    heater:  switch.sonoff_10003840d5
+#    target_sensor: sensor.home_studio_temperature
+#    humidity: sensor.home_studio_humidity
+#    min_temp: 5
+#    max_temp: 85
+#    ac_mode: false
+#    hot_tolerance: 0.5
+#    cold_tolerance: 0.1
+#    min_cyle_duration:
+#      minutes: 5
+#    keep_alive:
+#      minutes: 30
+#    initial_operation_mode: 'auto'
+
+### Join ###
+joaoapps_join:
+  - name: Androids
+    device_id: group.android,group.pc
+    api_key: !secret join_api
+
+### Google Calendar ###
+google:
+  client_id: !secret google_id
+  client_secret: !secret google_secret
+
+#########################
+###     Includes      ###
+#########################
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+switch: !include switches.yaml
+#sensor: !include sensors.yaml
+#device_tracker: !include device_trackers.yaml
+#binary_sensor: !include binary_sensors.yaml
+#media_player: !include media_players.yaml
+notify: !include notifiers.yaml
+zone: !include zones.yaml
+camera: !include cameras.yaml
+#light: !include lights.yaml
+#cover: !include covers.yaml
+#climate: !include climates.yaml
+#weather: !include weather.yaml
+#fan: !include fans.yaml
+#timer: !inclune timers.yaml
+#scene: !include scenes.yaml
+#input_boolean: !include input_booleans.yaml
+#input_select: !include input_selects.yaml
+#input_number: !include input_numbers.yaml
+#input_text: !include input_texts.yaml
+#input_datetime: !include input_datetimes.yaml
+#shell_command: !include shell_commands.yaml
+#alarm_control_panel: !include alarm_control_panels.yaml

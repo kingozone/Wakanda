@@ -1,0 +1,40 @@
+### Google Play Music Desktop Player ###
+  - platform: gpmdp
+    host: !secret cyborg_ip
+
+### Kodi ###
+  - platform: kodi
+    host: !secret cyborg_ip
+    port: !secret kodi_port
+    name: Cyborg
+    username: !secret username
+    password: !secret password
+    enable_websocket: true
+    turn_on_action:
+      - service: wake_on_lan.send_magic_packet
+        data:
+          mac: !secret cyborg_mac
+          broadcast_address: 192.168.255.255
+    turn_off_action:
+      service: media_player.kodi_call_method
+      data:
+        entity_id: media_player.kodi
+        method: System.Suspend
+
+### Plex ###
+  - platform: plex
+    entity_namespace: 'plex'
+    include_non_clients: true
+    scan_interval: 5
+    show_all_controls: false
+    use_custom_entity_ids: true
+    use_episode_art: true
+    remove_unavailable_clients: true
+    client_remove_interval: 600
+
+### Samsung Smart TV ###
+  - platform: samsungtv
+    host: !secret mira_ip
+    port: 8001
+    name: Mira
+    mac: !secret mira_mac
