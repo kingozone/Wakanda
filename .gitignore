@@ -1,5 +1,5 @@
 .*
-!.*/
+.*/
 *.db
 *.log
 secrets.yaml
