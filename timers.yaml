@@ -1,4 +1,1 @@
-### Zigbee2MQTT Timer ###
-  zigbee_permit_join:
-    name: Time remaining
-    duration: 120
+

@@ -10,14 +10,11 @@ default: info
 logs:
   aiohttp.access: critical
   aiohttp.server: critical
-  custom_components.media_player.floorplan_speaker: error
   homeassistant.core: error
   homeassistant.components.automation: warn
   homeassistant.components.binary_sensor: error
-  homeassistant.components.climate.nest: warn
   homeassistant.components.device_tracker: error
   homeassistant.components.discovery: warn
-  homeassistant.components.feedreader: warn
   homeassistant.components.http: warn
   homeassistant.components.media_player: warn
   homeassistant.components.sensor.pi_hole: critical
@@ -29,6 +26,5 @@ logs:
   homeassistant.helpers.entity: critical
   homeassistant.exceptions: info
   py.warnings: error
-  requests.packages.urllib3.connectionpool: critical
   root: warn
   skybellpy: warn

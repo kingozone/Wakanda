@@ -225,7 +225,7 @@ commute:
     - group.travel
     - group.wsdot
     - group.rideshare
-travel_commute:
+travel:
   name: Google Maps Travel Times
 wsdot:
   name: Washington State Department Of Tranportation Commute Times

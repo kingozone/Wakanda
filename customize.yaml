@@ -1,0 +1,10 @@
+######## Users ########
+  device_tracker.black_panther:
+    entity_picture: /local/ozone.jpg
+    friendly_name: Ozone
+
+  device_tracker.iron_man:
+    friendly_name: Iron-Man
+
+  device_tracker.black_lightning:
+    friendly_name: Black Lightning

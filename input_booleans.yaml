@@ -1,12 +1,1 @@
-####Booleans####
-  input_boolean:
-    restart_ha:
-      name: Restart Home Assistant
-      initial: off
-      icon: mdi:power
-      
-### Zigbee2MQTT Input boolean for enabling/disabling joining ###
-  zigbee_permit_join:
-    name: Allow devices to join
-    initial: off
-    icon: mdi:cellphone-wireless
+

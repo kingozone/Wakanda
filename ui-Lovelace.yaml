@@ -1,0 +1,22 @@
+resources:
+  - url: /local/custom_ui/weather-card.js
+    type: js
+  - url: /local/custom-lovelace/monster-card/monster-card.js?v=1
+    type: js
+  - url: /local/custom_ui/state-card-aftership.js
+    type: js
+
+title: The Kindgom of Wakanda
+views:
+  - icon: mdi:weather-cloudy
+    id: weather
+    title: Weather
+    garage_door_tilt_sensor_alarm_level: Weather
+    cards:
+      - type: "custom:weather-card"
+        entity_weather: weather.yweather
+        entity_sun: sun.sun
+  - name: Aftership Package Tracking
+    cards:
+    - type: "custom:state-card-aftership-ll"
+      entity: sensor.aftership_sensor

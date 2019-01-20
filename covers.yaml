@@ -6,6 +6,6 @@
 - platform: mysmartblinds
     blinds:
       first_blind:
-        friendly_name: Sunroom NxNE
+        friendly_name: Bedroom
         mac: 'AA:BB:CC:DD:EE:FF'
         access_token: 'd0'

@@ -1,3 +1,10 @@
+mtoka:
+  hide_if_away: true
+  icon:
+  mac: 30:95:E3:2A:48:AC
+  name: MToka
+  picture:
+  track: true
 
 vixen:
   hide_if_away: true

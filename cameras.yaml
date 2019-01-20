@@ -1,9 +1,3 @@
-### WU Static Radar Image ###
-#  - platform: generic
-#    still_image_url: 'https://radblast.wunderground.com/cgi-bin/radar/WUNIDS_map?station=ATX&brand=wui&num=1&delay=15&type=N0R&frame=0&scale=0.25&noclutter=0&showstorms=0&mapx=400&mapy=240&centerx=312.0000000000003&centery=-68.00000000000003&transx=-87.99999999999972&transy=-308&showlabels=1&severe=0&rainsnow=1&lightning=1&smooth=0&rand=25763439&lat=0&lon=0&label=you'
-#    name: Seattle-Tacoma Radar
-#    icon: mdi:radar
-
 ### WU Live Radar ###
   - platform: generic
     still_image_url: 'https://radblast.wunderground.com/cgi-bin/radar/WUNIDS_map?station=ATX&brand=wui&num=10&delay=15&type=N0R&frame=0&scale=0.1826086956521739&noclutter=0&showstorms=0&mapx=400&mapy=240&centerx=188.13095238095224&centery=-76.21428571428557&transx=-211.86904761904776&transy=-316.21428571428555&showlabels=1&severe=0&rainsnow=1&lightning=1&smooth=1&rand=25763438&lat=0&lon=0&label=you'

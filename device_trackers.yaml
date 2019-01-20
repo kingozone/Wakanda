@@ -1,4 +1,4 @@
-  ### Linksys Smart Wifi ###
+### Linksys Smart Wifi ###
   - platform: linksys_smart
     host: 192.168.1.1
     username: !secret email
@@ -15,22 +15,11 @@
 ### Bluetooth LE Tracker ###
   - platform: bluetooth_le_tracker
 
-### Google Home Bluetooth Tracker ###
-#  - platform: googlehome
-#    host: !secret storm
-#  - platform: googlehome
-#    host: !secret vixen
-
 ### Google Maps Location Sharing ###
   - platform: google_maps
     username: !secret email
     password: !secret alt_pass
     max_gps_accuracy: 200
-
-### Nmap ###
-#  - platform: nmap_tracker
-#    hosts: 192.168.1.0/24
-#    home_interval: 10
 
 ### Tile ###
   - platform: tile
@@ -39,22 +28,3 @@
 
 ### Hue device tracker ###
   - platform: hue
-
-### Owntracks ###
-#  - platform: owntracks
-#    secret: !secret owntracks_key
-#    max_gps_accuracy: 200
-#    waypoints: true
-#    events_only: true
-#    mqtt_topic: "ozone/#"
-#    region_mapping:
-#      prism: work
-#  - platform: owntracks_http
-
-### MQTT Device Trackers ###
-#  - platform: mqtt_json
-#    devices:
-#      ozone_tchalla: location/ozone
-#  - platform: mqtt
-#    devices:
-#      ozone_tchalla: location/ozone

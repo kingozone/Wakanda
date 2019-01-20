@@ -1,9 +1,7 @@
 .*
-.*/
+!.*/
 *.db
 *.log
+*.conf
 secrets.yaml
 misc-info
-.august.conf
-.wink.conf
-.fitbit.conf
