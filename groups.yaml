@@ -222,7 +222,7 @@ air_quality:
 commute:
   name: Travel & Commute Times
   entities:
-    - group.travel
+    - group.travel_commute
     - group.wsdot
     - group.rideshare
 travel_commute:

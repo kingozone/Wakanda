@@ -11,21 +11,28 @@
     access_token: !secret twitter_token
     access_token_secret: !secret twitter_token_secret
     username: !secret twitter_user
-    
+
 ### Pushover ###
   - name: Ogun
     platform: pushover
     api_key: !secret pushover_api
     user_key: !secret pushover_key
-    
-### Kodi ###    
+
+### Kodi ###
   - platform: kodi
     name: Ogun
     host: !secret cyborg_ip
     port: 8080
     username: !secret username
     password: !secret password
-    
+
 ### Ariela Push Notifications ###
   - name: android
     platform: fcm-android
+
+### Join ###
+  - platform: joaoapps_join
+    api_key: !secret join_api
+    device_ids: !secret black_panther_id, !secret black_lightning_id, !secret iron_man_id
+    device_names: Black Panther, Black Lightning, Iron-Man
+    name: Shango

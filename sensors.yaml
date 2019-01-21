@@ -1,0 +1,724 @@
+####################################
+###          Date & Time         ###
+####################################
+### Time & Date ###
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'date'
+      - 'date_time'
+      - 'time_date'
+      - 'time_utc'
+      - 'beat'
+
+### Custom time formatting ###
+# Sun Angle
+  - platform: template
+    sensors:
+      solar_angle:
+        friendly_name: "Sun Angle"
+        unit_of_measurement: '°'
+        value_template: "{{ '%+.1f'|format(state_attr('sun.sun', 'elevation')) }}"
+########################################
+###          Enviroment              ###
+########################################
+### Mold Indicator ###
+  - platform: mold_indicator
+    name: Mold Indicator
+    indoor_temp_sensor: sensor.home_studio_temperature
+    indoor_humidity_sensor: sensor.home_studio_humidity
+    outdoor_temp_sensor: sensor.dark_sky_weather_apparent_temperature
+    calibration_factor: 2.0
+
+### Phillips Hue Enviroment ###
+  - platform: hue
+    ip_address: !secret hue_ip
+    token: !secret hue_token
+
+### Min/Max Temperature ###
+  - platform: min_max
+    entity_ids:
+      - sensor.home_studio_temperature
+
+########################################
+###  Weather, Climate, & Enviroment  ###
+########################################
+### Astronomical Season ###
+  - platform: season
+    type: astronomical
+
+### Dark Sky Weather ###
+  - platform: darksky
+    name: Dark Sky Weather
+    api_key: !secret dark_api
+    units: us
+    monitored_conditions:
+      - summary
+      - minutely_summary
+      - hourly_summary
+      - daily_summary
+      - icon
+      - temperature
+      - temperature_high
+      - temperature_low
+      - apparent_temperature
+      - apparent_temperature_high
+      - apparent_temperature_low
+      - humidity
+      - dew_point
+      - cloud_cover
+      - precip_type
+      - precip_intensity
+      - precip_probability
+      - precip_accumulation
+      - wind_speed
+      - wind_bearing
+      - pressure
+      - visibility
+      - ozone
+      - uv_index
+      - moon_phase
+    update_interval:
+      minutes: 5
+
+### Weather Underground ###
+  - platform: wunderground
+    api_key: !secret wu_key
+    monitored_conditions:
+      - alerts
+      - heat_index_f
+      - heat_index_string
+      - pressure_in
+      - pressure_trend
+      - solarradiation
+      - wind_string
+      - wind_gust_mph
+      - wind_1d_mph
+      - wind_2d_mph
+      - wind_3d_mph
+      - wind_4d_mph
+      - temp_high_1d_f
+      - temp_low_1d_f
+      - temp_high_2d_f
+      - temp_low_2d_f
+      - temp_high_3d_f
+      - temp_low_3d_f
+      - temp_high_4d_f
+      - temp_low_4d_f
+      - precip_1d_in
+      - precip_1d
+      - precip_2d_in
+      - precip_2d
+      - precip_3d_in
+      - precip_3d
+      - precip_4d_in
+      - precip_4d
+      - weather
+      - weather_1d
+      - weather_1n
+      - weather_2d
+      - weather_2n
+      - weather_3d
+      - weather_3n
+      - weather_4d
+      - weather_4n
+
+### Moon ###
+  - platform: moon
+
+### NOAA Space Weather ###
+  - platform: nooa_space_weather
+
+########################################
+###              Health              ###
+########################################
+### Pollen.com ###
+  - platform: pollen
+    zip_code: "!secret zip"
+    monitored_conditions:
+      - allergy_average_forecasted
+      - allergy_average_historical
+      - allergy_index_today
+      - allergy_index_tomorrow
+      - allergy_index_yesterday
+      - disease_average_forecasted
+
+### AirVisual ###
+  - platform: airvisual
+    api_key: !secret air_visual
+    city: !secret city
+    state: !secret state
+    country: !secret country
+    monitored_conditions:
+      - us
+    show_on_map: true
+
+### World Air Quality Index ###
+  - platform: waqi
+    token: AQICN_API_TOKEN
+    locations:
+      - seattle
+    stations:
+      - Olive St
+      - Queen Anne
+      - Beacon Hill
+      - Duwamish
+      - South Park
+
+### Flu Near You ###
+  - platform: flunearyou
+
+### Fitbit ###
+  - platform: fitbit
+    clock_format: 12H
+    unit_system: en_US
+    monitored_resources:
+      - "body/weight"
+      - "activities/activityCalories"
+      - "activities/calories"
+      - "activities/caloriesBMR"
+      - "activities/distance"
+      - "activities/elevation"
+      - "activities/floors"
+      - "activities/heart"
+      - "activities/minutesFairlyActive"
+      - "activities/minutesLightlyActive"
+      - "activities/minutesSedentary"
+      - "activities/minutesVeryActive"
+      - "activities/steps"
+      - "activities/tracker/activityCalories"
+      - "activities/tracker/calories"
+      - "activities/tracker/distance"
+      - "activities/tracker/elevation"
+      - "activities/tracker/floors"
+      - "activities/tracker/minutesFairlyActive"
+      - "activities/tracker/minutesLightlyActive"
+      - "activities/tracker/minutesSedentary"
+      - "activities/tracker/minutesVeryActive"
+      - "activities/tracker/steps"
+      - "body/bmi"
+      - "body/fat"
+      - "body/weight"
+      - "devices/battery"
+      - "sleep/awakeningsCount"
+      - "sleep/efficiency"
+      - "sleep/minutesAfterWakeup"
+      - "sleep/minutesAsleep"
+      - "sleep/minutesAwake"
+      - "sleep/minutesToFallAsleep"
+      - "sleep/startTime"
+      - "sleep/timeInBed"
+
+########################################
+##          Device Trackers          ###
+########################################
+### Ariela MQTT ###
+
+################## Black Panther ##################
+# Battery
+  - platform: mqtt
+    name: "Black Panther's battery"
+    state_topic: "ogoun/sensor/android_black_panther_battery/state"
+    unit_of_measurement: '%'
+    value_template: "{{ value_json.level }}"
+    json_attributes:
+      - voltage
+      - temperature
+      - status
+      - power
+      - health
+      - technology
+# Wifi
+  - platform: mqtt
+    name: "Black Panther's WiFi info"
+    state_topic: "ogoun/sensor/android_black_panther_wifi/state"
+    unit_of_measurement: 'steps'
+    value_template: "{{ value_json.steps }}"
+    json_attributes:
+      - ssid
+      - bssid
+      - rssi
+      - ip
+      - signal
+      - mac
+# Phone state
+  - platform: mqtt
+    name: "Black Panther's phone info"
+    state_topic: "ogoun/sensor/android_black_panther_callstate/state"
+    value_template: "{{ value_json.state }}"
+    json_attributes:
+      - icon
+# Light level
+  - platform: mqtt
+    name: "Black Panther's light level"
+    state_topic: "ogoun/sensor/android_black_panther_light/state"
+    unit_of_measurement: 'lx'
+    value_template: "{{ value_json.value }}"
+    json_attributes:
+      - sensor_name
+      - vendor
+      - version
+      - power
+      - resolution
+# Step counter
+  - platform: mqtt
+    name: "Black Panther's step counter"
+    state_topic: "ogoun/sensor/android_black_panther_steps/state"
+    unit_of_measurement: 'steps'
+    value_template: "{{ value_json.steps }}"
+    json_attributes:
+      - sensor_name
+      - vendor
+      - version
+      - power
+      - resolution
+      - max_range
+
+################## Black Lightning ##################
+# Battery
+  - platform: mqtt
+    name: "Black Lightning's battery"
+    state_topic: "ogoun/sensor/android_black_lightning_battery/state"
+    unit_of_measurement: '%'
+    value_template: "{{ value_json.level }}"
+    json_attributes:
+      - voltage
+      - temperature
+      - status
+      - power
+      - health
+      - technology
+# Wifi
+  - platform: mqtt
+    name: "Black Lightning's WiFi info"
+    state_topic: "ogoun/sensor/android_black_lightning_wifi/state"
+    unit_of_measurement: 'steps'
+    value_template: "{{ value_json.steps }}"
+    json_attributes:
+      - ssid
+      - bssid
+      - rssi
+      - ip
+      - signal
+      - mac
+# Phone state
+  - platform: mqtt
+    name: "Black Panther's phone info"
+    state_topic: "ogoun/sensor/android_black_panther_callstate/state"
+    value_template: "{{ value_json.state }}"
+    json_attributes:
+      - icon
+# Apps
+  - platform: mqtt
+    name: "APPS SENSOR NAME"
+    state_topic: "wakanda/sensor/android_black_lightning_apps/state"
+    value_template: "{{ value_json.apps_count }}"
+    json_attributes:
+      - icon
+      - apps_names
+      - apps_packages
+# Bluetooth
+  - platform: mqtt
+    name: "BLUETOOTH SENSOR NAME"
+    state_topic: "wakanda/sensor/android_black_lightning_bluetooth/state"
+    value_template: "{{ value_json.enabled }}"
+    json_attributes:
+      - icon
+      - name
+      - mac
+      - discovered_devices
+      - bonded_devices
+# Screen
+  - platform: mqtt
+    name: "SCREEN SWITCH NAME"
+    state_topic: "wakanda/switch/android_black_lightning_screen/state"
+    command_topic: "wakanda/switch/android_black_lightning_screen/set"
+    value_template: "{{ value_json.state }}"
+################## Iron-Man ##################
+# Battery
+  - platform: mqtt
+    name: "Iron-Man's battery"
+    state_topic: "ogoun/sensor/android_iron-man_battery/state"
+    unit_of_measurement: '%'
+    value_template: "{{ value_json.level }}"
+    json_attributes:
+      - voltage
+      - temperature
+      - status
+      - power
+      - health
+      - technology
+# Wifi
+  - platform: mqtt
+    name: "Iron-Man's WiFi info"
+    state_topic: "ogoun/sensor/andro_iron-man_wifi/state"
+    unit_of_measurement: 'steps'
+    value_template: "{{ value_json.steps }}"
+    json_attributes:
+      - ssid
+      - bssid
+      - rssi
+      - ip
+      - signal
+      - mac
+# Phone state
+  - platform: mqtt
+    name: "Iron-Man's phone info"
+    state_topic: "ogoun/sensor/android_iron-man_callstate/state"
+    value_template: "{{ value_json.state }}"
+    json_attributes:
+      - icon
+########################################
+###      Travel & Navigation         ###
+########################################
+### Google Maps Travel Time ###
+
+# Phone to Home ###
+  - platform: google_travel_time
+    name: Ozone To Home
+    api_key: !secret gmaps_key
+    origin: device_tracker.black_panther
+    destination: zone.home
+    travel_mode: transit
+    options:
+      units: imperial
+      mode: transit
+      transit_routing_preference: less_walking
+
+# Work Commute ###
+  - platform: google_travel_time
+    name: Home To Work
+    api_key: !secret gmaps_key
+    origin: zone.home
+    destination: zone.prism
+    options:
+      units: imperial
+      mode: transit
+      transit_routing_preference: less_walking
+
+# Commute Home ###
+  - platform: google_travel_time
+    name: Redmond Transit Center to Home
+    api_key: !secret gmaps_key
+    origin: !secret red_loc
+    destination: zone.home
+    options:
+      units: imperial
+      mode: transit
+      transit_routing_preference: less_walking
+
+### Google Geocode ###
+  - platform: google_geocode
+    origin: device_tracker.mobile_phone
+    options: street_number, street, city
+    display_zone: show
+    api_key: !secret google_geocode
+
+### Washington State DOT ###
+  - platform: wsdot
+    api_key: !secret wsdot_key
+    travel_time:
+     - id: 80
+       name: Seattle-Redmond (Morning Eastbound)
+     - id: 79
+       name: Redmond-Seattle (Evening Westbound)
+     - id: 77
+       name: HOV Seattle-Redmond (Morning Eastbound)
+     - id: 78
+       name: HOV Redmond-Seattle (Evening Westbound)
+
+### Lyft ###
+  - platform: lyft
+    client_id: !secret lyft_id
+    client_secret: !secret lyft_secret
+    start_latitude: !secret latitude
+    start_longitude: !secret longitude
+    end_latitude: !secret prism_lat
+    end_longitude: !secret prism_long
+
+### Uber ###
+  - platform: uber
+    server_token: !secret uber_token
+    start_latitude: !secret latitude
+    start_longitude: !secret longitude
+    end_latitude: !secret prism_lat
+    end_longitude: !secret prism_long
+
+
+########################################
+###    Media Players & Services      ###
+########################################
+### Last.fm ###
+  - platform: lastfm
+    api_key: !secret lastfm_key
+    users:
+      - ozonethegreat
+
+### Xbox Live ###
+  - platform: xbox_live
+    api_key: !secret xbox_api
+    xuid:
+      - !secret xbox_id
+
+### Sonarr ###
+  - platform: sonarr
+    api_key: !secret sonarr_key
+    host: !secret cyborg_ip
+    port: !secret sonarr_port
+    monitored_conditions:
+      - series
+      - upcoming
+      - wanted
+      - queue
+      - commands
+      - diskspace
+    days: 7
+    unit: GB
+
+### Radarr ###
+  - platform: radarr
+    api_key: !secret radarr_key
+
+### Trakt.tv ###
+  - platform: trakt
+    id: '!secret trakt_id'
+    secret: '!secret trakt_secret'
+    username: !secret alt_user
+    days: 14
+
+### Discogs ###
+  - platform: discogs
+    token: !secret discogs_token
+    name: Discogs Collection
+
+########################################
+###            Finance               ###
+########################################
+
+
+# Coin Market Cap
+  - platform: coinmarketcap
+    currency_id: 1
+    display_currency: USD
+    display_currency_decimals: 2
+  - platform: coinmarketcap
+    currency_id: 1831
+    display_currency: USD
+    display_currency_decimals: 2
+  - platform: coinmarketcap
+    currency_id: 2083
+    display_currency: USD
+    display_currency_decimals: 2
+  - platform: coinmarketcap
+    currency_id: 2222
+    display_currency: USD
+    display_currency_decimals: 2
+  - platform: coinmarketcap
+    currency_id: 2575
+    display_currency: USD
+    display_currency_decimals: 2
+  - platform: coinmarketcap
+    currency_id: 463
+    display_currency: USD
+    display_currency_decimals: 2
+  - platform: coinmarketcap
+    currency_id: 1027
+    display_currency: USD
+    display_currency_decimals: 2
+  - platform: coinmarketcap
+    currency_id: 52
+    display_currency: USD
+    display_currency_decimals: 2
+  - platform: coinmarketcap
+    currency_id: 2
+    display_currency: USD
+    display_currency_decimals: 2
+  - platform: coinmarketcap
+    currency_id: 1321
+    display_currency: USD
+    display_currency_decimals: 2
+  - platform: coinmarketcap
+    currency_id: 74
+    display_currency: USD
+    display_currency_decimals: 2
+  - platform: coinmarketcap
+    currency_id: 512
+    display_currency: USD
+    display_currency_decimals: 2
+  - platform: coinmarketcap
+    currency_id: 2010
+    display_currency: USD
+    display_currency_decimals: 2
+  - platform: coinmarketcap
+    currency_id: 825
+    display_currency: USD
+    display_currency_decimals: 2
+  - platform: coinmarketcap
+    currency_id: 1720
+    display_currency: USD
+    display_currency_decimals: 2
+
+# Alpha Vantange
+  - platform: alpha_vantage
+    api_key: !secret alpha_key
+# Stocks
+    symbols:
+      - symbol: GOOGL
+        name: Google
+      - symbol: FB
+        name: Facebook
+      - symbol: GOOGL
+        name: Google
+# Currency Exchange Rates
+    foreign_exchange:
+      - name: $1 to €1 Euro
+        from: USD
+        to: EUR
+      - name: $1 to £1 UK Pound
+        from: USD
+        to: GBP
+      - name: $1 to $1 Canadian Dollar
+        from: USD
+        to: CAD
+      - name: $1 to $1 Australian Dollar
+        from: USD
+        to: AUD
+      - name: $1 to ₦1 Nigeria Naira
+        from: USD
+        to: NGN
+      - name: $1 to R1 South Africa Rand
+        from: USD
+        to: ZAR
+      - name: $1 to د.ج 1 Algerian Dinar
+        from: USD
+        to: DZD
+      - name: $1 to £1 Egyptian Pound
+        from: USD
+        to: EGP
+      - name: $1 to 1د.م. Moroccan Dirham
+        from: USD
+        to: MAD
+      - name: $1 to £1 Sudanese Pound
+        from: USD
+        to: SDG
+      - name: $1 to 1Sh Kenyan Shilling
+        from: USD
+        to: KES
+      - name: $1 to 1Kz Angolan Kwanza
+        from: USD
+        to: AOA
+      - name: $1 to 1ل.دLibyan Dinar
+        from: USD
+        to: LYD
+      - name: $1 to د.ت 1 Tunisian Dinar
+        from: USD
+        to: TND
+      - name: $1 to ¥1 Chinese Yuan
+        from: USD
+        to: CNY
+      - name: $1 to $1 Singapore Dollar
+        from: USD
+        to: SGD
+      - name: $1 to ₨1 Indian Rupee
+        from: USD
+        to: INR
+      - name: $1 to ¥1 Japanese Yen
+        from: USD
+        to: JPY
+      - name: $1 to ر.س 1 Saudi Riyal
+        from: USD
+        to: SAR
+      - name: $1 to ﷼1 Iranian Rial
+        from: USD
+        to: IRR
+      - name: $1 to R$1 Brazilian Real
+        from: USD
+        to: BRL
+      - name: $1 to $1 Argentine Peso
+        from: USD
+        to: ARS
+      - name: $1 to $1 Mexican Peso
+        from: USD
+        to: MXN
+
+########################################
+###    Network Info & Services       ###
+########################################
+### Speedtest.net ###
+  - platform: speedtest
+    minute:
+      - 0
+      - 30
+    monitored_conditions:
+      - ping
+      - download
+      - upload
+
+### HaveIBeenPwned? ###
+  - platform: haveibeenpwned
+    email:
+      - !secret email
+
+### Pi-hole ###
+  - platform: pi_hole
+    host: localhost:4865
+    monitored_conditions:
+      - ads_blocked_today
+      - ads_percentage_today
+      - dns_queries_today
+      - domains_being_blocked
+      - queries_cached
+      - queries_forwarded
+      - unique_clients
+      - unique_domains
+      - clients_ever_seen
+
+### Certificate Expiry ###
+  - platform: cert_expiry
+    host: !secret base_url
+    name: SSL Certificate Expiry
+
+########################################
+###      System Information          ###
+########################################
+### Uptime ###
+  - platform: uptime
+    name: Time Online
+    unit_of_measurement: hours
+
+### Current Version ###
+  - platform: version
+    name: version_current
+
+### Available Version ###
+  - platform: version
+    name: version_available
+    source: hassio
+    branch: beta
+
+########################################
+###              Misc                ###
+########################################
+### Space Launch ###
+  - platform: launch_library
+
+### Aftership Package Tracking ###
+  - platform: aftership
+    api_key: !secret aftership_key
+
+### Crime Reports ###
+  - platform: crimereports
+    name: Capitol Hill Crime Reports
+    radius: 1000
+
+# Horizontal Lines
+  - platform: template
+    sensors:
+      hline_1:
+        value_template: hline
+      hline_2:
+        value_template: hline
+      hline_3:
+        value_template: hline
+      hline_4:
+        value_template: hline
