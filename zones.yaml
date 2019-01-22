@@ -7,7 +7,7 @@
     latitude: !secret latitude
     longitude: !secret longitude
     radius: 50
-    icon: mdi:home-modern
+    icon: !secret icon
 
 ### Work ###
   - name: Prism

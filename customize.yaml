@@ -1,0 +1,12 @@
+###############################
+###    Customize Users      ###
+###############################
+### Ozone ###
+  device_tracker.black_panther:
+    entity_picture: /local/ozone.jpg
+    friendly_name: Ozone
+    
+### Nicodemus ###
+  device_tracker.nicodemus:
+    entity_picture: /local/nico.jpg
+    friendly_name: Nico
