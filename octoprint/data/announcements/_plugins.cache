@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OctoPrint Plugin Repository</title>
+    <description>The official OctoPrint Plugin Repository</description>
+    <link>http://plugins.octoprint.org/</link>
+    <atom:link href="https://plugins.octoprint.org/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 10 Jan 2019 09:05:05 +0000</pubDate>
+    <lastBuildDate>Thu, 10 Jan 2019 09:05:05 +0000</lastBuildDate>
+    <generator>Jekyll v3.7.4</generator>
+    
+    
+      <item>
+        <title>OctoPrint-BetterHeaterTimeout</title>
+        <description>
+          <![CDATA[
+            Turns off heaters after specified time being on and unused
+            <p><img src="https://plugins.octoprint.org/assets/img/plugins/BetterHeaterTimeout/timedout.png"></p>
+          ]]>
+        </description>
+        <pubDate>
+Wed, 02 Jan 2019 00:00:00 +0000
+</pubDate>
+        <link>http://plugins.octoprint.org/plugins/BetterHeaterTimeout/?utm_source=rss&amp;utm_medium=feed</link>
+        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/BetterHeaterTimeout/</guid>
+        
+        <category>temperature</category>
+        
+        <category>heater</category>
+        
+        <category>timeout</category>
+        
+        <category>heater timeout</category>
+        
+        <category>custom event</category>
+        
+      </item>
+    
+      <item>
+        <title>OctoPrint-IFTTT</title>
+        <description>
+          <![CDATA[
+            Connects OctoPrint events to IFTTT
+            <p><img src="https://plugins.octoprint.org/assets/img/repo-600x400.png"></p>
+            
+          ]]>
+        </description>
+        <pubDate>
+Sat, 29 Dec 2018 00:00:00 +0000
+</pubDate>
+        <link>http://plugins.octoprint.org/plugins/IFTTT/?utm_source=rss&amp;utm_medium=feed</link>
+        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/IFTTT/</guid>
+        
+        <category>notification</category>
+        
+        <category>iot</category>
+        
+        <category>ifttt</category>
+        
+        <category>tp-link</category>
+        
+        <category>tplink</category>
+        
+      </item>
+    
+      <item>
+        <title>OctoPrint-SlicerSettingsTab</title>
+        <description>
+          <![CDATA[
+            Adds tab which displays slicer settings of selected gcode file.
+            <p><img src="https://plugins.octoprint.org/assets/img/plugins/SlicerSettingsTab/main.png"></p>
+          ]]>
+        </description>
+        <pubDate>
+Sat, 22 Dec 2018 00:00:00 +0000
+</pubDate>
+        <link>http://plugins.octoprint.org/plugins/SlicerSettingsTab/?utm_source=rss&amp;utm_medium=feed</link>
+        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/SlicerSettingsTab/</guid>
+        
+        <category>gcode</category>
+        
+        <category>analysis</category>
+        
+        <category>slicer settings</category>
+        
+      </item>
+    
+      <item>
+        <title>OctoPrint-SlicerSettingsParser</title>
+        <description>
+          <![CDATA[
+            Plugin to analyze gcode for slicer settings comments and add additional metadata of such settings.
+            <p><img src="https://plugins.octoprint.org/assets/img/repo-600x400.png"></p>
+            
+          ]]>
+        </description>
+        <pubDate>
+Sat, 22 Dec 2018 00:00:00 +0000
+</pubDate>
+        <link>http://plugins.octoprint.org/plugins/SlicerSettingsParser/?utm_source=rss&amp;utm_medium=feed</link>
+        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/SlicerSettingsParser/</guid>
+        
+        <category>gcode</category>
+        
+        <category>analysis</category>
+        
+        <category>slicer settings</category>
+        
+      </item>
+    
+      <item>
+        <title>OctoPrint-MyMiniFactory</title>
+        <description>
+          <![CDATA[
+            Plugin to integrate with MyMiniFactory and enable click and print functionality.
+            <p><img src="https://plugins.octoprint.org/assets/img/plugins/MyMiniFactory/myminifactory_logo_128.png"></p>
+          ]]>
+        </description>
+        <pubDate>
+Tue, 11 Dec 2018 00:00:00 +0000
+</pubDate>
+        <link>http://plugins.octoprint.org/plugins/MyMiniFactory/?utm_source=rss&amp;utm_medium=feed</link>
+        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/MyMiniFactory/</guid>
+        
+        <category>MyMiniFactory</category>
+        
+        <category>Remote</category>
+        
+      </item>
+    
+      <item>
+        <title>OctoPrint_Signal-Notifier</title>
+        <description>
+          <![CDATA[
+            Print completion notifications using Signal. Requires signal-cli.
+            <p><img src="https://plugins.octoprint.org/assets/img/plugins/signalnotifier/signalnotifier.png"></p>
+          ]]>
+        </description>
+        <pubDate>
+Tue, 04 Dec 2018 00:00:00 +0000
+</pubDate>
+        <link>http://plugins.octoprint.org/plugins/signalnotifier/?utm_source=rss&amp;utm_medium=feed</link>
+        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/signalnotifier/</guid>
+        
+        <category>notification</category>
+        
+      </item>
+    
+      <item>
+        <title>OctoPrint-DragonOrder</title>
+        <description>
+          <![CDATA[
+            Plugin that allows the re-ordering of navbar, sidebar, and tabs by dragging them into desired location within the UI.
+            <p><img src="https://plugins.octoprint.org/assets/img/repo-600x400.png"></p>
+            
+          ]]>
+        </description>
+        <pubDate>
+Sun, 18 Nov 2018 00:00:00 +0000
+</pubDate>
+        <link>http://plugins.octoprint.org/plugins/dragon_order/?utm_source=rss&amp;utm_medium=feed</link>
+        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/dragon_order/</guid>
+        
+        <category>Draggable</category>
+        
+        <category>Navbar</category>
+        
+        <category>Sidebar</category>
+        
+        <category>Tabs</category>
+        
+        <category>UI</category>
+        
+      </item>
+    
+      <item>
+        <title>Active Filters Extended</title>
+        <description>
+          <![CDATA[
+            Makes the enabled terminal filters persistent between browser reloads and from different connecting clients.
+            <p><img src="https://plugins.octoprint.org/assets/img/repo-600x400.png"></p>
+            
+          ]]>
+        </description>
+        <pubDate>
+Sat, 17 Nov 2018 00:00:00 +0000
+</pubDate>
+        <link>http://plugins.octoprint.org/plugins/active_filters_extended/?utm_source=rss&amp;utm_medium=feed</link>
+        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/active_filters_extended/</guid>
+        
+        <category>filters</category>
+        
+        <category>regex</category>
+        
+        <category>terminal</category>
+        
+      </item>
+    
+      <item>
+        <title>OctoPrint-TuyaSmartplug</title>
+        <description>
+          <![CDATA[
+            Plugin to control Tuya based Smartplug devices from OctoPrint web interface.
+            <p><img src="https://plugins.octoprint.org/assets/img/plugins/TuyaSmartplug/screenshot.png"></p>
+          ]]>
+        </description>
+        <pubDate>
+Mon, 12 Nov 2018 00:00:00 +0000
+</pubDate>
+        <link>http://plugins.octoprint.org/plugins/tuyasmartplug/?utm_source=rss&amp;utm_medium=feed</link>
+        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/tuyasmartplug/</guid>
+        
+        <category>Tuya</category>
+        
+        <category>Smartplug</category>
+        
+        <category>Power</category>
+        
+      </item>
+    
+      <item>
+        <title>Auto bed leveling expert</title>
+        <description>
+          <![CDATA[
+            Marlin auto bed leveling control, mesh correction, and z probe handling
+            <p><img src="https://plugins.octoprint.org/assets/img/repo-600x400.png"></p>
+            
+          ]]>
+        </description>
+        <pubDate>
+Thu, 04 Oct 2018 00:00:00 +0000
+</pubDate>
+        <link>http://plugins.octoprint.org/plugins/ABL_Expert/?utm_source=rss&amp;utm_medium=feed</link>
+        <guid isPermaLink="true">http://plugins.octoprint.org/plugins/ABL_Expert/</guid>
+        
+        <category>probe</category>
+        
+        <category>leveling</category>
+        
+        <category>bilinear</category>
+        
+        <category>auto bed leveling</category>
+        
+        <category>abl</category>
+        
+        <category>marlin</category>
+        
+      </item>
+    
+  </channel>
+</rss>

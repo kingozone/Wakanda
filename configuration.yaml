@@ -74,6 +74,10 @@ panel_iframe:
     title: AdGuard Home
     icon: mdi:block-helper
     url: http://localhost:3210
+  MagicMirror:
+    title: Magic Mirror
+    icon: mdi:image-filter-frames
+    url: http://localhost:8181
 ### Weblinks ###
 weblink:
   entities:
@@ -133,9 +137,6 @@ mqtt:
   discovery_prefix: wakanda
   certificate: !secret ssl_certificate
 
-duckdns:
-  domain: !secret base_url
-  access_token: !secret duck_token
 ##################################
 # Checks for available updates   #
 ##################################
@@ -189,15 +190,12 @@ recorder:
   purge_interval: 7
   db_url: !secret mariadb
 
-### InfluxDB ###
-#influxdb:
-#  host: a0d7b954-influxdb
-#  port: 8086
-#  database: wakanda
-#  username: !secret host
-#  password: <!secret password>
-#  max_retries: 3
-#  default_measurement: state
+### InfluxDB - for Grafana ###
+influxdb:
+  host: 172.30.32.1
+  tags:
+    instance: hassio
+    source: wakanda
 
 # Enables a map showing the location of tracked devices
 map:
@@ -239,7 +237,10 @@ ffmpeg:
 api:
 
 # Python Scripts
-#python_script:
+python_script:
+
+### Shopping list ###
+shopping_list:
 
 # Home Assistant Cloud
 cloud:
@@ -269,8 +270,7 @@ cloud:
 ### Amazon Alexa Skills ###
 
 
-### Shopping list ###
-shopping_list:
+
 ############################
 ### 3rd Party Components ###
 ############################
@@ -318,7 +318,6 @@ habitica:
     api_key: !secret habit_key
     name: Ozone
 
-
 ### Dominos Pizza ###
 #dominos:
 #  country_code: !secret country_code
@@ -330,21 +329,21 @@ habitica:
 
 ### Generic Thermostat ###
 climate:
-#  - platform: generic_thermostat
-#    name: Studio
-#    heater:  switch.sonoff_10003840d5
-#    target_sensor: sensor.home_studio_temperature
-#    humidity: sensor.home_studio_humidity
-#    min_temp: 5
-#    max_temp: 85
-#    ac_mode: false
-#    hot_tolerance: 0.5
-#    cold_tolerance: 0.1
-#    min_cyle_duration:
-#      minutes: 5
-#    keep_alive:
-#      minutes: 30
-#    initial_operation_mode: 'auto'
+  - platform: generic_thermostat
+    name: Studio
+    heater:  switch.sonoff_10003840d5
+    target_sensor: sensor.home_studio_temperature
+    humidity: sensor.home_studio_humidity
+    min_temp: 5
+    max_temp: 85
+    ac_mode: false
+    hot_tolerance: 0.5
+    cold_tolerance: 0.1
+    min_cyle_duration:
+      minutes: 5
+    keep_alive:
+      minutes: 30
+    initial_operation_mode: 'auto'
 
 ### Join ###
 joaoapps_join:
@@ -363,11 +362,8 @@ geo_location:
     feed_type: 'past_day_all_earthquakes'
     radius: 50
     minimum_magnitude: 0.0
-    latitude: !secret latitude
-    longitude: !secret longitude
 
 ### Microsoft Face ###
-
 
 #########################
 ###     Includes      ###
@@ -376,14 +372,14 @@ group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
-#switch: !include switches.yaml
-#sensor: !include sensors.yaml
-#device_tracker: !include device_trackers.yaml
-#binary_sensor: !include binary_sensors.yaml
-#media_player: !include media_players.yaml
-#notify: !include notifiers.yaml
 zone: !include zones.yaml
 camera: !include cameras.yaml
+#switch: !include switches.yaml
+#binary_sensor: !include binary_sensors.yaml
+#sensor: !include sensors.yaml
+#device_tracker: !include device_trackers.yaml
+#media_player: !include media_players.yaml
+#notify: !include notifiers.yaml
 #light: !include lights.yaml
 #cover: !include covers.yaml
 #timer: !inclune timers.yaml

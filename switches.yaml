@@ -9,7 +9,10 @@
   name: Patio
   mac: !secret patio
   flip_on_off: false
-
+- platform: switchmate
+  name: Kitchen Fan
+  mac: !secret kitchen_fan
+  flip_on_off: false
 ### Wake on LAN ###
 - platform: wake_on_lan
   mac_address: !secret bishop_mac

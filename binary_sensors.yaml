@@ -16,13 +16,13 @@
 ### Lux ###
   - platform: template
     sensors:
-      studio_light_level:
-        friendly_name: 'Studio light level'
+      studio_lux:
+        friendly_name: 'Studio Lux'
         value_template: '{{state_attr("binary_sensor.motion_studio", "lx")}}'
 ### Temperature ###
   - platform: template
     sensors:
-      studio_temperature_temp:
+      studio_temp:
         friendly_name: Studio Temperature
         value_template: "{{ ((float(states('binary_sensor.motion_studio')) * 9 / 5 )  +  32) | round(1) }}"
 

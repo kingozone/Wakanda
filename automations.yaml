@@ -1,6 +1,37 @@
+###############################
+###         Users           ###
+###############################
+
+###############################
+###        Devices          ###
+###############################
+
+###############################
+###        Sensors          ###
+###############################
+
+###############################
+###        Climate          ###
+###############################
+
+###############################
+###        Tracking         ###
+###############################
+### Owntracks Refresh ###
+  - id: owntracks_refresh
+    alias: "Owntracks Refresh"
+    trigger:
+      - platform: time
+        minutes: '/15'
+        seconds: 0
+    action:
+      service: script.refresh_devices
+###############################
+###      System Events      ###
+###############################
 ### Update Google Travel Times to Work every 5 mins ###
   - id: update_morning_commute_sensor
-    alias: "Commute - Update morning commute sensor"
+    alias: "Update morning commute"
     initial_state: 'on'
     trigger:
       - platform: time
@@ -21,3 +52,49 @@
       - service: sensor.google_travel_sensor_update
         data:
           entity_id: sensor.morning_commute
+
+### Horizon based theme switching ###
+  - id: horizon_theme_switch
+    alias: 'Daylight automatic theme switching'
+      trigger:
+        - platform: homeassistant
+          event: start
+        - platform: state
+          entity_id: sun.sun
+          to: above_horizon
+        - platform: state
+          entity_id: sun.sun
+          to: below_horizon
+      action:
+        - service_template: frontend.set_theme
+          data_template:
+          name: >
+            {% if states.sun.sun.state == "above_horizon" %}
+              Light - Light Red
+            {% else %}
+              Dark - Light Red
+            {% endif %}
+
+# Turn off lights when everybody leaves the house
+  - id: lights_off_when_gone
+    alias: 'Away Mode'
+    trigger:
+      platform: state
+      entity_id: group.all_devices
+      to: 'not_home'
+    action:
+      service: light.turn_off
+      entity_id: group.all_lights
+###############################
+###     Maintenance         ###
+###############################
+### HA Update Notification ###
+  - id: update_notify
+    alias: 'Update Available Notifications'
+    trigger:
+      platform: state
+      entity_id: updater.updater
+    action:
+      service: notify.notify
+      data:
+        message: 'Update for Home Assistant is available.'

@@ -6,7 +6,7 @@
     interval_seconds: 10
     consider_home: 180
     new_device_defaults:
-      track_new_devices: false
+      track_new_devices: true
       hide_if_away: true
 
 ### Bluetooth Tracker ###
@@ -41,15 +41,14 @@
   - platform: hue
 
 ### Owntracks ###
-#  - platform: owntracks
-#    secret: !secret owntracks_key
-#    max_gps_accuracy: 200
-#    waypoints: true
-#    events_only: true
-#    mqtt_topic: "ozone/#"
-#    region_mapping:
-#      prism: work
-#  - platform: owntracks_http
+  - platform: owntracks
+    secret: !secret owntracks_key
+    max_gps_accuracy: 200
+    waypoints: true
+    events_only: true
+    mqtt_topic: "ozone/#"
+    region_mapping:
+      prism: work
 
 ### MQTT Device Trackers ###
 #  - platform: mqtt_json

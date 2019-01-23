@@ -1,12 +1,60 @@
 ###############################
-###    Customize Users      ###
+###          Users          ###
 ###############################
 ### Ozone ###
   device_tracker.black_panther:
     entity_picture: /local/ozone.jpg
     friendly_name: Ozone
-    
+
 ### Nicodemus ###
   device_tracker.nicodemus:
     entity_picture: /local/nico.jpg
     friendly_name: Nico
+
+###############################
+###          Devices        ###
+###############################
+
+
+###############################
+###         Sensors         ###
+###############################
+
+
+###############################
+###          Misc           ###
+###############################
+### Horizontal Lines ###
+### 1
+  sensor.hline_1:
+    custom_ui_state_card: state-card-hline
+    config:
+    width: 90 --> in percents
+    height: 0 --> in pixels, adds to bordertop
+    backgroundcolor: white
+    bordertop: '1px solid black'
+### 2
+  sensor.hline_2:
+    custom_ui_state_card: state-card-hline
+    config:
+    width: 90 --> in percents
+    height: 0 --> in pixels, adds to bordertop
+    backgroundcolor: white
+    bordertop: '1px dashed red'
+### 3
+  sensor.hline_3:
+    custom_ui_state_card: state-card-hline
+    config:
+    width: 65 --> in percents
+    height: 0 --> in pixels, adds to bordertop
+    backgroundcolor: white
+    bordertop: '2px double green'
+### 4
+  sensor.hline_4:
+    custom_ui_state_card: state-card-hline
+    config:
+    width: 85 --> in percents
+    height: 1 --> in pixels, adds to bordertop
+    backgroundcolor: white
+    bordertop: none
+    backgroundimage: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0))

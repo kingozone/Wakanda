@@ -1,0 +1,7 @@
+  send_test_mobile_notification:
+    alias: "Test mobile notification"
+    sequence:
+      - service: notify.my_phone
+        data:
+          title: "The home {{ states.sensor.time.state }}"
+          message: "Hello world"

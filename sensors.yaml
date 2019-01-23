@@ -10,9 +10,7 @@
       - 'time_date'
       - 'time_utc'
       - 'beat'
-
-### Custom time formatting ###
-# Sun Angle
+### Sun Angle ###
   - platform: template
     sensors:
       solar_angle:
@@ -29,24 +27,20 @@
     indoor_humidity_sensor: sensor.home_studio_humidity
     outdoor_temp_sensor: sensor.dark_sky_weather_apparent_temperature
     calibration_factor: 2.0
-
 ### Phillips Hue Enviroment ###
   - platform: hue
     ip_address: !secret hue_ip
     token: !secret hue_token
-
 ### Min/Max Temperature ###
   - platform: min_max
     entity_ids:
       - sensor.home_studio_temperature
-
 ########################################
 ###  Weather, Climate, & Enviroment  ###
 ########################################
 ### Astronomical Season ###
   - platform: season
     type: astronomical
-
 ### Dark Sky Weather ###
   - platform: darksky
     name: Dark Sky Weather
@@ -80,7 +74,6 @@
       - moon_phase
     update_interval:
       minutes: 5
-
 ### Weather Underground ###
   - platform: wunderground
     api_key: !secret wu_key
@@ -122,13 +115,10 @@
       - weather_3n
       - weather_4d
       - weather_4n
-
 ### Moon ###
   - platform: moon
-
 ### NOAA Space Weather ###
   - platform: nooa_space_weather
-
 ########################################
 ###              Health              ###
 ########################################
@@ -142,7 +132,6 @@
       - allergy_index_tomorrow
       - allergy_index_yesterday
       - disease_average_forecasted
-
 ### AirVisual ###
   - platform: airvisual
     api_key: !secret air_visual
@@ -152,7 +141,6 @@
     monitored_conditions:
       - us
     show_on_map: true
-
 ### World Air Quality Index ###
   - platform: waqi
     token: AQICN_API_TOKEN
@@ -164,10 +152,8 @@
       - Beacon Hill
       - Duwamish
       - South Park
-
 ### Flu Near You ###
   - platform: flunearyou
-
 ### Fitbit ###
   - platform: fitbit
     clock_format: 12H
@@ -208,12 +194,10 @@
       - "sleep/minutesToFallAsleep"
       - "sleep/startTime"
       - "sleep/timeInBed"
-
 ########################################
 ##          Device Trackers          ###
 ########################################
 ### Ariela MQTT ###
-
 ################## Black Panther ##################
 # Battery
   - platform: mqtt
@@ -372,7 +356,6 @@
 ###      Travel & Navigation         ###
 ########################################
 ### Google Maps Travel Time ###
-
 # Phone to Home ###
   - platform: google_travel_time
     name: Ozone To Home
@@ -384,21 +367,19 @@
       units: imperial
       mode: transit
       transit_routing_preference: less_walking
-
 # Work Commute ###
   - platform: google_travel_time
     name: Home To Work
     api_key: !secret gmaps_key
     origin: zone.home
-    destination: zone.prism
+    destination: !secret prism_loc
     options:
       units: imperial
       mode: transit
       transit_routing_preference: less_walking
-
 # Commute Home ###
   - platform: google_travel_time
-    name: Redmond Transit Center to Home
+    name: Work to Home
     api_key: !secret gmaps_key
     origin: !secret red_loc
     destination: zone.home
@@ -406,14 +387,12 @@
       units: imperial
       mode: transit
       transit_routing_preference: less_walking
-
 ### Google Geocode ###
   - platform: google_geocode
-    origin: device_tracker.mobile_phone
+    origin: device_tracker.black_panther
     options: street_number, street, city
     display_zone: show
     api_key: !secret google_geocode
-
 ### Washington State DOT ###
   - platform: wsdot
     api_key: !secret wsdot_key
@@ -426,7 +405,6 @@
        name: HOV Seattle-Redmond (Morning Eastbound)
      - id: 78
        name: HOV Redmond-Seattle (Evening Westbound)
-
 ### Lyft ###
   - platform: lyft
     client_id: !secret lyft_id
@@ -435,7 +413,6 @@
     start_longitude: !secret longitude
     end_latitude: !secret prism_lat
     end_longitude: !secret prism_long
-
 ### Uber ###
   - platform: uber
     server_token: !secret uber_token
@@ -443,8 +420,6 @@
     start_longitude: !secret longitude
     end_latitude: !secret prism_lat
     end_longitude: !secret prism_long
-
-
 ########################################
 ###    Media Players & Services      ###
 ########################################
@@ -453,13 +428,11 @@
     api_key: !secret lastfm_key
     users:
       - ozonethegreat
-
 ### Xbox Live ###
   - platform: xbox_live
     api_key: !secret xbox_api
     xuid:
-      - !secret xbox_id
-
+      - 2533274965606388
 ### Sonarr ###
   - platform: sonarr
     api_key: !secret sonarr_key
@@ -474,29 +447,23 @@
       - diskspace
     days: 7
     unit: GB
-
 ### Radarr ###
   - platform: radarr
     api_key: !secret radarr_key
-
 ### Trakt.tv ###
   - platform: trakt
     id: '!secret trakt_id'
     secret: '!secret trakt_secret'
     username: !secret alt_user
     days: 14
-
 ### Discogs ###
   - platform: discogs
     token: !secret discogs_token
     name: Discogs Collection
-
 ########################################
 ###            Finance               ###
 ########################################
-
-
-# Coin Market Cap
+### Coin Market Cap ###
   - platform: coinmarketcap
     currency_id: 1
     display_currency: USD
@@ -558,7 +525,7 @@
     display_currency: USD
     display_currency_decimals: 2
 
-# Alpha Vantange
+### Alpha Vantange ###
   - platform: alpha_vantage
     api_key: !secret alpha_key
 # Stocks
@@ -640,7 +607,6 @@
       - name: $1 to $1 Mexican Peso
         from: USD
         to: MXN
-
 ########################################
 ###    Network Info & Services       ###
 ########################################
@@ -653,12 +619,13 @@
       - ping
       - download
       - upload
-
 ### HaveIBeenPwned? ###
   - platform: haveibeenpwned
     email:
       - !secret email
-
+      - ozonesavage@gmail.com
+      - kingozone206@gmail.com
+      - me@thisisozone.com
 ### Pi-hole ###
   - platform: pi_hole
     host: localhost:4865
@@ -672,12 +639,10 @@
       - unique_clients
       - unique_domains
       - clients_ever_seen
-
 ### Certificate Expiry ###
   - platform: cert_expiry
     host: !secret base_url
     name: SSL Certificate Expiry
-
 ########################################
 ###      System Information          ###
 ########################################

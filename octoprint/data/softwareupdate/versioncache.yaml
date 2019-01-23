@@ -1,0 +1,17 @@
+__version: 1.3.8
+octoprint:
+  available: true
+  error: null
+  hash: d3dcb88d23983910a46d53d8a0ea1fe3
+  information:
+    local:
+      name: 1.3.8
+      value: 1.3.8
+    needs_online: true
+    remote:
+      name: 1.3.10 (stable)
+      release_notes: https://github.com/foosel/OctoPrint/releases/tag/1.3.10
+      value: 1.3.10
+  online: true
+  possible: true
+  timestamp: 1548175517.227951

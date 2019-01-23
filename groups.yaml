@@ -1,7 +1,6 @@
 default_view:
   name: Wakanda
   view: yes
-  icon: mdi:home-city
   entities:
     - group.people
     - group.today
@@ -22,7 +21,15 @@ today:
   name: Today's Info
   icon: mdi:calendar-today
   entities:
+    - sensor.time
+    - sensor.date
+    - sensor.time_utc
+    - sensor.internet_time
+    - sensor.hline_4
+    - binary_sensor.period_of_day
+    - sensor.season
     - weather.current
+    - sensor.hline_4
     - group.travel
     - group.events
     - group.tasks
@@ -30,11 +37,19 @@ today:
 travel:
   name: Travel Info
   icon: mdi:account-group-outline
+  entities:
+    - sensor.home_to_work
+    - sensor.hline_2
+    - sensor.seattleredmond_morning_eastbound
+    - sensor.hov_seattleredmond_morning_eastbound
 events:
   name: Today's Events
   icon: mdi:account-group-outline
   entities:
     - binary_sensor.workday
+    - binary_sensor.worknight
+    - sensor.hline_1
+    - sensor.aftership
 tasks:
   name: Today's Tasks
   icon: mdi:account-group-outline
@@ -43,6 +58,7 @@ news:
   icon: mdi:account-group-outline
   entities:
     - sun.sun
+    - sensor.next_launch
 floorplan:
   name: The Kingdom of Wankanda
   icon: mdi:floor-plan
@@ -65,7 +81,8 @@ studio:
   entities:
     - light.studio
     - binary_sensor.motion_studio
-    - sensor.switch
+    - binary_sensor.studio_lux
+    - sensor.remote_switch
     - remote.nakia_ip
     - switch.tplink_switch_2
 bedroom:
@@ -82,31 +99,24 @@ patio:
 garden:
   name: Garden
   icon: mdi:account-group-outline
-
 ### Users ###
 users:
   name: Users
   view: yes
-  icon: mdi:account-group-outline
   entities:
     - group.ozone
     - group.nicodemus
 ozone:
   name: Ozone
   entities:
-    - sensor.steps
+    - device_tracker.ozone
+    - sensor.google_geocode
     - sensor.calories
     - sensor.activity_calories
     - sensor.weight
     - sensor.body_fat
     - sensor.bmi
-    - sensor.distance
-    - sensor.elevation
-    - sensor.floors
-    - sensor.minutes_very_active
-    - sensor.minutes_fairly_active
-    - sensor.mintues_lightly_active
-    - sensor.minutes_sendentary
+    - sensor.hline_4
     - sensor.resting_heart_rate
     - sensor.sleep_time_in_bed
     - sensor.sleep_efficiency
@@ -116,6 +126,16 @@ ozone:
     - sensor.sleep_mintutes_to_fall_asleep
     - sensor.sleep_minutes_after_wakeup
     - sensor.awakenings_count
+    - sensor.hline_4
+    - sensor.steps
+    - sensor.distance
+    - sensor.elevation
+    - sensor.floors
+    - sensor.minutes_very_active
+    - sensor.minutes_fairly_active
+    - sensor.mintues_lightly_active
+    - sensor.minutes_sendentary
+    - sensor.hline_4
     - sensor.habitica_ozone_class
     - sensor.habitca_ozone_lvl
     - sensor.habitica_ozone_exp
@@ -125,9 +145,8 @@ ozone:
     - sensor.habitica_ozone_maxmp
     - sensor.habitica_ozone_gp
     - sensor.habitica_ozone_tonextlevel
-    - sensor.lastfm_ozonethegreat
+    - sensor.hline_4
     - sensor.breaches_taurencesaltergmailcom
-
 nicodemus:
   name: Nico
   entities:
@@ -136,7 +155,6 @@ nicodemus:
 info:
   name: Info
   view: yes
-  icon: mdi:information-variant
   entities:
     - group.weather
     - group.enviroment
@@ -168,9 +186,15 @@ almanac:
     - sensor.dark_sky_precip_probability
     - sensor.dark_sky_dew_point
     - sensor.dark_sky_ozone
+    - sensor.hline_3
     - sun.sun
     - sensor.solar_angle
     - sensor.moon
+    - binary_sensor.aurora_visibility
+    - sensor.hline_3
+    - sensor.geomagnetic_storms
+    - sensor.solar_radiation_storms
+    - sensor.radio_blackouts
 forecast:
   name: Forecast
   icon: mdi:account-group-outline
@@ -219,6 +243,7 @@ enviroment:
     - group.climate
     - group.humidity
     - group.air_quality
+    - sensor.capitol_hill_crime_reports
 smoke:
   name: Smoke & Carbon Monoxide status
   icon: mdi:smoke-detector
@@ -231,7 +256,7 @@ climate:
   icon: mdi:account-group-outline
   entities:
     - sensor.home_studio_temperature
-    - sensor.max_sensor
+    - climate.studio
     - sensor.sonoff_10003840d5_current
     - sensor.sonoff_10003840d5_power
     - sensor.sonoff_10003840d5_voltage
@@ -256,12 +281,16 @@ commute:
 travel_commute:
   name: Google Maps Travel Times
   icon: mdi:bus-clock
+  entities:
+    - sensor.home_to_work
+    - sensor.work_to_home
 wsdot:
   name: Washington State Department Of Tranportation Commute Times
   icon: mdi:bus
   entities:
     - sensor.seattleredmond_morning_eastbound
     - sensor.hov_seattleredmond_morning_eastbound
+    - sensor.hline_2
     - sensor.redmondseattle_evening_westbound
     - sensor.hov_redmondseattle_evening_westbound
 rideshare:
@@ -274,25 +303,94 @@ uber:
   name: Uber
   icon: mdi:account-group-outline
   entities:
+    - group.uber_wav
+    - group.uberx
+    - group.uberxl
+    - group.ubertaxi
+    - group.uberselect
+    - group.uberpool
+    - group.uberblack
+    - group.uberblacksuv
+uber_wav:
+  name: Uber Wave
+  entities:
     - sensor.uberwav_price
     - sensor.uberwav_time
+uberx:
+  name: Uber X
+  entities:
     - sensor.uberx_price
     - sensor.uberx_time
+uberxl:
+  name: Uber XL
+  entities:
     - sensor.uberxl_price
     - sensor.uberxl_time
+ubertaxi:
+  name: Uber Taxi
+  entities:
     - sensor.ubertaxi_price
     - sensor.ubertaxi_time
+uberselect:
+  name: Uber Select
+  entities:
     - sensor.uberselect_price
     - sensor.uberselect_time
+uberpool:
+  name: Uber Pool
+  entities:
     - sensor.uberpool_price
     - sensor.uberpool_time
+uberblack:
+  name: Uber Black
+  entities:
     - sensor.uberblack_price
     - sensor.uberblack_time
+uberblacksuv:
+  name: Uber Black SUV
+  entities:
     - sensor.uberblack_suv_price
     - sensor.uberblack_suv_time
 lyft:
   name: Lyft
   icon: mdi:account-group-outline
+  entities:
+    - group.lyftshared
+    - group.lyftprice
+    - group.lyftxl
+    - group.lyftlux
+    - group.lyftluxblack
+    - group.lyftluxblackxl
+lyftshared:
+  name: Lyft Shared
+  entities:
+    - sensor.lyftshared_price
+    - sensor.lyftshared_time
+lyftprice:
+  name: Lyft
+  entities:
+    - sensor.lyft_price
+    - sensor.lyft_time
+lyftxl:
+  name: Lyft XL
+  entities:
+    - sensor.lyft_xl_price
+    - sensor.lyft_xl_time
+lyftlux:
+  name: Lyft Lux
+  entities:
+    - sensor.lyftlux_price
+    - sensor.lyftlux_time
+lyftluxblack:
+  name: Lyft Lux Black
+  entities:
+    - sensor.lyftlux_black_price
+    - sensor.lyftlux_black_time
+lyftluxblackxl:
+  name: Lyft Lux Black XL
+  entities:
+    - sensor.lyftlux_black_xl_price
+    - sensor.lyftlux_black_xl_time
 finance:
   name: Finance & Banking
   icon: mdi:cash-multiple
@@ -302,7 +400,6 @@ finance:
 media:
   name: Media
   view: yes
-  icon: mdi:play-network-outline
   entities:
     - group.players
     - group.services
@@ -311,6 +408,7 @@ players:
   name: Media Players
   icon: mdi:cast-connected
   entities:
+    - remote.nakia
     - media_player.cyborg
     - media_player.falcon
     - media_player.redwing
@@ -321,12 +419,14 @@ services:
 information:
   name: Media Info
   icon: mdi:lastfm
+  entities:
+    - sensor.lastfm_ozonethegreat
+    - sensor.discogs_collection
 
 ### Security ###
 security:
   name: Security
   view: yes
-  icon: mdi:shield-home
   entities:
     - group.alarm
     - group.locks
@@ -334,6 +434,8 @@ security:
 alarm:
   name: Alarm Panel
   icon: mdi:bell-ring
+  entities:
+    - alarm_control_panel.home
 locks:
   name: Locks
   icon: mdi:lock-smart
@@ -342,16 +444,46 @@ locks:
 cameras:
   name: Cameras
   icon: mdi:cctv
+  entities:
+    - camera.studio
 ### System ###
 system:
   name: System
   view: yes
-  icon: mdi:home-assistant
   entities:
     - group.stats
+    - group.devices
     - group.automations
     - group.functions
-    - group.devices
 stats:
   name: Shango's Stats
   entities:
+    - group.system_info
+    - group.network
+system_info:
+  name: Shango's Health
+  entities:
+    - sensor.time_online
+network:
+  name: Network Connections & Health
+    - sensor.ssl_certificate_expiry
+    - sensor.hline_1
+    - sensor.speedtest_upload
+    - sensor.speedtest_download
+    - sensor.speedtest_ping
+    - sensor.hline_1
+    - sensor.pi_hole_ads_blocked_today
+    - sensor.pi_hole_ads_percentage_blocked_today
+    - sensor.pi_hole_domains_blocked
+    - sensor.pi_hole_dns_unique_domains
+    - sensor.pi_hole_dns_queries_today
+    - sensor.pi_hole_dns_queries_cached
+    - sensor.pi_hole_dns_queries_forwarded
+    - sensor.pi_hole_seen_clients
+    - sensor.pi_hole_dns_unique_clients
+devices:
+  name: Devices
+automations:
+  name: Automations
+functions:
+  name: Functions

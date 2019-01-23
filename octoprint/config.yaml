@@ -1,0 +1,20 @@
+api:
+  key: 02BAE89E730C4CFB8082F7D5F8B238CE
+devel:
+  virtualPrinter:
+    enabled: true
+plugins:
+  announcements:
+    _config_version: 1
+  cura:
+    cura_engine: /data/CuraEngine/build/CuraEngine
+  discovery:
+    upnpUuid: ba498bb4-81ec-40a1-91c0-1117c1d4f962
+  softwareupdate:
+    _config_version: 6
+printerProfiles:
+  default: _default
+server:
+  commands:
+    serverRestartCommand: /home/octoprint/octoprint.sh
+  secretKey: X8N4EEbmec9dqdtbPZG9lMLq0vLhOToh
