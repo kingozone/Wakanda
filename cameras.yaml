@@ -12,3 +12,21 @@
 
 ### Canary Camera ###
 #  - platform: canary
+
+### Combined Cameras ###
+#  - platform: combined
+#    base_address: https://wakanda1.duckdns.org
+#    entities:
+#      - camera.camera1
+#      - camera.camera1
+### MultiSource Gallery ###
+#  - platform: multisource
+#    name: "Image Gallery"
+#    interval: 10
+#    images:
+#      - https://example.com/image1.jpg
+#      - https://example.com/image2.png
+#      - /config/www/images/dir1
+#      - /config/www/images/dir2
+#      - /config/www/image1.jpg
+#      - /config/www/image2.png

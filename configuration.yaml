@@ -27,6 +27,9 @@ frontend:
     - /local/custom_ui/state-card-aftership.html
     - /local/custom_ui/custom-weather-animated.html
     - /local/custom_ui/state-card-hline.html
+    - /local/hass-fontawesome-solid.html
+    - /local/hass-fontawesome-regular.html
+    - /local/hass-fontawesome-brands.html
   extra_html_url_es5:
     - /local/custom_ui/custom-weather-animated.html
     - /local/custom_ui/state-card-hline_es5.html
@@ -50,14 +53,6 @@ panel_iframe:
     title: Pi-hole
     icon: mdi:block-helper
     url: http://localhost:4865
-#  influxdb:
-#    title: InfluxDB
-#    icon: mdi:chart-areaspline
-#    url: http://localhost:8888
-#  grafana:
-#    title: Grafana
-#    icon: mdi:chart-timeline
-#    url: http://localhost:3000
   sqlite:
     title: SQLite Web
     icon: mdi:database
@@ -66,18 +61,11 @@ panel_iframe:
     title: Router
     icon: mdi:router-wireless-settings
     url: http://192.168.1.1
-  esphomeyaml:
-    title: ESPhomeyaml
-    icon: mdi:raspberrypi
-    url: https://localhost:6052
   adguard:
     title: AdGuard Home
     icon: mdi:block-helper
     url: http://localhost:3210
-  MagicMirror:
-    title: Magic Mirror
-    icon: mdi:image-filter-frames
-    url: http://localhost:8181
+
 ### Weblinks ###
 weblink:
   entities:
@@ -130,7 +118,7 @@ http:
 ### MQTT ###
 mqtt:
   broker: a0d7b954-mqtt
-  username: !secret username
+  username: !secret username1
   password: !secret password
   client_id: wakanda
   discovery: true
@@ -374,12 +362,12 @@ script: !include scripts.yaml
 scene: !include scenes.yaml
 zone: !include zones.yaml
 camera: !include cameras.yaml
-#switch: !include switches.yaml
-#binary_sensor: !include binary_sensors.yaml
-#sensor: !include sensors.yaml
-#device_tracker: !include device_trackers.yaml
-#media_player: !include media_players.yaml
-#notify: !include notifiers.yaml
+switch: !include switches.yaml
+binary_sensor: !include binary_sensors.yaml
+sensor: !include sensors.yaml
+device_tracker: !include device_trackers.yaml
+media_player: !include media_players.yaml
+notify: !include notifiers.yaml
 #light: !include lights.yaml
 #cover: !include covers.yaml
 #timer: !inclune timers.yaml

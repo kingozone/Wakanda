@@ -163,6 +163,7 @@ info:
 weather:
   name: Weather
   icon: mdi:account-group-outline
+  control: hidden
   entities:
     - group.almanac
     - group.forecast

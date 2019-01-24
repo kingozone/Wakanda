@@ -31,10 +31,26 @@
   - platform: hue
     ip_address: !secret hue_ip
     token: !secret hue_token
-### Min/Max Temperature ###
-  - platform: min_max
-    entity_ids:
-      - sensor.home_studio_temperature
+### Temperature ###
+  - platform: template
+    sensors:
+      studio_temp:
+        friendly_name: Studio Temperature
+        value_template: "{{ ((float(states('binary_sensor.motion_studio')) / 100 * 9 / 5 )  +  32) | round(2) }}"
+        unit_of_measurement: °F
+        device_class: temperature
+### Lux ###
+      studio_lux:
+        friendly_name: 'Studio Lux'
+        value_template: '{{state_attr("binary_sensor.motion_studio", "lx")}}'
+        unit_of_measurement: lux
+
+      studio_motion_sensor_battery:
+        friendly_name: 'Studio Motion battery'
+        unit_of_measurement: '%'
+        value_template: >
+          {{ states.sensor.studio_motion_sensor.attributes.battery }}
+        device_class: battery
 ########################################
 ###  Weather, Climate, & Enviroment  ###
 ########################################
@@ -115,6 +131,9 @@
       - weather_3n
       - weather_4d
       - weather_4n
+### Weather Alerts ###
+  - platform: weatheralerts
+    sameid: '053033'
 ### Moon ###
   - platform: moon
 ### NOAA Space Weather ###
@@ -460,6 +479,67 @@
   - platform: discogs
     token: !secret discogs_token
     name: Discogs Collection
+### Kodi Recently Added ###
+  - platform: kodi_recently_added
+    username: !secret username
+    host: 192.168.1.7
+    password: !secret password
+    port: !secret kodi_port
+### Trakt.tv Upcoming ###
+#  - platform: trakt
+#    id: '!secret trakt_id'
+#    secret: '!secret trakt_secret'
+#    username: iamozone
+#    days: 10
+#    exclude:
+#      'The Bachelor'
+### Sonarr Upcoming Media ###
+  - platform: sonarr_upcoming_media
+    api_key: !secret sonarr_key
+    host: 192.168.1.7
+    port: !secret sonarr_port
+    days: 2
+    ssl: true
+    max: 10
+### Radarr Upcoming Media ###
+#  - platform: radarr_upcoming_media
+#    api_key: !secret radarr_keyY
+#    host: 192.168.1.7
+#    port: 7878
+#    days: 120
+#    ssl: true
+#    theaters: false
+#    max: 10
+### Plex Recently Added ###
+#  - platform: plex_recently_added
+#    token: !secret plex_token
+#    server_name: Cyborg
+#    ssl: true
+#    ssl_cert: false
+#    download_images: false
+#    max: 5
+#    section_types:
+#    - movie
+#    - show
+
+########################################
+###            News                  ###
+########################################
+### Feedparser ###
+#  - platform: feedparser
+#    name: Engineering Feed
+#    feed_url: 'https://www.sciencedaily.com/rss/matter_energy/engineering.xml'
+#    date_format: '%a, %b %d %I:%M %p'
+#    inclusions:
+#      - title
+#      - link
+#      - description
+#      - image
+#      - language
+#      - pubDate
+#    exclusions:
+#      - language
+
 ########################################
 ###            Finance               ###
 ########################################
@@ -534,79 +614,7 @@
         name: Google
       - symbol: FB
         name: Facebook
-      - symbol: GOOGL
-        name: Google
-# Currency Exchange Rates
-    foreign_exchange:
-      - name: $1 to €1 Euro
-        from: USD
-        to: EUR
-      - name: $1 to £1 UK Pound
-        from: USD
-        to: GBP
-      - name: $1 to $1 Canadian Dollar
-        from: USD
-        to: CAD
-      - name: $1 to $1 Australian Dollar
-        from: USD
-        to: AUD
-      - name: $1 to ₦1 Nigeria Naira
-        from: USD
-        to: NGN
-      - name: $1 to R1 South Africa Rand
-        from: USD
-        to: ZAR
-      - name: $1 to د.ج 1 Algerian Dinar
-        from: USD
-        to: DZD
-      - name: $1 to £1 Egyptian Pound
-        from: USD
-        to: EGP
-      - name: $1 to 1د.م. Moroccan Dirham
-        from: USD
-        to: MAD
-      - name: $1 to £1 Sudanese Pound
-        from: USD
-        to: SDG
-      - name: $1 to 1Sh Kenyan Shilling
-        from: USD
-        to: KES
-      - name: $1 to 1Kz Angolan Kwanza
-        from: USD
-        to: AOA
-      - name: $1 to 1ل.دLibyan Dinar
-        from: USD
-        to: LYD
-      - name: $1 to د.ت 1 Tunisian Dinar
-        from: USD
-        to: TND
-      - name: $1 to ¥1 Chinese Yuan
-        from: USD
-        to: CNY
-      - name: $1 to $1 Singapore Dollar
-        from: USD
-        to: SGD
-      - name: $1 to ₨1 Indian Rupee
-        from: USD
-        to: INR
-      - name: $1 to ¥1 Japanese Yen
-        from: USD
-        to: JPY
-      - name: $1 to ر.س 1 Saudi Riyal
-        from: USD
-        to: SAR
-      - name: $1 to ﷼1 Iranian Rial
-        from: USD
-        to: IRR
-      - name: $1 to R$1 Brazilian Real
-        from: USD
-        to: BRL
-      - name: $1 to $1 Argentine Peso
-        from: USD
-        to: ARS
-      - name: $1 to $1 Mexican Peso
-        from: USD
-        to: MXN
+
 ########################################
 ###    Network Info & Services       ###
 ########################################
@@ -639,10 +647,6 @@
       - unique_clients
       - unique_domains
       - clients_ever_seen
-### Certificate Expiry ###
-  - platform: cert_expiry
-    host: !secret base_url
-    name: SSL Certificate Expiry
 ########################################
 ###      System Information          ###
 ########################################
@@ -650,32 +654,28 @@
   - platform: uptime
     name: Time Online
     unit_of_measurement: hours
-
 ### Current Version ###
   - platform: version
     name: version_current
-
 ### Available Version ###
   - platform: version
     name: version_available
     source: hassio
     branch: beta
-
+### Power Supply Check ###
+  - platform: rpi_power
 ########################################
 ###              Misc                ###
 ########################################
 ### Space Launch ###
   - platform: launch_library
-
 ### Aftership Package Tracking ###
   - platform: aftership
     api_key: !secret aftership_key
-
 ### Crime Reports ###
   - platform: crimereports
     name: Capitol Hill Crime Reports
     radius: 1000
-
 # Horizontal Lines
   - platform: template
     sensors:
@@ -687,3 +687,5 @@
         value_template: hline
       hline_4:
         value_template: hline
+### Brewdog ###
+  - platform: brewdog

@@ -12,20 +12,29 @@
 
 ### Hue motion sensors ###
   - platform: hue
-### Motion ###
-### Lux ###
+### Kitchen Motion Sensor ###
   - platform: template
-    sensors:
-      studio_lux:
-        friendly_name: 'Studio Lux'
-        value_template: '{{state_attr("binary_sensor.motion_studio", "lx")}}'
-### Temperature ###
-  - platform: template
-    sensors:
-      studio_temp:
-        friendly_name: Studio Temperature
-        value_template: "{{ ((float(states('binary_sensor.motion_studio')) * 9 / 5 )  +  32) | round(1) }}"
+     sensors:
+       kitchen_motion:
+         friendly_name: Kitchen Motion
+         device_class: motion
+         value_template: '{{ states("sensor.kitchen_motion_sensor") == "on" }}'
 
+       kitchen_sensor_reachable:
+         friendly_name: Kitchen Sensor Reachable
+         device_class: connectivity
+         value_template: '{{ states.sensor.kitchen_motion_sensor.attributes.reachable }}'
+
+       motion_at_home:
+         value_template: >-
+           {%- if is_state("sensor.kitchen_motion_sensor", "on")
+           or is_state("sensor.studio_motion_sensor", "on")
+           or is_state("sensor.bedroom_motion_sensor", "on")
+               -%}
+           True
+           {%- else -%}
+           False
+           {%- endif %}
 # Workday
   - platform: workday
     name: workday
@@ -64,3 +73,12 @@
         {% else %}
           mdi:weather-sunny
         {% endif %}
+### HA-Dockermon ###
+#  - platform: hadockermon
+#    host: 192.168.1.50
+#    port: 8126
+#    stats: true
+#    prefix: hadockermon
+#    exclude:
+#      - 'NGINX'
+#      - 'ha-dockermon'

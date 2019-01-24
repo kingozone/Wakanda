@@ -19,6 +19,15 @@
   name: "Bishop WOL"
   host: "!secret bishop_ip"
 
+
+### HA-Dockermon ###
+#  - platform: hadockermon
+#    host: 192.168.1.50
+#    port: 8126
+#    containers:
+#      - 'NGINX'
+#      - 'ha-dockermon'
+
 ### Zigbee2MQTT Switch for enabling joining ###
 #  - platform: mqtt
 #    name: "Zigbee2mqtt Main join"
