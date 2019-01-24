@@ -15,6 +15,8 @@ homeassistant:
   # Customization file
   customize: !include customize.yaml
   customize_glob: !include globals.yaml
+#  whitelist_external_dirs:
+#    - /config/www/custom_ui/floorplan/images
 
 #########################
 ### Frontend          ###
@@ -22,6 +24,7 @@ homeassistant:
 
 # Enables the frontend
 frontend:
+  javascript_version: latest
   themes: !include themes.yaml
   extra_html_url:
     - /local/custom_ui/state-card-aftership.html
@@ -65,6 +68,23 @@ panel_iframe:
     title: AdGuard Home
     icon: mdi:block-helper
     url: http://localhost:3210
+
+#panel_custom:
+#  - name: floorplan
+#    sidebar_title: Alarm Panel
+#    sidebar_icon: mdi:security-home
+#    url_path: floorplan
+#    config:
+#      hide_app_toolbar:
+#      config: /local/custom_ui/floorplan/floorplan.yaml
+
+#  - name: clock
+#    sidebar_title: Alarm Clock
+#    sidebar_icon: mdi:alarm
+#    url_path: clock
+#    config:
+#      hide_app_toolbar:
+#      config: /local/custom_ui/floorplan/floorclock.yaml
 
 ### Weblinks ###
 weblink:
@@ -114,6 +134,8 @@ http:
     - https://www.home-assistant.io
     - https://reformedreality.com
     - http://reformedreality.com
+  ip_ban_enabled: True
+  login_attempts_threshold: 3
 
 ### MQTT ###
 mqtt:
@@ -165,7 +187,13 @@ history:
 
 # View all events in a logbook
 logbook:
-
+  exclude:
+    entities:
+      - sensor.time
+      - sensor.date
+      - sensor.ups_status_date
+    domains:
+      - sun
 # Log Viewer
 logger:
   default: info
@@ -177,7 +205,22 @@ recorder:
   purge_keep_days: 14
   purge_interval: 7
   db_url: !secret mariadb
-
+  exclude:
+    domains:
+      - camera
+      - media_player
+      - sun
+      - moon
+    entities:
+      - sensor.time
+      - sensor.date
+      - sensor.time_utc
+      - sensor.internet_time
+      - binary_sensor.period_of_day
+      - sensor.season
+      - weather.current
+      - device_tracker.ozone
+      - device_tracker.nico
 ### InfluxDB - for Grafana ###
 influxdb:
   host: 172.30.32.1
@@ -212,6 +255,13 @@ tts:
 # on a media player. (min 60, max 57600)
     time_memory: 300
 
+  - platform: amazon_polly
+    aws_access_key_id: !secret aws_key
+    aws_secret_access_key: !secret aws_secret_key
+    region_name: 'us-east-1'
+    text_type: ssml
+    cache: True
+#    cache_dir: /data/tts
 # Zeroconf/Avahi/Bonjour
 zeroconf:
 
@@ -258,7 +308,11 @@ cloud:
 ### Amazon Alexa Skills ###
 
 
+files:
 
+pvoutput:
+
+httpreq:
 ############################
 ### 3rd Party Components ###
 ############################
@@ -356,26 +410,30 @@ geo_location:
 #########################
 ###     Includes      ###
 #########################
-group: !include groups.yaml
+#alarm_control_panel: !include alarm_control_panels.yaml
 automation: !include automations.yaml
-script: !include scripts.yaml
-scene: !include scenes.yaml
-zone: !include zones.yaml
-camera: !include cameras.yaml
-switch: !include switches.yaml
+#battery: !include batteries.yaml
 binary_sensor: !include binary_sensors.yaml
-sensor: !include sensors.yaml
+camera: !include cameras.yaml
+#cover: !include covers.yaml
 device_tracker: !include device_trackers.yaml
+group: !include groups.yaml
+#input_boolean: !include input_booleans.yaml
+#input_datetime: !include input_datetimes.yaml
+#input_number: !include input_numbers.yaml
+#input_select: !include input_selects.yaml
+#input_text: !include input_texts.yaml
+#light: !include lights.yaml
+logger: !include logger.yaml
 media_player: !include media_players.yaml
 notify: !include notifiers.yaml
-#light: !include lights.yaml
-#cover: !include covers.yaml
-#timer: !inclune timers.yaml
-#input_boolean: !include input_booleans.yaml
-#input_select: !include input_selects.yaml
-#input_number: !include input_numbers.yaml
-#input_text: !include input_texts.yaml
-#input_datetime: !include input_datetimes.yaml
+#python_scripts: !include_dir_named python_scripts
+script: !include scripts.yaml
+scene: !include scenes.yaml
 #shell_command: !include shell_commands.yaml
+#shell_scripts:  !include_dir_named shell_scripts
+switch: !include switches.yaml
+sensor: !include sensors.yaml
+#timer: !inclune timers.yaml
 #variable: !include variables.yaml
-#alarm_control_panel: !include alarm_control_panels.yaml
+zone: !include zones.yaml

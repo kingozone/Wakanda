@@ -42,7 +42,7 @@
 ### Lux ###
       studio_lux:
         friendly_name: 'Studio Lux'
-        value_template: '{{state_attr("binary_sensor.motion_studio", "lx")}}'
+        value_template: '{{(10 ** (float (binary_sensor.motion_studio.state.lightlevel) / 10000) -1) | round (1)}} '
         unit_of_measurement: lux
 
       studio_motion_sensor_battery:
@@ -647,6 +647,12 @@
       - unique_clients
       - unique_domains
       - clients_ever_seen
+### External IP ###
+  - platform: rest
+    scan_interval: 86400
+    resource: http://ip.jsontest.com
+    name: External IP
+    value_template: '{{ value_json.ip }}'
 ########################################
 ###      System Information          ###
 ########################################
@@ -654,6 +660,85 @@
   - platform: uptime
     name: Time Online
     unit_of_measurement: hours
+
+  - platform: command_line
+    name: "HA Uptime"
+    command: echo "$(($(date +%s) - $(date -d "$(head -n1 /config/home-assistant.log | cut -d' ' -f-2)" +%s)))"
+    scan_interval: 720
+    value_template: >-
+      {% set uptime = value | int %}
+      {% set seconds = uptime % 60 %}
+      {% set minutes = ((uptime % 3600) / 60) | int %}
+      {% set hours = ((uptime % 86400) / 3600) | int %}
+      {% set days = (uptime / 86400) | int %}
+      {%- if days > 0 -%}
+        {%- if days == 1 -%}
+          1 day
+        {%- else -%}
+          {{ days }} days
+        {%- endif -%}
+        {{ ', ' }}
+      {%- endif -%}
+      {%- if hours > 0 -%}
+        {%- if hours == 1 -%}
+          1 hour
+        {%- else -%}
+          {{ hours }} hours
+        {%- endif -%}
+        {{ ', ' }}
+      {%- endif -%}
+      {%- if minutes > 0 -%}
+        {%- if minutes == 1 -%}
+          1 minute
+        {%- else -%}
+          {{ minutes }} minutes
+        {%- endif -%}
+      {%- endif -%}
+
+# Since Last Boot Completed
+  - platform: template
+    sensors:
+      since_last_boot_templated:
+        value_template: >-
+          {%- set slb = states.sensor.since_last_boot.state.split(' ') -%}
+          {%- set count = slb | length -%}
+          {%- set hms = slb[count - 1] -%}
+          {%- set hms_trimmed = hms.split('.')[0] -%}
+          {%- set hms_split = hms_trimmed.split(':') -%}
+          {%- set hours = hms_split[0] | int -%}
+          {%- set minutes = hms_split[1] | int -%}
+          {%- set seconds = hms_split[2] | int -%}
+          {%- if count == 3 -%}
+            {{ slb[0] ~ ' ' ~ slb[1] ~ ' ' }}
+          {%- endif -%}
+          {%- if hours > 0 -%}
+            {%- if hours == 1 -%}
+              1 hour
+            {%- else -%}
+              {{ hours }} hours
+            {%- endif -%}
+          {%- endif -%}
+          {%- if minutes > 0 -%}
+            {%- if hours > 0 -%}
+              {{ ', ' }}
+            {%- endif -%}
+            {%- if minutes == 1 -%}
+              1 minute
+            {%- else -%}
+              {{ minutes }} minutes
+            {%- endif -%}
+          {%- endif -%}
+          {%- if seconds > 0 -%}
+            {%- if hours > 0 or minutes > 0 -%}
+              {{ ', ' }}
+            {%- endif -%}
+            {%- if seconds == 1 -%}
+              1 second
+            {%- else -%}
+              {{ seconds }} seconds
+            {%- endif -%}
+          {%- endif -%}
+
 ### Current Version ###
   - platform: version
     name: version_current
@@ -664,6 +749,7 @@
     branch: beta
 ### Power Supply Check ###
   - platform: rpi_power
+
 ########################################
 ###              Misc                ###
 ########################################

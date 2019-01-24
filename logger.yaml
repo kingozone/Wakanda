@@ -12,22 +12,37 @@
     aiohttp.server: critical
     custom_components.media_player.floorplan_speaker: error
     homeassistant.core: error
+    botocore: warn
+    dlipower: warn
+    homeassistant.bootstrap: info
+    homeassistant.components.alarm_control_panel: warn
+    homeassistant.components.alert: warn
+    homeassistant.components.api: warn
     homeassistant.components.automation: warn
     homeassistant.components.binary_sensor: error
-    homeassistant.components.climate.nest: warn
+    homeassistant.components.camera: warn
+    homeassistant.components.cover: warn
     homeassistant.components.device_tracker: error
     homeassistant.components.discovery: warn
     homeassistant.components.feedreader: warn
     homeassistant.components.http: warn
     homeassistant.components.media_player: warn
     homeassistant.components.sensor.pi_hole: critical
-    homeassistant.components.sensor.rest: critical
     homeassistant.components.recorder: error
-    homeassistant.components.sensor.darksky: warn
-    homeassistant.components.zwave: warn
+    homeassistant.components.light: warn
+    homeassistant.components.lock: warn
+    homeassistant.components.mqtt: warn
+    homeassistant.components.notify: warn
+    homeassistant.components.recorder: warn
+    homeassistant.components.remote: warn
+    homeassistant.components.sensor: warn
+    homeassistant.components.switch: warn
+    homeassistant.components.websocket_api: info
     homeassistant.helpers.script: info
     homeassistant.helpers.entity: critical
+    homeassistant.loader: warn
     homeassistant.exceptions: info
+    bellows: info
     py.warnings: error
     requests.packages.urllib3.connectionpool: critical
     root: warn
