@@ -33,6 +33,5 @@
 ### Join ###
   - platform: joaoapps_join
     api_key: !secret join_api
-    device_ids: !secret black_panther_id, !secret black_lightning_id, !secret iron_man_id
     device_names: Black Panther, Black Lightning, Iron-Man
     name: Shango

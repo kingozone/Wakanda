@@ -68,7 +68,10 @@ panel_iframe:
     title: AdGuard Home
     icon: mdi:block-helper
     url: http://localhost:3210
-
+  terminal:
+    title: Terminal
+    icon: mdi:console
+    url: https://localhost:7681
 #panel_custom:
 #  - name: floorplan
 #    sidebar_title: Alarm Panel
@@ -255,12 +258,12 @@ tts:
 # on a media player. (min 60, max 57600)
     time_memory: 300
 
-  - platform: amazon_polly
-    aws_access_key_id: !secret aws_key
-    aws_secret_access_key: !secret aws_secret_key
-    region_name: 'us-east-1'
-    text_type: ssml
-    cache: True
+#  - platform: amazon_polly
+#    aws_access_key_id: !secret aws_key
+#    aws_secret_access_key: !secret aws_secret_key
+#    region_name: 'us-east-1'
+#    text_type: ssml
+#    cache: True
 #    cache_dir: /data/tts
 # Zeroconf/Avahi/Bonjour
 zeroconf:
@@ -433,7 +436,7 @@ scene: !include scenes.yaml
 #shell_command: !include shell_commands.yaml
 #shell_scripts:  !include_dir_named shell_scripts
 switch: !include switches.yaml
-sensor: !include sensors.yaml
+#sensor: !include sensors.yaml
 #timer: !inclune timers.yaml
 #variable: !include variables.yaml
 zone: !include zones.yaml
