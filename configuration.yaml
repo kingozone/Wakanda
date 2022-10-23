@@ -39,85 +39,7 @@ frontend:
 
 
 ### Component Panels ###
-panel_iframe:
-  mqtt:
-    title: MQTT
-    icon: mdi:code-brackets
-    url: https://localhost:5713
-  ide:
-    title: IDE
-    icon: mdi:code-braces
-    url: https://localhost:8321
-  nodered:
-    title: Node-RED
-    icon: mdi:sitemap
-    url: https://localhost:1880
-  pihole:
-    title: Pi-hole
-    icon: mdi:block-helper
-    url: http://localhost:4865
-  sqlite:
-    title: SQLite Web
-    icon: mdi:database
-    url: http://localhost:4444
-  router:
-    title: Router
-    icon: mdi:router-wireless-settings
-    url: http://192.168.1.1
-  adguard:
-    title: AdGuard Home
-    icon: mdi:block-helper
-    url: http://localhost:3210
 
-#panel_custom:
-#  - name: floorplan
-#    sidebar_title: Alarm Panel
-#    sidebar_icon: mdi:security-home
-#    url_path: floorplan
-#    config:
-#      hide_app_toolbar:
-#      config: /local/custom_ui/floorplan/floorplan.yaml
-
-#  - name: clock
-#    sidebar_title: Alarm Clock
-#    sidebar_icon: mdi:alarm
-#    url_path: clock
-#    config:
-#      hide_app_toolbar:
-#      config: /local/custom_ui/floorplan/floorclock.yaml
-
-### Weblinks ###
-weblink:
-  entities:
-    - name: Home Assistant
-      url: https://www.home-assistant.io
-    - name: Forums
-      url: https://community.home-assistant.io/
-    - name: /r Home Assistant
-      url: https://www.reddit.com/r/homeassistant/
-    - name: GitHub
-      url: https://github.com
-    - name: Facebook
-      url: https://www.facebook.com/groups/HomeAssistant/
-      icon: mdi:facebook
-    - name: BRUH Automation
-      url:  https://www.youtube.com/channel/UCLecVrux63S6aYiErxdiy4w
-      icon: mdi:youtube
-    - name: BurnsHA
-      url: https://www.youtube.com/channel/UCSKQutOXuNLvFetrKuwudpg
-      icon: mdi:youtube
-    - name: DrZzs
-      url: https://www.youtube.com/channel/UC7G4tLa4Kt6A9e3hJ-HO8ng
-      icon: mdi:youtube
-    - name: The Hookhup
-      url: https://www.youtube.com/channel/UC2gyzKcHbYfqoXA5xbyGXtQ
-      icon: mdi:youtube
-    - name: DIY Futurism
-      url: https://diyfuturism.com/
-      icon: mdi:web
-    - name: Smarthome Hobby
-      url: https://smarthomehobby.com/
-      icon: mdi:web
 
 #########################
 ###     Web Access    ###
@@ -138,14 +60,7 @@ http:
   login_attempts_threshold: 3
 
 ### MQTT ###
-mqtt:
-  broker: a0d7b954-mqtt
-  username: !secret username1
-  password: !secret password
-  client_id: wakanda
-  discovery: true
-  discovery_prefix: wakanda
-  certificate: !secret ssl_certificate
+
 
 ##################################
 # Checks for available updates   #
@@ -161,7 +76,7 @@ updater:
 ### Custom updater ###
 #custom_updater:
 #component_urls:
-#  - https://raw.githubusercontent.com/robmarkcole/Hue-sensors-HASS/master/custom_updater.json
+
 
 #########################
 ### Native Components ###
@@ -192,13 +107,15 @@ logbook:
       - sensor.time
       - sensor.date
       - sensor.ups_status_date
+      - sensor.time
+      - sensor.date
+      - sensor.ha_uptime
+      - py.warnings
     domains:
       - sun
 # Log Viewer
 logger:
   default: info
-  logs:
-    homeassistant.components.mqtt: debug
 
 # Recorder
 recorder:
@@ -219,14 +136,13 @@ recorder:
       - binary_sensor.period_of_day
       - sensor.season
       - weather.current
-      - device_tracker.ozone
-      - device_tracker.nico
+      - sensor.ha_uptime
+
+logger: !include logger.yaml
+recorder: !include recorder.yaml
+
 ### InfluxDB - for Grafana ###
-influxdb:
-  host: 172.30.32.1
-  tags:
-    instance: hassio
-    source: wakanda
+
 
 # Enables a map showing the location of tracked devices
 map:
@@ -235,33 +151,11 @@ map:
 sun:
 
 # Weather prediction
-weather:
-  - platform: darksky
-    api_key: !secret dark_api
-    mode: hourly
-    units: us
-    name: Current
+
 
 # Text to speech
-tts:
-  - platform: google
-  # Set the default voice language.
-    language: 'en'
-# Cache voice files to a local storage.
-    cache: true
-# Path to a location for caching the tts files.
-    cache_dir: /tmp/tts
-# Time to hold (in seconds) the voice data inside memory for fast play
-# on a media player. (min 60, max 57600)
-    time_memory: 300
 
-  - platform: amazon_polly
-    aws_access_key_id: !secret aws_key
-    aws_secret_access_key: !secret aws_secret_key
-    region_name: 'us-east-1'
-    text_type: ssml
-    cache: True
-#    cache_dir: /data/tts
+
 # Zeroconf/Avahi/Bonjour
 zeroconf:
 
@@ -276,9 +170,6 @@ api:
 
 # Python Scripts
 python_script:
-
-### Shopping list ###
-shopping_list:
 
 # Home Assistant Cloud
 cloud:
@@ -318,41 +209,21 @@ httpreq:
 ############################
 
 # IFTTT
-ifttt:
-  key: !secret ifttt_web
 
-# Wink Hub
-wink:
 
 ### OwnTracks ###
-owntracks:
+
 
 # Enable DialogFlow
 dialogflow:
 
-### Canary ###
-canary:
-  username: !secret email
-  password: !secret alt_pass_2
 
-### August Smart Lock ###
-august:
-  login_method: phone
-  username: "!secret email"
-  password: "!secret phone"
 
 ### Nest ###
-nest:
-  client_id: !secret nest_id
-  client_secret: !secret nest_secret
+
 
 ### Sonoff/eWelink Native ###
-sonoff:
-  username: !secret email
-  password: !secret password
-  scan_interval: 15
-  grace_period: 600
-  api_region: 'us'
+
 
 ### Habitca ###
 habitica:
@@ -370,22 +241,7 @@ habitica:
 #  address: !secret address
 
 ### Generic Thermostat ###
-climate:
-  - platform: generic_thermostat
-    name: Studio
-    heater:  switch.sonoff_10003840d5
-    target_sensor: sensor.home_studio_temperature
-    humidity: sensor.home_studio_humidity
-    min_temp: 5
-    max_temp: 85
-    ac_mode: false
-    hot_tolerance: 0.5
-    cold_tolerance: 0.1
-    min_cyle_duration:
-      minutes: 5
-    keep_alive:
-      minutes: 30
-    initial_operation_mode: 'auto'
+
 
 ### Join ###
 joaoapps_join:
@@ -410,30 +266,32 @@ geo_location:
 #########################
 ###     Includes      ###
 #########################
-#alarm_control_panel: !include alarm_control_panels.yaml
-automation: !include automations.yaml
-#battery: !include batteries.yaml
-binary_sensor: !include binary_sensors.yaml
-camera: !include cameras.yaml
-#cover: !include covers.yaml
-device_tracker: !include device_trackers.yaml
-group: !include groups.yaml
-#input_boolean: !include input_booleans.yaml
+#homekit: !include homekit.yaml
+#group: !include_dir_merge_named group
+#sensor: !include_dir_merge_list sensor
+#binary_sensor: !include_dir_merge_list binary_sensor
+#automation: !include_dir_merge_list automation
+#scene: !include_dir_merge_list scene
+#switch: !include_dir_merge_list switch
+#script: !include_dir_merge_named script
+#input_boolean: !include_dir_merge_named input_boolean
+#shell_command: !include_dir_merge_named shell_command
+#zone: !include_dir_merge_name_name zones
 #input_datetime: !include input_datetimes.yaml
 #input_number: !include input_numbers.yaml
 #input_select: !include input_selects.yaml
 #input_text: !include input_texts.yaml
+#alarm_control_panel: !include alarm_control_panels.yaml
+#camera: !include cameras.yaml
+#cover: !include covers.yaml
+#battery: !include batteries.yaml
 #light: !include lights.yaml
-logger: !include logger.yaml
-media_player: !include media_players.yaml
-notify: !include notifiers.yaml
 #python_scripts: !include_dir_named python_scripts
-script: !include scripts.yaml
-scene: !include scenes.yaml
-#shell_command: !include shell_commands.yaml
 #shell_scripts:  !include_dir_named shell_scripts
-switch: !include switches.yaml
-sensor: !include sensors.yaml
 #timer: !inclune timers.yaml
 #variable: !include variables.yaml
-zone: !include zones.yaml
+#notify: !include notifiers.yaml
+#media_player: !include media_players.yaml
+#theme: !include_dir_merge_list theme
+#fan: !include fans.yaml
+
