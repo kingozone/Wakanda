@@ -1,0 +1,6 @@
+### Home ###
+  - name: Home
+    latitude: !secret latitude
+    longitude: !secret longitude
+    radius: 50
+    icon: !secret icon

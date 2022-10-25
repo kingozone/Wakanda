@@ -2,10 +2,10 @@ homeassistant:
   # Name of the location where Home Assistant is running
   name: Wakanda
   # Location required to calculate the time the sun rises and sets
-  latitude: !secret latitude
-  longitude: !secret longitude
+#  latitude: !secret latitude
+#  longitude: !secret longitude
   # Impacts weather/sunrise data (altitude above sea level in meters)
-  elevation: !secret elevation
+#  elevation: !secret elevation
   # metric for Metric, imperial for Imperial
   unit_system: imperial
   # Temperature unit: C for Celsius, F for Fahrenheit
@@ -13,8 +13,8 @@ homeassistant:
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: America/Los_Angeles
   # Customization file
-  customize: !include customize.yaml
-  customize_glob: !include globals.yaml
+#  customize: !include_dir_list customizations
+#  customize_glob: !include globals.yaml
 #  whitelist_external_dirs:
 #    - /config/www/custom_ui/floorplan/images
 
@@ -100,46 +100,10 @@ browser:
 # Enables support for tracking state changes over time
 history:
 
-# View all events in a logbook
-logbook:
-  exclude:
-    entities:
-      - sensor.time
-      - sensor.date
-      - sensor.ups_status_date
-      - sensor.time
-      - sensor.date
-      - sensor.ha_uptime
-      - py.warnings
-    domains:
-      - sun
-# Log Viewer
-logger:
-  default: info
-
-# Recorder
-recorder:
-  purge_keep_days: 14
-  purge_interval: 7
-  db_url: !secret mariadb
-  exclude:
-    domains:
-      - camera
-      - media_player
-      - sun
-      - moon
-    entities:
-      - sensor.time
-      - sensor.date
-      - sensor.time_utc
-      - sensor.internet_time
-      - binary_sensor.period_of_day
-      - sensor.season
-      - weather.current
-      - sensor.ha_uptime
-
-logger: !include logger.yaml
-recorder: !include recorder.yaml
+# Logs
+logbook: !include logs/logbook.yaml
+logger: !include logs/logger.yaml
+recorder: !include logs/recorder.yaml
 
 ### InfluxDB - for Grafana ###
 
@@ -169,33 +133,12 @@ ffmpeg:
 api:
 
 # Python Scripts
-python_script:
+#python_script: !include_dir_list python_scripts
 
 # Home Assistant Cloud
 cloud:
 ### Google Assistant Actions ###
-  google_actions:
-    filter:
-      include_domains:
-        - light
-        - group
-        - input_boolean
-        - scene
-        - script
-        - switch
-        - fan
-        - cover
-        - media_player
-        - climate
-      exclude_entities:
-        - group.all_lights
-        - media_player.falcon
-        - media_player.redwing
-        - media_player.storm
-        - media_player.vixen
-        - media_player.whole_home_music
-        - remote.harmony_hub
-        - media_player.pn58c8000_samsung_dtv_rcr
+
 ### Amazon Alexa Skills ###
 
 
@@ -203,7 +146,7 @@ files:
 
 pvoutput:
 
-httpreq:
+stream:
 ############################
 ### 3rd Party Components ###
 ############################
@@ -226,10 +169,10 @@ dialogflow:
 
 
 ### Habitca ###
-habitica:
-  - api_user: !secret habit_id
-    api_key: !secret habit_key
-    name: Ozone
+#habitica:
+#  - api_user: !secret habit_id
+#    api_key: !secret habit_key
+#    name: Ozone
 
 ### Dominos Pizza ###
 #dominos:
@@ -244,15 +187,15 @@ habitica:
 
 
 ### Join ###
-joaoapps_join:
-  - name: Androids
-    device_id: group.android,group.pc
-    api_key: !secret join_api
+#joaoapps_join:
+#  - name: Androids
+#    device_id: group.android,group.pc
+#    api_key: !secret join_api
 
 ### Google Calendar ###
-google:
-  client_id: !secret google_id
-  client_secret: !secret google_secret
+#google:
+#  client_id: !secret google_id
+#  client_secret: !secret google_secret
 
 ### Earthquakes ###
 geo_location:
@@ -263,35 +206,54 @@ geo_location:
 
 ### Microsoft Face ###
 
+### Presence-based Lights ###
+#device_sun_light_trigger:
+#  light_group: group.living_room
+#  light_profile: relax
+#  device_group: group.my_devices
+#  disable_turn_off: true
+
+### Proximity ###
+#proximity:
+#  home:
+#    ignored_zones:
+#      - work
+#    devices:
+#      - device_tracker.car1
+#    tolerance: 50
+#    unit_of_measurement: mi
+
 #########################
 ###     Includes      ###
 #########################
+#cloud: !include cloud_config.yaml
 #homekit: !include homekit.yaml
-#group: !include_dir_merge_named group
-#sensor: !include_dir_merge_list sensor
-#binary_sensor: !include_dir_merge_list binary_sensor
-#automation: !include_dir_merge_list automation
-#scene: !include_dir_merge_list scene
-#switch: !include_dir_merge_list switch
-#script: !include_dir_merge_named script
-#input_boolean: !include_dir_merge_named input_boolean
-#shell_command: !include_dir_merge_named shell_command
+#group: !include_dir_merge_named groups
+#sensor: !include_dir_merge_list sensors
+#binary_sensor: !include_dir_merge_list binary_sensors
+#automation: !include_dir_merge_list automations
+#scene: !include_dir_merge_list scenes
+#switch: !include_dir_list switches
+#script: !include_dir_list scripts
+#input_boolean: !include_dir_merge_named input_booleans
+#shell_command: !include_dir_merge_named shell_commands
 #zone: !include_dir_merge_name_name zones
-#input_datetime: !include input_datetimes.yaml
-#input_number: !include input_numbers.yaml
-#input_select: !include input_selects.yaml
-#input_text: !include input_texts.yaml
-#alarm_control_panel: !include alarm_control_panels.yaml
-#camera: !include cameras.yaml
-#cover: !include covers.yaml
-#battery: !include batteries.yaml
-#light: !include lights.yaml
-#python_scripts: !include_dir_named python_scripts
+#input_datetime: !include_dir_list input_datetimes
+#input_number: !include_dir_list input_numbers
+#input_select: !include_dir_list input_selects
+#input_text: !include_dir_list input_texts
+#alarm_control_panel: !include_dir_list control_panels
+#camera: !include_dir_list cameras
+#cover: !include_dir_list covers
+#battery: !include_dir_list batteries
+#light: !include_dir_list lights
 #shell_scripts:  !include_dir_named shell_scripts
-#timer: !inclune timers.yaml
-#variable: !include variables.yaml
-#notify: !include notifiers.yaml
-#media_player: !include media_players.yaml
-#theme: !include_dir_merge_list theme
-#fan: !include fans.yaml
+#timer: !include_dir_list timers
+#schedule: !include_dir_list schedules
+#variable: !include variables
+#notify: !include notifiers
+#media_player: !include media_players
+#theme: !include_dir_list themes
+#fan: !include_dir fans
+#alert: !include_dir_list alerts
 

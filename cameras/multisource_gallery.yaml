@@ -1,0 +1,11 @@
+### MultiSource Gallery ###
+#  - platform: multisource
+#    name: "Image Gallery"
+#    interval: 10
+#    images:
+#      - https://example.com/image1.jpg
+#      - https://example.com/image2.png
+#      - /config/www/images/dir1
+#      - /config/www/images/dir2
+#      - /config/www/image1.jpg
+#      - /config/www/image2.png

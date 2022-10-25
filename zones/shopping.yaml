@@ -1,0 +1,156 @@
+### Downtown Target ###
+  - name: Downtown Target
+    latitude: !secret target_lat
+    longitude: !secret target_long
+    radius: 50
+    icon: mdi:pharmacy
+
+### Pike Place Market North ###
+
+### Pike Place Market Central ###
+  - name: Pike Place Market
+    latitude: !secret pike_lat
+    longitude: !secret pike_long
+    radius: 50
+    icon: mdi:shopping
+
+### Pike Place Market South ###
+
+### 15th Safeway ###
+  - name: Safeway - 15th & John
+    latitude: !secret safe_lat
+    longitude: !secret safe_long
+    radius: 50
+    icon: mdi:food-apple
+
+### Madison Safeway ##
+  - name: Safeway - Madison St.
+    latitude: !secret madsafe_lat
+    longitude: !secret madsafe_long
+    radius: 50
+    icon: mdi:food-apple
+
+### Harvard Market ###
+  - name: Harvard Market
+    latitude: !secret harv_lat
+    longitude: !secret harv_long
+    radius: 50
+    icon: mdi:food-apple
+
+### Broadway Walgreens ###
+  - name: Walgreens - Broadway
+    latitude: !secret broad_wal_lat
+    longitude: !secret brod_wal_long
+    radius: 10
+    icon: mdi:pharmacy
+
+### Broadway Rite-Aid ###
+  - name: Rite-Aid - Broadway
+    latitude: !secret rite_lat
+    longitude: !secret rite_long
+    radius: 25
+    icon: mdi:pharmacy
+
+### Broadway Market ###
+  - name: Broadway Market
+    latitude: !secret bmarket_lat
+    longitude: !secret bmarket_long
+    radius: 50
+    icon: mdi:food-apple
+
+### Whole Foods Denny ###
+  - name: Whole Foods - Denny
+    latitude: !secret whole_lat
+    longitude: !secret whole_long
+    radius: 50
+    icon: mdi:food-apple
+
+### Whole Foods Madison ###
+  - name: Whole Foods - Madison
+    latitude: !secret whole_mad_lat
+    longitude: !secret whole_mad_long
+    radius: 50
+    icon: mdi:food-apple
+
+### Trader Joe's ###
+  - name: Trader Joes
+    latitude: !secret trade_lat
+    longitude: !secret trade_long
+    radius: 50
+    icon: mdi:food-apple
+
+### Central Co-op ###
+  - name: Central Co-Op
+    latitude: !secret coop_lat
+    longitude: !secret coop_long
+    radius: 50
+    icon: mdi:food-apple
+
+### Uwajimaya ###
+  - name: Uwajimaya
+    latitude: !secret uwa_lat
+    longitude: !secret uwa_long
+    radius: 65
+    icon: mdi:cart
+
+### Chinatown Daiso ###
+  - name: Daiso - International District
+    latitude: !secret daiso_lat
+    longitude: !secret daiso_long
+    radius: 20
+    icon: mdi:cart
+
+### Ruckus ###
+  - name: Ruckus Recreational
+    latitude: !secret ruck_lat
+    longitude: !secret ruck_long
+    radius: 10
+    icon: mdi:cannabis
+
+### Uncle Ikes 23rd ###
+  - name: Uncle Ikes - 23rd & Union
+    latitude: !secret ike_lat
+    longitude: !secret ike_long
+    radius: 10
+    icon: mdi:cannabis
+
+### Uncle Ikes 15th ###
+  - name: Uncle Ikes - 15th
+    latitude: !secret ike_15_lat
+    longitude: !secret ike_15_long
+    radius: 10
+    icon: mdi:cannabis
+
+### The Reef ###
+  - name: The Reef
+    latitude: !secret reef_lat
+    longitude: !secret reef_long
+    radius: 10
+    icon: mdi:cannabis
+
+### Capitol Hill Goodwill ###
+  - name: Goodwill - Capitol Hill
+    latitude: !secret cap_good_lat
+    longitude: !secret cap_good_long
+    radius: 15
+    icon: mdi:cart
+
+### Lowe's ###
+  - name: Lowes
+    latitude: !secret lowes_lat
+    longitude: !secret lowes_long
+    radius: 100
+    icon: mdi:wrench
+
+### Home Depot ###
+  - name: Home Depot
+    latitude: !secret home_dep_lat
+    longitude: !secret home_dep_long
+    radius: 100
+    icon: mdi:wrench
+
+### Bellevue Square Mall ###
+
+### Southcenter Mall ###
+
+### Pacific Place Mall ###            

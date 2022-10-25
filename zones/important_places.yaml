@@ -1,0 +1,61 @@
+### Seattle Art Museum ###
+  - name: Seattle Art Museum
+    latitude: !secret art_lat
+    longitude: !secret art_long
+    radius: 50
+    icon: mdi:camera-burst
+
+### Seattle Aquarium ###
+  - name: Seattle Aquarium
+    latitude: !secret aqua_lat
+    longitude: !secret aqua_long
+    radius: 50
+    icon: mdi:fish
+
+### King County Court ###
+  - name: King County District Court
+    latitude: !secret court_lat
+    longitude: !secret court_long
+    radius: 50
+    icon: mdi:gavel
+
+### King County Jail ###
+  - name: King County District Jail
+    latitude: !secret jail_lat
+    longitude: !secret jail_long
+    radius: 50
+    icon: mdi:shield-key
+
+### City Hall ###
+  - name: City Hall
+    latitude: !secret cityhall_lat
+    longitude: !secret cityhall_long
+    radius: 50
+    icon: mdi:city
+
+### Seattle Municipal Court ###
+  - name: Seattle Municipal Court
+    latitude: !secret mcourt_lat
+    longitude: !secret mcourt_long
+    radius: 50
+    icon: mdi:gavel
+
+### US Appeals Court ###
+  - name: United States Appeals Court
+    latitude: !secret appeal_lat
+    longitude: !secret appeal_long
+    radius: 50
+    icon: mdi:gavel
+
+### US District Court ###
+  - name: United States District Court
+    latitude: !secret dcourt_lat
+    longitude: !secret dcourt_long
+    radius: 50
+    icon: mdi:gavel
+
+### Century Link Field ###
+
+### Safeco Field ###
+
+### Key Arena ###    

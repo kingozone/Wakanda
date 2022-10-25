@@ -1,0 +1,13 @@
+### Work ###
+# Roosevelt Campus
+  - name: APL - Roosevelt
+    latitude: !secret roosevelt_lat
+    longitude: !secret roosevelt_long
+    radius: 50
+    icon: mdi:office-building
+# UHeights Campus    
+  - name: APL - UHeights
+    latitude: !secret uheights_lat
+    longitude: !secret uheights_long
+    radius: 50
+    icon: mdi:office-building    

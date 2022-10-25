@@ -1,0 +1,26 @@
+### Dad's    ###
+  - name: Dads
+    latitude: !secret dad_lat
+    longitude: !secret dad_long
+    radius: 25
+    icon: mdi:account-circle
+
+### Christian ###
+
+### Aaron Smith ###
+
+### Kisha-Marie & Andrew ###
+
+### Grandparents ###
+  - name: Grandparents
+    latitude: !secret grand_lat
+    longitude: !secret grand_long
+    radius: 15
+    icon: mdi:account-supervisor-circle
+
+### Richarad & Lila ###
+  - name: Auntie & Uncle
+    latitude: !secret rich_lat
+    longitude: !secret rich_long
+    radius: 15
+    icon: mdi:account-supervisor-circle

@@ -1,0 +1,138 @@
+### DSHS Cherry ###
+  - name: DSHS - Cherry Hill
+    latitude: !secret dshs_lat
+    longitude: !secret dshs_long
+    radius: 35
+    icon: mdi:clipboard-text
+
+### DSHS Belltown ###
+  - name: DSHS - Belltown
+    latitude: !secret dshs_bell_lat
+    longitude: !secret dshs_bell_long
+    radius: 35
+    icon: mdi:clipboard-text
+
+### Sound Health ###
+  - name: Sound Health
+    latitude: !secret sound_lat
+    longitude: !secret sound_long
+    radius: 50
+    icon: mdi:prescription
+
+### UW Belltown ###
+  - name: UW Medicine - Belltown Clinic
+    latitude: !secret bell_lat
+    longitude: !secret bell_long
+    radius: 20
+    icon: mdi:doctor
+
+### UW Medicine ###
+  - name: UW Medicine - Main Hospital
+    latitude: !secret uw_lat
+    longitude: !secret uw_long
+    radius: 200
+    icon: mdi:hospital-building
+
+### UW Dermatology ###
+  - name: UW Medicine - Dermatology
+    latitude: !secret derm_lat
+    longitude: !secret derm_long
+    radius: 50
+    icon: mdi:needle
+
+### UW Harborview - Norm Maleng ###
+  - name: UW Medicine - Harborview-Norm Maleng Building
+    latitude: !secret norm_lat
+    longitude: !secret norm_long
+    radius: 25
+    icon: mdi:heart-pulse
+
+### UW Harborview - Main ###
+  - name: UW Medicine - Harborview-Main Building
+    latitude: !secret main_lat
+    longitude: !secret main_long
+    radius: 75
+    icon: mdi:hospital-building
+
+### UW Harborview - 9th & Jefferson ###
+  - name: UW Medicine - Harborview-9th & Jefferson Building
+    latitude: !secret 9th_lat
+    longitude: !secret 9th_long
+    radius: 50
+    icon: mdi:stethoscope
+
+### Swedish Hospital ###
+  - name: Swedish Hospital
+    latitude: !secret swedish_lat
+    longitude: !secret swedish_long
+    radius: 100
+    icon: mdi:hospital-building
+
+### Virginia Mason Hospital ###
+  - name: Virginia Mason Hospital
+    latitude: !secret vmason_lat
+    longitude: !secret vmason_long
+    radius: 100
+    icon: mdi:hospital-building
+
+### Northwest Outpatient Medical Center ###
+  - name: Northwest Outpatient Medical Center
+    latitude: !secret northwest_lat
+    longitude: !secret northwest_long
+    radius: 50
+    icon: mdi:medical-bag
+
+### Northgate Mall ###
+  - name: Northgate Mall
+    latitude: !secret northgate_lat
+    longitude: !secret northgate_long
+    radius: 200
+    icon: mdi:shopping
+
+### Northgate North ###
+  - name: Northgate North
+    latitude: !secret northg_lat
+    longitude: !secret northg_long
+    radius: 75
+    icon: mdi:shopping
+
+### Central Library ###
+  - name: Seattle Public Library - Central
+    latitude: !secret main_lib_lat
+    longitude: !secret main_lib_long
+    radius: 50
+    icon: mdi:library
+
+### Capitol Hill Library ###
+  - name: Seattle Public Library - Capitol Hill
+    latitude: !secret cap_lib_lat
+    longitude: !secret cap_lib_long
+    radius: 15
+    icon: mdi:library
+
+### Cal Anderson North ###
+  - name: Cal Anderson Park
+    latitude: !secret cal_and_lat
+    longitude: !secret cal_and_long
+    radius: 100
+    icon: mdi:nature
+
+### Cal Anderson Central ###
+
+### Cal Anderson South
+
+### Discovery Park ###
+
+### Gas Works Park ###
+
+### Greenlake ###
+
+### Seward Park ###
+
+### Magnuson Park ###
+
+### Golden Gardens ###
+
+### Alki Beach ###
+
+### Boren Park ###

@@ -1,0 +1,3 @@
+# Manual Alarm Control Panel #
+#alarm_control_panel:
+#  - platform: manual

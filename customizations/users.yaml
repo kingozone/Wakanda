@@ -1,0 +1,8 @@
+###############################
+###          Users          ###
+###############################
+### Ozone ###
+  device_tracker.black_panther:
+    entity_picture: /local/ozone.jpg
+    friendly_name: Ozone
+

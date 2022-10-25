@@ -1,0 +1,8 @@
+#alarm_control_panel:
+#  - platform: ifttt
+#    name: YOUR_ALARM_NAME
+#    code: YOUR_ALARM_CODE
+#    event_arm_away: YOUR_ARM_AWAY_EVENT
+#    event_arm_home: YOUR_ARM_HOME_EVENT
+#    event_arm_night: YOUR_ARM_NIGHT_EVENT
+#    event_disarm: YOUR_DISARM_EVENT

@@ -1,0 +1,11 @@
+# mqtt
+#mqtt:
+#  alarm_control_panel:
+#    - state_topic: "home/alarm"
+#      command_topic: "home/alarm/set"
+
+
+#  alarm_control_panel:
+#    - platform: manual_mqtt
+#      state_topic: home/alarm
+#      command_topic: home/alarm/set

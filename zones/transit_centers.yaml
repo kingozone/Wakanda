@@ -1,0 +1,65 @@
+### Redmond Transit Center ###
+  - name: Redmond Transit Center
+    latitude: !secret red_lat
+    longitude: !secret red_long
+    radius: 100
+    icon: mdi:bus-clock
+
+### Stewart & Yale ###
+  - name: Stewart & Yale
+    latitude: !secret yale_lat
+    longitude: !secret yale_long
+    radius: 50
+    icon: mdi:bus
+
+### Westlake Station ###
+  - name: Westlake Station
+    latitude: !secret westlake_lat
+    longitude: !secret westlake_long
+    radius: 100
+    icon: mdi:train-variant
+
+### Captiol Hill Station - John ###
+  - name: Captiol Hill Station - John
+    latitude: !secret cap_john_lat
+    longitude: !secret cap_john_long
+    radius: 100
+    icon: mdi:train-variant
+
+### Captiol Hill Station - Denny ###
+  - name: Captiol Hill Station - Denny
+    latitude: !secret cap_denny_lat
+    longitude: !secret cap_denny_long
+    radius: 25
+    icon: mdi:train-variant
+
+### Captiol Hill Station - Cal Anderson ###
+  - name: Captiol Hill Station - Cal Anderson
+    latitude: !secret cap_cal_lat
+    longitude: !secret cap_cal_long
+    radius: 10
+    icon: mdi:train-variant
+
+### Chinatown Station ###
+
+### Stadium Station ###
+
+### Sodo Station ###
+
+### Beacon Hill Station ###
+
+### Mount Baker Station ###
+
+### Columbia City Station ###
+
+### Rainier Beach Station ###
+
+### Tukwila Station ###
+
+### Sea-Tac Station ###
+
+### University of Washington Station ###
+
+### Northgate Station ###
+
+### Kent Station ###

@@ -1,4 +1,45 @@
-### Zigbee2MQTT Timer ###
-  zigbee_permit_join:
-    name: Time remaining
-    duration: 120
+### Zigbee2MQTT ###
+#  zigbee_permit_join:
+#    name: Time remaining
+#    duration: "00:02:00"
+#    icon: mdiZigbee
+
+### Generic ###
+  hour:
+    name: Hour
+    duration: "01:00:00"
+  half-hour:
+    name: Half-hour
+    duration: "00:30:00"
+  forty-five:
+    name: Forty Five Minutes
+    duration: "00:45:00"
+  twenty-five:
+    name: Twenty Five Minutes
+    duration: "00:25:00"  
+  fifteen-minutes:
+    name: Fifteen Minutes
+    duration: "00:15:00"
+  ten-minutes:
+    name: Ten Minutes
+    duration: "00:10:00"
+  five-minutes:
+    name: Five Minutes
+    duration: "00:05:00"
+
+
+### Laundry ###
+  washer:
+    name: Washer
+    duration: "00:45:00"
+    icon: mdiWashingMachine
+  dryer:
+    name: Dryer
+    duration: "01:00:00"
+    icon: mdiTumbleDryer 
+
+### Shower ###
+  shower:
+    name: Shower
+    duration: "00:10:00"
+    icon: mdiShowerHead

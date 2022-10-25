@@ -1,0 +1,6 @@
+### Combined Cameras ###
+#  - platform: combined
+#    base_address: https://wakanda1.duckdns.org
+#    entities:
+#      - camera.camera1
+#      - camera.camera1
