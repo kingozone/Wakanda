@@ -106,7 +106,7 @@ logger: !include logs/logger.yaml
 recorder: !include logs/recorder.yaml
 
 ### InfluxDB - for Grafana ###
-
+#influxdb:
 
 # Enables a map showing the location of tracked devices
 map:

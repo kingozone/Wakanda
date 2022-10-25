@@ -1,0 +1,4 @@
+#  - platform: haveibeenpwned
+#    email:
+#      - taurence.salter@gmail.com
+#    api_key: API_KEY
