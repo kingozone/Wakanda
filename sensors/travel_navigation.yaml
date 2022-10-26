@@ -1,0 +1,68 @@
+########################################
+###      Travel & Navigation         ###
+########################################
+### Google Maps Travel Time ###
+# Phone to Home ###
+  - platform: google_travel_time
+    name: Ozone To Home
+    api_key: !secret gmaps_key
+    origin: device_tracker.black_panther
+    destination: zone.home
+    travel_mode: transit
+    options:
+      units: imperial
+      mode: transit
+      transit_routing_preference: less_walking
+# Work Commute ###
+  - platform: google_travel_time
+    name: Home To Work
+    api_key: !secret gmaps_key
+    origin: zone.home
+    destination: !secret prism_loc
+    options:
+      units: imperial
+      mode: transit
+      transit_routing_preference: less_walking
+# Commute Home ###
+  - platform: google_travel_time
+    name: Work to Home
+    api_key: !secret gmaps_key
+    origin: !secret red_loc
+    destination: zone.home
+    options:
+      units: imperial
+      mode: transit
+      transit_routing_preference: less_walking
+### Google Geocode ###
+  - platform: google_geocode
+    origin: device_tracker.black_panther
+    options: street_number, street, city
+    display_zone: show
+    api_key: !secret google_geocode
+### Washington State DOT ###
+  - platform: wsdot
+    api_key: !secret wsdot_key
+    travel_time:
+     - id: 80
+       name: Seattle-Redmond (Morning Eastbound)
+     - id: 79
+       name: Redmond-Seattle (Evening Westbound)
+     - id: 77
+       name: HOV Seattle-Redmond (Morning Eastbound)
+     - id: 78
+       name: HOV Redmond-Seattle (Evening Westbound)
+### Lyft ###
+  - platform: lyft
+    client_id: !secret lyft_id
+    client_secret: !secret lyft_secret
+    start_latitude: !secret latitude
+    start_longitude: !secret longitude
+    end_latitude: !secret prism_lat
+    end_longitude: !secret prism_long
+### Uber ###
+  - platform: uber
+    server_token: !secret uber_token
+    start_latitude: !secret latitude
+    start_longitude: !secret longitude
+    end_latitude: !secret prism_lat
+    end_longitude: !secret prism_long

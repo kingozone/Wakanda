@@ -1,0 +1,92 @@
+########################################
+###            News                  ###
+########################################
+### Feedparser ###
+#  - platform: feedparser
+#    name: Engineering Feed
+#    feed_url: 'https://www.sciencedaily.com/rss/matter_energy/engineering.xml'
+#    date_format: '%a, %b %d %I:%M %p'
+#    inclusions:
+#      - title
+#      - link
+#      - description
+#      - image
+#      - language
+#      - pubDate
+#    exclusions:
+#      - language
+
+########################################
+###            Finance               ###
+########################################
+### Coin Market Cap ###
+  - platform: coinmarketcap
+    currency_id: 1
+    display_currency: USD
+    display_currency_decimals: 2
+  - platform: coinmarketcap
+    currency_id: 1831
+    display_currency: USD
+    display_currency_decimals: 2
+  - platform: coinmarketcap
+    currency_id: 2083
+    display_currency: USD
+    display_currency_decimals: 2
+  - platform: coinmarketcap
+    currency_id: 2222
+    display_currency: USD
+    display_currency_decimals: 2
+  - platform: coinmarketcap
+    currency_id: 2575
+    display_currency: USD
+    display_currency_decimals: 2
+  - platform: coinmarketcap
+    currency_id: 463
+    display_currency: USD
+    display_currency_decimals: 2
+  - platform: coinmarketcap
+    currency_id: 1027
+    display_currency: USD
+    display_currency_decimals: 2
+  - platform: coinmarketcap
+    currency_id: 52
+    display_currency: USD
+    display_currency_decimals: 2
+  - platform: coinmarketcap
+    currency_id: 2
+    display_currency: USD
+    display_currency_decimals: 2
+  - platform: coinmarketcap
+    currency_id: 1321
+    display_currency: USD
+    display_currency_decimals: 2
+  - platform: coinmarketcap
+    currency_id: 74
+    display_currency: USD
+    display_currency_decimals: 2
+  - platform: coinmarketcap
+    currency_id: 512
+    display_currency: USD
+    display_currency_decimals: 2
+  - platform: coinmarketcap
+    currency_id: 2010
+    display_currency: USD
+    display_currency_decimals: 2
+  - platform: coinmarketcap
+    currency_id: 825
+    display_currency: USD
+    display_currency_decimals: 2
+  - platform: coinmarketcap
+    currency_id: 1720
+    display_currency: USD
+    display_currency_decimals: 2
+
+### Alpha Vantange ###
+  - platform: alpha_vantage
+    api_key: !secret alpha_key
+# Stocks
+    symbols:
+      - symbol: GOOGL
+        name: Google
+      - symbol: FB
+        name: Facebook

@@ -1,0 +1,75 @@
+########################################
+###              Health              ###
+########################################
+### Pollen.com ###
+  - platform: pollen
+    zip_code: "!secret zip"
+    monitored_conditions:
+      - allergy_average_forecasted
+      - allergy_average_historical
+      - allergy_index_today
+      - allergy_index_tomorrow
+      - allergy_index_yesterday
+      - disease_average_forecasted
+### AirVisual ###
+  - platform: airvisual
+    api_key: !secret air_visual
+    city: !secret city
+    state: !secret state
+    country: !secret country
+    monitored_conditions:
+      - us
+    show_on_map: true
+### World Air Quality Index ###
+  - platform: waqi
+    token: AQICN_API_TOKEN
+    locations:
+      - seattle
+    stations:
+      - Olive St
+      - Queen Anne
+      - Beacon Hill
+      - Duwamish
+      - South Park
+### Flu Near You ###
+  - platform: flunearyou
+### Fitbit ###
+  - platform: fitbit
+    clock_format: 12H
+    unit_system: en_US
+    monitored_resources:
+      - "body/weight"
+      - "activities/activityCalories"
+      - "activities/calories"
+      - "activities/caloriesBMR"
+      - "activities/distance"
+      - "activities/elevation"
+      - "activities/floors"
+      - "activities/heart"
+      - "activities/minutesFairlyActive"
+      - "activities/minutesLightlyActive"
+      - "activities/minutesSedentary"
+      - "activities/minutesVeryActive"
+      - "activities/steps"
+      - "activities/tracker/activityCalories"
+      - "activities/tracker/calories"
+      - "activities/tracker/distance"
+      - "activities/tracker/elevation"
+      - "activities/tracker/floors"
+      - "activities/tracker/minutesFairlyActive"
+      - "activities/tracker/minutesLightlyActive"
+      - "activities/tracker/minutesSedentary"
+      - "activities/tracker/minutesVeryActive"
+      - "activities/tracker/steps"
+      - "body/bmi"
+      - "body/fat"
+      - "body/weight"
+      - "devices/battery"
+      - "sleep/awakeningsCount"
+      - "sleep/efficiency"
+      - "sleep/minutesAfterWakeup"
+      - "sleep/minutesAsleep"
+      - "sleep/minutesAwake"
+      - "sleep/minutesToFallAsleep"
+      - "sleep/startTime"
+      - "sleep/timeInBed"

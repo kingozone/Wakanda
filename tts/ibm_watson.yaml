@@ -1,0 +1,5 @@
+  - platform: watson_tts
+    watson_apikey: YOUR_GENERATED_APIKEY
+    watson_url:
+    voice: en-US_AllisonV3Voice
+    output_format: audio/ogg;codecs=vorbis

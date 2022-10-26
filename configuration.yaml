@@ -118,7 +118,7 @@ sun:
 
 
 # Text to speech
-
+#tts: !include_dir_merge tts
 
 # Zeroconf/Avahi/Bonjour
 zeroconf:

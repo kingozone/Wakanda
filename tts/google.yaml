@@ -1,0 +1,17 @@
+# Google Translate #
+  - platform: google_translate
+    language: "en"
+# Google Cloud Platform #
+  - platform: google_cloud
+    key_file: googlecloud.json
+    language: en-US
+    gender: male
+    voice: en-US-Wavenet-F
+    encoding: linear16
+    speed: 0.9
+    pitch: -2.5
+    gain: -5.0
+    text_type: ssml
+    profiles:
+      - telephony-class-application
+      - wearable-class-device       

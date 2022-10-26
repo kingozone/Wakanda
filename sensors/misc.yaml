@@ -1,0 +1,25 @@
+########################################
+###              Misc                ###
+########################################
+### Space Launch ###
+  - platform: launch_library
+### Aftership Package Tracking ###
+  - platform: aftership
+    api_key: !secret aftership_key
+### Crime Reports ###
+  - platform: crimereports
+    name: Capitol Hill Crime Reports
+    radius: 1000
+# Horizontal Lines
+  - platform: template
+    sensors:
+      hline_1:
+        value_template: hline
+      hline_2:
+        value_template: hline
+      hline_3:
+        value_template: hline
+      hline_4:
+        value_template: hline
+### Brewdog ###
+  - platform: brewdog

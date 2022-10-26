@@ -1,0 +1,38 @@
+########################################
+###    Network Info & Services       ###
+########################################
+### Speedtest.net ###
+  - platform: speedtest
+    minute:
+      - 0
+      - 30
+    monitored_conditions:
+      - ping
+      - download
+      - upload
+### HaveIBeenPwned? ###
+  - platform: haveibeenpwned
+    email:
+      - !secret email
+      - ozonesavage@gmail.com
+      - kingozone206@gmail.com
+      - me@thisisozone.com
+### Pi-hole ###
+  - platform: pi_hole
+    host: localhost:4865
+    monitored_conditions:
+      - ads_blocked_today
+      - ads_percentage_today
+      - dns_queries_today
+      - domains_being_blocked
+      - queries_cached
+      - queries_forwarded
+      - unique_clients
+      - unique_domains
+      - clients_ever_seen
+### External IP ###
+  - platform: rest
+    scan_interval: 86400
+    resource: http://ip.jsontest.com
+    name: External IP
+    value_template: '{{ value_json.ip }}'

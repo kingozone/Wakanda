@@ -1,0 +1,19 @@
+####################################
+###          Date & Time         ###
+####################################
+### Time & Date ###
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'date'
+      - 'date_time'
+      - 'time_date'
+      - 'time_utc'
+      - 'beat'
+### Sun Angle ###
+  - platform: template
+    sensors:
+      solar_angle:
+        friendly_name: "Sun Angle"
+        unit_of_measurement: '°'
+        value_template: "{{ '%+.1f'|format(state_attr('sun.sun', 'elevation')) }}"

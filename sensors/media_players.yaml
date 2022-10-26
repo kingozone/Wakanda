@@ -1,0 +1,82 @@
+########################################
+###    Media Players & Services      ###
+########################################
+### Last.fm ###
+  - platform: lastfm
+    api_key: !secret lastfm_key
+    users:
+      - ozonethegreat
+### Xbox Live ###
+  - platform: xbox_live
+    api_key: !secret xbox_api
+    xuid:
+      - 2533274965606388
+### Sonarr ###
+  - platform: sonarr
+    api_key: !secret sonarr_key
+    host: !secret cyborg_ip
+    port: !secret sonarr_port
+    monitored_conditions:
+      - series
+      - upcoming
+      - wanted
+      - queue
+      - commands
+      - diskspace
+    days: 7
+    unit: GB
+### Radarr ###
+  - platform: radarr
+    api_key: !secret radarr_key
+### Trakt.tv ###
+  - platform: trakt
+    id: '!secret trakt_id'
+    secret: '!secret trakt_secret'
+    username: !secret alt_user
+    days: 14
+### Discogs ###
+  - platform: discogs
+    token: !secret discogs_token
+    name: Discogs Collection
+### Kodi Recently Added ###
+  - platform: kodi_recently_added
+    username: !secret username
+    host: 192.168.1.7
+    password: !secret password
+    port: !secret kodi_port
+### Trakt.tv Upcoming ###
+#  - platform: trakt
+#    id: '!secret trakt_id'
+#    secret: '!secret trakt_secret'
+#    username: iamozone
+#    days: 10
+#    exclude:
+#      'The Bachelor'
+### Sonarr Upcoming Media ###
+  - platform: sonarr_upcoming_media
+    api_key: !secret sonarr_key
+    host: 192.168.1.7
+    port: !secret sonarr_port
+    days: 2
+    ssl: true
+    max: 10
+### Radarr Upcoming Media ###
+#  - platform: radarr_upcoming_media
+#    api_key: !secret radarr_keyY
+#    host: 192.168.1.7
+#    port: 7878
+#    days: 120
+#    ssl: true
+#    theaters: false
+#    max: 10
+### Plex Recently Added ###
+#  - platform: plex_recently_added
+#    token: !secret plex_token
+#    server_name: Cyborg
+#    ssl: true
+#    ssl_cert: false
+#    download_images: false
+#    max: 5
+#    section_types:
+#    - movie
+#    - show

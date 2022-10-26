@@ -1,0 +1,10 @@
+  - platform: microsoft
+    api_key: YOUR_API_KEY
+    language: en-gb
+    gender: Male
+    type: RyanNeural
+    rate: 20
+    volume: -50
+    pitch: high
+    contour: (0, 0) (100, 100)
+    region: eastus

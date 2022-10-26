@@ -1,0 +1,87 @@
+########################################
+###  Weather, Climate, & Enviroment  ###
+########################################
+### Astronomical Season ###
+  - platform: season
+    type: astronomical
+### Dark Sky Weather ###
+  - platform: darksky
+    name: Dark Sky Weather
+    api_key: !secret dark_api
+    units: us
+    monitored_conditions:
+      - summary
+      - minutely_summary
+      - hourly_summary
+      - daily_summary
+      - icon
+      - temperature
+      - temperature_high
+      - temperature_low
+      - apparent_temperature
+      - apparent_temperature_high
+      - apparent_temperature_low
+      - humidity
+      - dew_point
+      - cloud_cover
+      - precip_type
+      - precip_intensity
+      - precip_probability
+      - precip_accumulation
+      - wind_speed
+      - wind_bearing
+      - pressure
+      - visibility
+      - ozone
+      - uv_index
+      - moon_phase
+    update_interval:
+      minutes: 5
+### Weather Underground ###
+  - platform: wunderground
+    api_key: !secret wu_key
+    monitored_conditions:
+      - alerts
+      - heat_index_f
+      - heat_index_string
+      - pressure_in
+      - pressure_trend
+      - solarradiation
+      - wind_string
+      - wind_gust_mph
+      - wind_1d_mph
+      - wind_2d_mph
+      - wind_3d_mph
+      - wind_4d_mph
+      - temp_high_1d_f
+      - temp_low_1d_f
+      - temp_high_2d_f
+      - temp_low_2d_f
+      - temp_high_3d_f
+      - temp_low_3d_f
+      - temp_high_4d_f
+      - temp_low_4d_f
+      - precip_1d_in
+      - precip_1d
+      - precip_2d_in
+      - precip_2d
+      - precip_3d_in
+      - precip_3d
+      - precip_4d_in
+      - precip_4d
+      - weather
+      - weather_1d
+      - weather_1n
+      - weather_2d
+      - weather_2n
+      - weather_3d
+      - weather_3n
+      - weather_4d
+      - weather_4n
+### Weather Alerts ###
+  - platform: weatheralerts
+    sameid: '053033'
+### Moon ###
+  - platform: moon
+### NOAA Space Weather ###
+  - platform: nooa_space_weather
