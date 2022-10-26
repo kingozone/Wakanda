@@ -203,7 +203,9 @@ geo_location:
     feed_type: 'past_day_all_earthquakes'
     radius: 50
     minimum_magnitude: 0.0
-
+  - platform: geo_json_events
+    url: https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson
+    radius: 50
 ### Microsoft Face ###
 
 ### Presence-based Lights ###
@@ -231,7 +233,10 @@ geo_location:
 #group: !include_dir_merge_named groups
 #sensor: !include_dir_merge_list sensors
 #binary_sensor: !include_dir_merge_list binary_sensors
-#automation: !include_dir_merge_list automations
+#Manual automations
+#automation manual: !include_dir_merge_list automations/
+#UI Automations
+automation ui: !include automations.yaml
 #scene: !include_dir_merge_list scenes
 #switch: !include_dir_merge_named switches
 #script: !include_dir_merge_named scripts
