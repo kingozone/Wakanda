@@ -186,23 +186,15 @@ device_sun_light_trigger:
 ############################
 
 # IFTTT
-
-
-### OwnTracks ###
-
+ifttt:
+  key: !secret ifttt
 
 # Enable DialogFlow
 dialogflow:
 
 ### Samsung Smart TV ###
 samsungtv:
-  - host: IP_ADDRESS
-
-### Nest ###
-
-
-### Sonoff/eWelink Native ###
-
+  - host: !secret samsung_tv
 
 ### Habitca ###
 #habitica:
@@ -219,8 +211,6 @@ samsungtv:
 #  phone: !secret phone
 #  address: !secret address
 
-### Generic Thermostat ###
-
 
 ### Join ###
 #joaoapps_join:
@@ -228,10 +218,6 @@ samsungtv:
 #    device_id: group.android,group.pc
 #    api_key: !secret join_api
 
-### Google Calendar ###
-#google:
-#  client_id: !secret google_id
-#  client_secret: !secret google_secret
 
 ### Earthquakes ###
 geo_location:
@@ -242,7 +228,6 @@ geo_location:
   - platform: geo_json_events
     url: https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson
     radius: 50
-### Microsoft Face ###
 
 ### openSenseMap ###
 air_quality:
