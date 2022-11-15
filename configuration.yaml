@@ -163,6 +163,24 @@ cloud:
 ### Google Assistant Actions ###
 
 ### Amazon Alexa Skills ###
+
+
+### Proximity ###
+proximity:
+  home:
+    devices:
+      - device_tracker.pixel6
+    tolerance: 50
+    unit_of_measurement: mi
+    dir_of_travel: towards
+
+### Sun Lights ###
+device_sun_light_trigger:
+  light_group: group.living_room
+  light_profile: relax
+  device_group: person.taurence
+  disable_turn_off: true
+
 ############################
 ### 3rd Party Components ###
 ############################
@@ -226,35 +244,25 @@ geo_location:
     radius: 50
 ### Microsoft Face ###
 
-### Presence-based Lights ###
-#device_sun_light_trigger:
-#  light_group: group.living_room
-#  light_profile: relax
-#  device_group: group.my_devices
-#  disable_turn_off: true
-
-### Proximity ###
-#proximity:
-#  home:
-#    ignored_zones:
-#      - work
-#    devices:
-#      - device_tracker.car1
-#    tolerance: 50
-#    unit_of_measurement: mi
+### openSenseMap ###
+air_quality:
+  - platform: opensensemap
+    station_id: 5e9d1ce745f937001cbc9adf
+    name: Denny-Blaine
 
 #########################
 ###     Includes      ###
 #########################
+#Manual automations
+automation manual: !include_dir_merge_list automations/
+#UI Automations
+automation ui: !include automations.yaml
+#############################################
+#sensor: !include_dir_merge_list sensors
+#binary_sensor: !include_dir_merge_list binary_sensors
 #cloud: !include cloud_config.yaml
 #homekit: !include homekit.yaml
 #group: !include_dir_merge_named groups
-#sensor: !include_dir_merge_list sensors
-#binary_sensor: !include_dir_merge_list binary_sensors
-#Manual automations
-#automation manual: !include_dir_merge_list automations/
-#UI Automations
-automation ui: !include automations.yaml
 #scene: !include_dir_merge_list scenes
 #switch: !include_dir_merge_named switches
 #script: !include_dir_merge_named scripts
