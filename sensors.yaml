@@ -17,428 +17,308 @@
         friendly_name: "Sun Angle"
         unit_of_measurement: '°'
         value_template: "{{ '%+.1f'|format(state_attr('sun.sun', 'elevation')) }}"
+                                                                
 ########################################
-###          Enviroment              ###
+###          Energy              ###
 ########################################
-### Mold Indicator ###
-  - platform: mold_indicator
-    name: Mold Indicator
-    indoor_temp_sensor: sensor.home_studio_temperature
-    indoor_humidity_sensor: sensor.home_studio_humidity
-    outdoor_temp_sensor: sensor.dark_sky_weather_apparent_temperature
-    calibration_factor: 2.0
-### Phillips Hue Enviroment ###
-  - platform: hue
-    ip_address: !secret hue_ip
-    token: !secret hue_token
-### Temperature ###
-  - platform: template
-    sensors:
-      studio_temp:
-        friendly_name: Studio Temperature
-        value_template: "{{ ((float(states('binary_sensor.motion_studio')) / 100 * 9 / 5 )  +  32) | round(2) }}"
-        unit_of_measurement: °F
-        device_class: temperature
-### Lux ###
-      studio_lux:
-        friendly_name: 'Studio Lux'
-        value_template: '{{(10 ** (float (binary_sensor.motion_studio.state.lightlevel) / 10000) -1) | round (1)}} '
-        unit_of_measurement: lux
 
-      studio_motion_sensor_battery:
-        friendly_name: 'Studio Motion battery'
-        unit_of_measurement: '%'
-        value_template: >
-          {{ states.sensor.studio_motion_sensor.attributes.battery }}
-        device_class: battery
+### OhmConnect ###
+  - platform: ohmconnect
+    name: OhmConnect
+    id: DybV86Jy
+
 ########################################
 ###  Weather, Climate, & Enviroment  ###
 ########################################
-### Astronomical Season ###
-  - platform: season
-    type: astronomical
-### Dark Sky Weather ###
-  - platform: darksky
-    name: Dark Sky Weather
-    api_key: !secret dark_api
-    units: us
-    monitored_conditions:
-      - summary
-      - minutely_summary
-      - hourly_summary
-      - daily_summary
-      - icon
-      - temperature
-      - temperature_high
-      - temperature_low
-      - apparent_temperature
-      - apparent_temperature_high
-      - apparent_temperature_low
-      - humidity
-      - dew_point
-      - cloud_cover
-      - precip_type
-      - precip_intensity
-      - precip_probability
-      - precip_accumulation
-      - wind_speed
-      - wind_bearing
-      - pressure
-      - visibility
-      - ozone
-      - uv_index
-      - moon_phase
-    update_interval:
-      minutes: 5
-### Weather Underground ###
-  - platform: wunderground
-    api_key: !secret wu_key
-    monitored_conditions:
-      - alerts
-      - heat_index_f
-      - heat_index_string
-      - pressure_in
-      - pressure_trend
-      - solarradiation
-      - wind_string
-      - wind_gust_mph
-      - wind_1d_mph
-      - wind_2d_mph
-      - wind_3d_mph
-      - wind_4d_mph
-      - temp_high_1d_f
-      - temp_low_1d_f
-      - temp_high_2d_f
-      - temp_low_2d_f
-      - temp_high_3d_f
-      - temp_low_3d_f
-      - temp_high_4d_f
-      - temp_low_4d_f
-      - precip_1d_in
-      - precip_1d
-      - precip_2d_in
-      - precip_2d
-      - precip_3d_in
-      - precip_3d
-      - precip_4d_in
-      - precip_4d
-      - weather
-      - weather_1d
-      - weather_1n
-      - weather_2d
-      - weather_2n
-      - weather_3d
-      - weather_3n
-      - weather_4d
-      - weather_4n
+
 ### Weather Alerts ###
   - platform: weatheralerts
     sameid: '053033'
-### Moon ###
-  - platform: moon
 ### NOAA Space Weather ###
   - platform: nooa_space_weather
+
 ########################################
 ###              Health              ###
 ########################################
-### Pollen.com ###
-  - platform: pollen
-    zip_code: "!secret zip"
-    monitored_conditions:
-      - allergy_average_forecasted
-      - allergy_average_historical
-      - allergy_index_today
-      - allergy_index_tomorrow
-      - allergy_index_yesterday
-      - disease_average_forecasted
-### AirVisual ###
-  - platform: airvisual
-    api_key: !secret air_visual
-    city: !secret city
-    state: !secret state
-    country: !secret country
-    monitored_conditions:
-      - us
-    show_on_map: true
+
 ### World Air Quality Index ###
   - platform: waqi
-    token: AQICN_API_TOKEN
+    token: !secret waqi
     locations:
       - seattle
     stations:
       - Olive St
-      - Queen Anne
-      - Beacon Hill
-      - Duwamish
-      - South Park
-### Flu Near You ###
-  - platform: flunearyou
-### Fitbit ###
-  - platform: fitbit
-    clock_format: 12H
-    unit_system: en_US
-    monitored_resources:
-      - "body/weight"
-      - "activities/activityCalories"
-      - "activities/calories"
-      - "activities/caloriesBMR"
-      - "activities/distance"
-      - "activities/elevation"
-      - "activities/floors"
-      - "activities/heart"
-      - "activities/minutesFairlyActive"
-      - "activities/minutesLightlyActive"
-      - "activities/minutesSedentary"
-      - "activities/minutesVeryActive"
-      - "activities/steps"
-      - "activities/tracker/activityCalories"
-      - "activities/tracker/calories"
-      - "activities/tracker/distance"
-      - "activities/tracker/elevation"
-      - "activities/tracker/floors"
-      - "activities/tracker/minutesFairlyActive"
-      - "activities/tracker/minutesLightlyActive"
-      - "activities/tracker/minutesSedentary"
-      - "activities/tracker/minutesVeryActive"
-      - "activities/tracker/steps"
-      - "body/bmi"
-      - "body/fat"
-      - "body/weight"
-      - "devices/battery"
-      - "sleep/awakeningsCount"
-      - "sleep/efficiency"
-      - "sleep/minutesAfterWakeup"
-      - "sleep/minutesAsleep"
-      - "sleep/minutesAwake"
-      - "sleep/minutesToFallAsleep"
-      - "sleep/startTime"
-      - "sleep/timeInBed"
+
+### Mold Indicator ###
+  - platform: mold_indicator
+    indoor_temp_sensor: sensor.temp
+    indoor_humidity_sensor: sensor.humidity
+    outdoor_temp_sensor: sensor.weather_temperature
+    calibration_factor: 2.0
+
+### Pollen Sensor ###
+  - platform: rest
+    name: pollen_percentage
+    resource: https://www.pollen.com/api/forecast/current/pollen/98102 <--- ZIP CODE
+    value_template: "{{value_json.Location.periods[1].Index}}"
+    scan_interval: 21600
+    headers:
+       Referer: "https://www.pollen.com"
+  - platform: template
+    sensors:
+      pollen_level:
+        friendly_name: 'Pollen Level'
+        value_template: >
+          {% if states.sensor.pollen_percentage.state|float <= 2.4 %}Low
+          {% elif states.sensor.pollen_percentage.state|float <= 4.8 %}Low to Medium
+          {% elif states.sensor.pollen_percentage.state|float <= 7.2 %}Medium
+          {% elif states.sensor.pollen_percentage.state|float <= 9.6 %}Medium to High
+          {% elif states.sensor.pollen_percentage.state|float <= 12.0 %}High
+          {% else %}Unknown
+          {% endif %}
+
+### Flu Sensor ###
+  - platform: rest
+    name: cold_flu_percentage
+    resource: https://www.pollen.com/api/forecast/extended/cold/98102 <--- ZIP CODE
+    value_template: "{{value_json.Location.periods[1].Index}}"
+    scan_interval: 21600
+    headers:
+       Referer: "https://www.pollen.com"
+  - platform: template
+    sensors:
+      cold_flu_risk:
+        friendly_name: 'Cold & Flu Risk'
+        value_template: >
+          {% if states.sensor.cold_flu_percentage.state|float <= 2.4 %}Low
+          {% elif states.sensor.cold_flu_percentage.state|float <= 4.8 %}Low to Medium
+          {% elif states.sensor.cold_flu_percentage.state|float <= 7.2 %}Medium
+          {% elif states.sensor.cold_flu_percentage.state|float <= 9.6 %}Medium to High
+          {% elif states.sensor.cold_flu_percentage.state|float <= 12.0 %}High
+          {% else %}Unknown
+          {% endif %}
+
+### Ambee Climate & Enviroment ###
+  - platform: rest
+    resource: https://api.ambeedata.com/latest/pollen/by-lat-lng?lat=LAT&lng=LONG
+    name: "Ambee Pollen"
+    scan_interval: 3600
+    headers:
+    content-type: "application/json"
+    x-api-key: "API-KEY"
+    json_attributes_path: "$.data.['Risk']"
+    json_attributes:
+      - tree_pollen
+      - grass_pollen
+      - weed_pollen
+​  # Tree Sensor
+  - platform: template
+    sensors:
+      ambee_pollen_tree:
+        icon_template: "mdi:tree-outline"
+        friendly_name: "tree"
+        value_template: >-
+          {% set state = state_attr('sensor.ambee_pollen', 'tree_pollen') %}
+          {% if state == "Low" %}Niedrig
+          {% elif state == "Moderate"%}Mittel
+          {% elif state == "High"%}Hoch
+          {% elif state == "Very High"%}Sehr hoch
+          {% else %}Unbekannt{% endif %}
+    # Weed Sensor​
+  - platform: template
+    sensors:
+      ambee_pollen_weed:
+        icon_template: "mdi:nature"
+        friendly_name: "weed"
+        value_template: >-
+          {% set state = state_attr('sensor.ambee_pollen', 'weed_pollen') %}
+          {% if state == "Low" %}Niedrig
+          {% elif state == "Moderate"%}Mittel
+          {% elif state == "High"%}Hoch
+          {% elif state == "Very High"%}Sehr hoch
+          {% else %}Unbekannt{% endif %}
+    # Grass Sensor​
+  - platform: template
+    sensors:
+      ambee_pollen_grass:
+        icon_template: "mdi:grass"
+        friendly_name: "grass"
+        value_template: >-
+          {% set state = state_attr('sensor.ambee_pollen', 'grass_pollen') %}
+          {% if state == "Low" %}Niedrig
+          {% elif state == "Moderate"%}Mittel
+          {% elif state == "High"%}Hoch
+          {% elif state == "Very High"%}Sehr hoch
+          {% else %}Unbekannt{% endif %}
 ########################################
 ##          Device Trackers          ###
 ########################################
-### Ariela MQTT ###
-################## Black Panther ##################
-# Battery
-  - platform: mqtt
-    name: "Black Panther's battery"
-    state_topic: "ogoun/sensor/android_black_panther_battery/state"
-    unit_of_measurement: '%'
-    value_template: "{{ value_json.level }}"
-    json_attributes:
-      - voltage
-      - temperature
-      - status
-      - power
-      - health
-      - technology
-# Wifi
-  - platform: mqtt
-    name: "Black Panther's WiFi info"
-    state_topic: "ogoun/sensor/android_black_panther_wifi/state"
-    unit_of_measurement: 'steps'
-    value_template: "{{ value_json.steps }}"
-    json_attributes:
-      - ssid
-      - bssid
-      - rssi
-      - ip
-      - signal
-      - mac
-# Phone state
-  - platform: mqtt
-    name: "Black Panther's phone info"
-    state_topic: "ogoun/sensor/android_black_panther_callstate/state"
-    value_template: "{{ value_json.state }}"
-    json_attributes:
-      - icon
-# Light level
-  - platform: mqtt
-    name: "Black Panther's light level"
-    state_topic: "ogoun/sensor/android_black_panther_light/state"
-    unit_of_measurement: 'lx'
-    value_template: "{{ value_json.value }}"
-    json_attributes:
-      - sensor_name
-      - vendor
-      - version
-      - power
-      - resolution
-# Step counter
-  - platform: mqtt
-    name: "Black Panther's step counter"
-    state_topic: "ogoun/sensor/android_black_panther_steps/state"
-    unit_of_measurement: 'steps'
-    value_template: "{{ value_json.steps }}"
-    json_attributes:
-      - sensor_name
-      - vendor
-      - version
-      - power
-      - resolution
-      - max_range
 
-################## Black Lightning ##################
-# Battery
-  - platform: mqtt
-    name: "Black Lightning's battery"
-    state_topic: "ogoun/sensor/android_black_lightning_battery/state"
-    unit_of_measurement: '%'
-    value_template: "{{ value_json.level }}"
-    json_attributes:
-      - voltage
-      - temperature
-      - status
-      - power
-      - health
-      - technology
-# Wifi
-  - platform: mqtt
-    name: "Black Lightning's WiFi info"
-    state_topic: "ogoun/sensor/android_black_lightning_wifi/state"
-    unit_of_measurement: 'steps'
-    value_template: "{{ value_json.steps }}"
-    json_attributes:
-      - ssid
-      - bssid
-      - rssi
-      - ip
-      - signal
-      - mac
-# Phone state
-  - platform: mqtt
-    name: "Black Panther's phone info"
-    state_topic: "ogoun/sensor/android_black_panther_callstate/state"
-    value_template: "{{ value_json.state }}"
-    json_attributes:
-      - icon
-# Apps
-  - platform: mqtt
-    name: "APPS SENSOR NAME"
-    state_topic: "wakanda/sensor/android_black_lightning_apps/state"
-    value_template: "{{ value_json.apps_count }}"
-    json_attributes:
-      - icon
-      - apps_names
-      - apps_packages
-# Bluetooth
-  - platform: mqtt
-    name: "BLUETOOTH SENSOR NAME"
-    state_topic: "wakanda/sensor/android_black_lightning_bluetooth/state"
-    value_template: "{{ value_json.enabled }}"
-    json_attributes:
-      - icon
-      - name
-      - mac
-      - discovered_devices
-      - bonded_devices
-# Screen
-  - platform: mqtt
-    name: "SCREEN SWITCH NAME"
-    state_topic: "wakanda/switch/android_black_lightning_screen/state"
-    command_topic: "wakanda/switch/android_black_lightning_screen/set"
-    value_template: "{{ value_json.state }}"
-################## Iron-Man ##################
-# Battery
-  - platform: mqtt
-    name: "Iron-Man's battery"
-    state_topic: "ogoun/sensor/android_iron-man_battery/state"
-    unit_of_measurement: '%'
-    value_template: "{{ value_json.level }}"
-    json_attributes:
-      - voltage
-      - temperature
-      - status
-      - power
-      - health
-      - technology
-# Wifi
-  - platform: mqtt
-    name: "Iron-Man's WiFi info"
-    state_topic: "ogoun/sensor/andro_iron-man_wifi/state"
-    unit_of_measurement: 'steps'
-    value_template: "{{ value_json.steps }}"
-    json_attributes:
-      - ssid
-      - bssid
-      - rssi
-      - ip
-      - signal
-      - mac
-# Phone state
-  - platform: mqtt
-    name: "Iron-Man's phone info"
-    state_topic: "ogoun/sensor/android_iron-man_callstate/state"
-    value_template: "{{ value_json.state }}"
-    json_attributes:
-      - icon
+
 ########################################
 ###      Travel & Navigation         ###
 ########################################
-### Google Maps Travel Time ###
-# Phone to Home ###
-  - platform: google_travel_time
-    name: Ozone To Home
-    api_key: !secret gmaps_key
-    origin: device_tracker.black_panther
-    destination: zone.home
-    travel_mode: transit
-    options:
-      units: imperial
-      mode: transit
-      transit_routing_preference: less_walking
-# Work Commute ###
-  - platform: google_travel_time
-    name: Home To Work
-    api_key: !secret gmaps_key
-    origin: zone.home
-    destination: !secret prism_loc
-    options:
-      units: imperial
-      mode: transit
-      transit_routing_preference: less_walking
-# Commute Home ###
-  - platform: google_travel_time
-    name: Work to Home
-    api_key: !secret gmaps_key
-    origin: !secret red_loc
-    destination: zone.home
-    options:
-      units: imperial
-      mode: transit
-      transit_routing_preference: less_walking
-### Google Geocode ###
-  - platform: google_geocode
-    origin: device_tracker.black_panther
-    options: street_number, street, city
-    display_zone: show
-    api_key: !secret google_geocode
-### Washington State DOT ###
+
+# General Transit Feed Specification (GTFS)
+  # King County Metro
+  - platform: gtfs
+    name: Route 8 - Denny & Bellevue to Denny & Westlake
+    origin: 2275
+    destination: 2291
+    data: king_county_metro
+  # Sound Transit 
+  - platform: gtfs
+    name: 1-Line - Capitol Hill to U District
+    origin: 99603
+    destination: 990001
+    data: sound_transit
+  - platform: gtfs
+    name: 1-Line - U District to Capitol Hill
+    origin: 990002
+    destination: 99603
+    data: sound_transit
+  # Washington State Ferries  
+  - platform: gtfs
+    name: Ferry - Seattle to Bremerton
+    origin: 74
+    destination: 47
+    data: washington_state_ferries
+  - platform: gtfs
+    name: Ferry - Seattle to Bainbridge Island
+    origin: 73
+    destination: 37
+    data: washington_state_ferries   
+  - platform: gtfs
+    name: Ferry - Seattle to Vashon Island
+    origin: 922
+    destination: 229
+    data: washington_state_ferries          
+  # Seattle Streetcar
+  - platform: gtfs
+    name: Streetcar - Howell St. to Marion St.
+    origin: 11175
+    destination: 41986
+    data: king_county_metro 
+  - platform: gtfs
+    name: Streetcar - Howell St. to Terrace St.
+    origin: 11175
+    destination: 41988
+    data: king_county_metro 
+
+# NextBus
+  - platform: nextbus
+    name: First Hill Streetcar - Broadway & Howell to Broadway & Marion
+    agency: seattle-sc
+    route: FHS
+    stop: 41986
+  - platform: nextbus
+    name: First Hill Streetcar - Broadway & Howell to Broadway & Terrace
+    agency: seattle-sc
+    route: FHS
+    stop: 41988
+
+# Washingto State Department of Transportation
   - platform: wsdot
-    api_key: !secret wsdot_key
+    api_key: 1a71039c-0fbc-4f21-800b-b487b223b191
+    travel_time:
+     - id: 4
+       name: Seattle to Everett   
+  - platform: wsdot
+    api_key: 1a71039c-0fbc-4f21-800b-b487b223b191
+    travel_time:
+     - id: 3
+       name: Seattle to Everett HOV  
+  - platform: wsdot
+    api_key: 1a71039c-0fbc-4f21-800b-b487b223b191
+    travel_time:
+     - id: 20
+       name: Seattle to Federal Way
+  - platform: wsdot
+    api_key: 1a71039c-0fbc-4f21-800b-b487b223b191
+    travel_time:
+     - id: 19
+       name: Seattle to Federal Way HOV
+  - platform: wsdot
+    api_key: 1a71039c-0fbc-4f21-800b-b487b223b191
+    travel_time:
+     - id: 27
+       name: Seattle to Lynwood  
+  - platform: wsdot
+    api_key: 1a71039c-0fbc-4f21-800b-b487b223b191
+    travel_time:
+     - id: 25
+       name: Seattle to Lynwood HOV
+  - platform: wsdot
+    api_key: 1a71039c-0fbc-4f21-800b-b487b223b191
+    travel_time:
+     - id: 33
+       name: Seattle to Renton
+  - platform: wsdot
+    api_key: 1a71039c-0fbc-4f21-800b-b487b223b191
+    travel_time:
+     - id: 31   
+       name: Seattle to Renton HOV 
+  - platform: wsdot
+    api_key: 1a71039c-0fbc-4f21-800b-b487b223b191
+    travel_time:
+     - id: 44
+       name: Seattle to SeaTac
+  - platform: wsdot
+    api_key: 1a71039c-0fbc-4f21-800b-b487b223b191
+    travel_time:
+     - id: 42   
+       name: Seattle to SeaTac HOV 
+  - platform: wsdot
+    api_key: 1a71039c-0fbc-4f21-800b-b487b223b191
+    travel_time:
+     - id: 74
+       name: Seattle to Issaquah
+  - platform: wsdot
+    api_key: 1a71039c-0fbc-4f21-800b-b487b223b191
+    travel_time:
+     - id: 72   
+       name: Seattle to Issaquah HOV
+  - platform: wsdot
+    api_key: 1a71039c-0fbc-4f21-800b-b487b223b191
     travel_time:
      - id: 80
-       name: Seattle-Redmond (Morning Eastbound)
-     - id: 79
-       name: Redmond-Seattle (Evening Westbound)
-     - id: 77
-       name: HOV Seattle-Redmond (Morning Eastbound)
-     - id: 78
-       name: HOV Redmond-Seattle (Evening Westbound)
-### Lyft ###
-  - platform: lyft
-    client_id: !secret lyft_id
-    client_secret: !secret lyft_secret
-    start_latitude: !secret latitude
-    start_longitude: !secret longitude
-    end_latitude: !secret prism_lat
-    end_longitude: !secret prism_long
-### Uber ###
-  - platform: uber
-    server_token: !secret uber_token
-    start_latitude: !secret latitude
-    start_longitude: !secret longitude
-    end_latitude: !secret prism_lat
-    end_longitude: !secret prism_long
+       name: Seattle to Redmond
+  - platform: wsdot
+    api_key: 1a71039c-0fbc-4f21-800b-b487b223b191
+    travel_time:
+     - id: 78   
+       name: Seattle to Redmond HOV
+  - platform: wsdot
+    api_key: 1a71039c-0fbc-4f21-800b-b487b223b191
+    travel_time:
+     - id: 84
+       name: Seattle to Redmond via I-90
+  - platform: wsdot
+    api_key: 1a71039c-0fbc-4f21-800b-b487b223b191
+    travel_time:
+     - id: 82  
+       name: Seattle to Redmond via I-90 HOV
+  - platform: wsdot
+    api_key: 1a71039c-0fbc-4f21-800b-b487b223b191
+    travel_time:
+     - id: 92
+       name: Seattle to Bellevue via 520
+  - platform: wsdot
+    api_key: 1a71039c-0fbc-4f21-800b-b487b223b191
+    travel_time:
+     - id: 91   
+       name: Seattle to Bellevue via 520 HOV
+  - platform: wsdot
+    api_key: 1a71039c-0fbc-4f21-800b-b487b223b191
+    travel_time:
+     - id: 96
+       name: Seattle to Bellevue
+  - platform: wsdot
+    api_key: 1a71039c-0fbc-4f21-800b-b487b223b191
+    travel_time:
+     - id: 95   
+       name: Seattle to Bellevue HOV    
+
 ########################################
 ###    Media Players & Services      ###
 ########################################

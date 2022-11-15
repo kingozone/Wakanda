@@ -1,0 +1,74 @@
+### Sonoff Smart Plugs ###
+template:
+# Air Fryer #
+  - sensor:
+      - name: "Air Fryer Energy"
+        unique_id: air_fryer_energy
+        unit_of_measurement: "kWh"
+        device_class: energy
+        state_class: measurement
+        icon: mdi:lightning-bolt
+        state: >
+          {% set bedroom = states('sensor.sonoff_1001769c50_power') | float %}
+        attributes:         
+          last_reset: '1970-01-01T00:00:00+00:00'
+# Headboard #          
+  - sensor:
+    - name: "Headboard Energy"
+      unique_id: headboard_energy
+      unit_of_measurement: "kWh"
+      device_class: energy
+      state_class: total_increasing
+      icon: mdi:lightning-bolt
+      state: >
+        {% set bedroom = states('sensor.sonoff_10003ce083_power') | float %}
+      attributes:         
+        last_reset: '1970-01-01T00:00:00+00:00'        
+ # Instant Pot #
+  - sensor:
+    - name: "Instant Pot Energy"
+      unique_id: instant_pot_energy
+      unit_of_measurement: "kWh"
+      device_class: energy
+      state_class: measurement
+      icon: mdi:lightning-bolt
+      state: >
+        {% set bedroom = states('sensor.sonoff_10003ce083_power') | float %}
+      attributes:         
+        last_reset: '1970-01-01T00:00:00+00:00'
+# Living Room Heater #
+  - sensor:
+    - name: "Living Room Heater Energy"
+      unique_id: living_room_heater_energy
+      unit_of_measurement: "kWh"
+      device_class: energy
+      state_class: measurement
+      icon: mdi:lightning-bolt
+      state: >
+        {% set bedroom = states('sensor.sonoff_10003ce083_power') | float %}
+      attributes:         
+        last_reset: '1970-01-01T00:00:00+00:00' 
+# Bedroom Heater #
+  - sensor:
+    - name: "Bedroom Heater Energy"
+      unique_id: bedroom_heater_energy
+      unit_of_measurement: "kWh"
+      device_class: energy
+      state_class: measurement
+      icon: mdi:lightning-bolt
+      state: >
+        {% set bedroom = states('sensor.sonoff_10003ce05d_power') | float %}
+      attributes:         
+        last_reset: '1970-01-01T00:00:00+00:00'                     
+# Air Conditioner #
+  - sensor:
+    - name: "Air Conditioner Energy"
+      unique_id: air_conditioner_energy
+      unit_of_measurement: "kWh"
+      device_class: energy
+      state_class: measurement
+      icon: mdi:lightning-bolt
+      state: >
+        {% set bedroom = states('sensor.sonoff_10003ce083_power') | float %}
+      attributes:         
+        last_reset: '1970-01-01T00:00:00+00:00'           

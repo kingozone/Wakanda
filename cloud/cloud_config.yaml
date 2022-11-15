@@ -12,7 +12,6 @@ google_actions:
       - media_player
       - climate
     exclude_entities:
-      - group.all_lights
       - media_player.falcon
       - media_player.redwing
       - media_player.storm
@@ -21,4 +20,24 @@ google_actions:
       - remote.harmony_hub
       - media_player.pn58c8000_samsung_dtv_rcr
 
-        
+alexa:
+  filter:
+    include_entities:
+      - light
+      - group
+      - input_boolean
+      - scene
+      - script
+      - switch
+      - fan
+      - cover
+      - media_player
+      - climate
+    exclude_entities:
+      - media_player.falcon
+      - media_player.redwing
+      - media_player.storm
+      - media_player.vixen
+      - media_player.whole_home_music
+      - remote.harmony_hub
+      - media_player.pn58c8000_samsung_dtv_rcr          

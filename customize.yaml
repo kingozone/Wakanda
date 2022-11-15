@@ -2,14 +2,8 @@
 ###          Users          ###
 ###############################
 ### Ozone ###
-  device_tracker.black_panther:
-    entity_picture: /local/ozone.jpg
-    friendly_name: Ozone
 
-### Nicodemus ###
-  device_tracker.nicodemus:
-    entity_picture: /local/nico.jpg
-    friendly_name: Nico
+
 
 ###############################
 ###          Devices        ###
@@ -19,7 +13,28 @@
 ###############################
 ###         Sensors         ###
 ###############################
-
+  sensor.pollen_index:
+    icon: mdi:flower
+  sensor.pollen_level:
+    icon: mdi:flower
+  sensor.top_allergen_1:
+    icon: mdi:flower
+  sensor.top_allergen_2:
+    icon: mdi:flower
+  sensor.top_allergen_3:
+    icon: mdi:flower
+  sensor.pollen_trend:
+    icon: mdi:flower
+  sensor.pollen_outlook:
+    icon: mdi:flower
+  sensor.pollen_season:
+    icon: mdi:flower
+  sensor.pollen_index_forecast:
+    icon: mdi:flower
+  sensor.pollen_level_forecast:
+    icon: mdi:flower
+  sensor.cold__flu_percentage:
+    icon: mdi:snowflake
 
 ###############################
 ###          Misc           ###

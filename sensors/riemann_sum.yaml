@@ -1,0 +1,49 @@
+### Sonoff Smart Plugs ###
+# Instant Pot #
+  - platform: integration
+    source: sensor.instant_pot_energy
+    name: Instant Pot Energy Meter
+    unique_id: instant_pot_energy_meter
+    unit_prefix: k
+    round: 2
+    method: trapezoidal
+# Air Fryer #
+  - platform: integration
+    source: sensor.air_fryer_energy
+    name: Air Fryer Energy Meter
+    unique_id: air_fryer_energy_meter
+    unit_prefix: k
+    round: 2
+    method: trapezoidal
+# Air Conditioner #
+  - platform: integration
+    source: sensor.air_conditioner_energy
+    name: Air Conditioner Energy Meter
+    unique_id: air_conditioner_energy_meter
+    unit_prefix: k
+    round: 2
+    method: trapezoidal
+# Living Room Heater #
+  - platform: integration
+    source: sensor.living_room_heater_energy
+    name: Living Room Heater Energy Meter
+    unique_id: living_room_heater_energy_meter
+    unit_prefix: k
+    round: 2
+    method: trapezoidal
+# Bedroom Heater #
+  - platform: integration
+    source: sensor.bedroom_heater_energy
+    name: Living Room Heater Energy Meter
+    unique_id: living_room_heater_energy_meter
+    unit_prefix: k
+    round: 2
+    method: trapezoidal    
+# Headboard #
+  - platform: integration
+    source: sensor.headboard_energy
+    name: Headboard Energy Meter
+    unique_id: headboard_energy_meter
+    unit_prefix: k
+    round: 2
+    method: trapezoidal  
